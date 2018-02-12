@@ -1,5 +1,6 @@
 package alex.mario.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -25,7 +26,7 @@ public class Player {
         batch = new SpriteBatch();
         player = new Texture("pokeTest.png");
 
-        pos = new Vector2(0,0);
+        pos = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
         dir = new Vector2(0,0);
     }
 
@@ -39,6 +40,9 @@ public class Player {
             dir = new Vector2(0,0);
         }
 
+        //Compruebo Triggers
+        ms.comprobarTrigger(rect);
+
         //Pintado
         batch.begin();
         batch.setProjectionMatrix(cs.camera.combined);
@@ -46,11 +50,12 @@ public class Player {
         batch.end();
 
         //Actualizo la camara
-        cs.setPosition(dir.cpy().scl(vel-1,vel-1));
+        cs.setPosition(dir.cpy().scl(vel*2,vel*2));
     }
 
     void setDir(Vector2 dir){
         this.dir = dir;
     }
+    void resetPos(){pos = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);}
 
 }

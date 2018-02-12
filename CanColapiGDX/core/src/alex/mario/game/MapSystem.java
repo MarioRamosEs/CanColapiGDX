@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -13,14 +14,22 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.Properties;
+import static java.lang.System.getProperties;
+
 public class MapSystem {
     TiledMap tiledMap;
     TiledMapRenderer tiledMapRenderer;
     CameraSystem cs;
+    TriggersSystem ts;
 
-    MapSystem(CameraSystem cs){
+    MapSystem(CameraSystem cs, TriggersSystem ts){
         this.cs = cs;
-        tiledMap = new TmxMapLoader().load("MapaTest.tmx");
+        this.ts = ts;
+    }
+
+    void loadMap(String name){
+        tiledMap = new TmxMapLoader().load(name);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
     }
 
@@ -49,5 +58,18 @@ public class MapSystem {
         }
 
         return false;
+    }
+
+    public void comprobarTrigger(Rectangle playerRectangle){
+        MapLayer TriggerObjectLayer = tiledMap.getLayers().get("Triggers");
+        MapObjects triggers = TriggerObjectLayer.getObjects();
+
+        for (RectangleMapObject rectangleObject : triggers.getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = rectangleObject.getRectangle();
+
+            if (Intersector.overlaps(rectangle, playerRectangle)){
+                ts.trigger(rectangleObject.getProperties());
+            }
+        }
     }
 }

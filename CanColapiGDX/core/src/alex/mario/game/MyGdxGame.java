@@ -26,13 +26,16 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	MapSystem ms;
 	Player player;
 	CameraSystem cs;
+	TriggersSystem ts;
 
 	@Override
 	public void create () {
 	    cs = new CameraSystem();
-        ms = new MapSystem(cs);
+	    ts = new TriggersSystem(this);
+        ms = new MapSystem(cs, ts);
         player = new Player(cs, ms);
 
+        loadMap("MapaTest.tmx");
 		Gdx.input.setInputProcessor(this);
 	}
 
@@ -42,6 +45,12 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         player.draw();
         ms.DrawForeground();
 	}
+
+	void loadMap(String name){
+        ms.loadMap(name);
+        player.resetPos();
+        cs.resetPosition();
+    }
 
 	@Override
 	public boolean keyDown(int keycode) {
