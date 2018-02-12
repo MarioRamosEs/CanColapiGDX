@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
@@ -30,7 +31,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public void create () {
 	    cs = new CameraSystem();
         ms = new MapSystem(cs);
-        player = new Player(cs);
+        player = new Player(cs, ms);
 
 		Gdx.input.setInputProcessor(this);
 	}
@@ -44,20 +45,18 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.LEFT)  player.setDir(new Vector2(-1,0));
+        if(keycode == Input.Keys.RIGHT) player.setDir(new Vector2(1,0));
+        if(keycode == Input.Keys.UP)    player.setDir(new Vector2(0,1));
+        if(keycode == Input.Keys.DOWN)  player.setDir(new Vector2(0,-1));
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		/*if(keycode == Input.Keys.LEFT)
-			camera.translate(-32,0);
-		if(keycode == Input.Keys.RIGHT)
-			camera.translate(32,0);
-		if(keycode == Input.Keys.UP)
-			camera.translate(0,-32);
-		if(keycode == Input.Keys.DOWN)
-			camera.translate(0,32);
-		if(keycode == Input.Keys.NUM_1)
+        player.setDir(new Vector2(0,0));
+
+		/*if(keycode == Input.Keys.NUM_1)
 			tiledMap.getLayers().get(0).setVisible(!tiledMap.getLayers().get(0).isVisible());
 		if(keycode == Input.Keys.NUM_2)
 			tiledMap.getLayers().get(1).setVisible(!tiledMap.getLayers().get(1).isVisible());*/
