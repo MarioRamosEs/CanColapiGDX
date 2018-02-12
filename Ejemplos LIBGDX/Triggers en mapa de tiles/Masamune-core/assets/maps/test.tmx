@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
+  <image source="../tilesets/tileset.png" width="256" height="1024"/>
+ </tileset>
+ <layer name="Kachelebene 1" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OsQkAMAwDQXnS7L+F25AqkCJgTnC1vpIUAADX9vmfbR1+9wC8aCq0yMEAEAAA
+  </data>
+ </layer>
+ <layer name="Kachelebene 2" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NOwrCQBhF4YCFCRZmK9mEWomVSaVuQG18ND424DZ8LNNTjCAyySQ4oyL3wNcMP3OjSCmllFLqN+uhb/Hc420QYH/Y4HbkcTcLvB+j5dAOuJ+i49DFGHMssMIS+ctfuVE02K/bBGvssMEWM8vN1PLuqz0OxjHQhqvE+Fba/+x+UsLWyeP/Vep0xgVX3N7c/+fubAR0tAAQAAA=
+  </data>
+ </layer>
+ <layer name="Kachelebene 3" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3QOQqAMBRF0bgMV+QS3JBT49A4NA5L9TbCL1LYJFF4By6E3zyIcyIiIiL/UphCyz23zJTC1/Z9fxRSaRJ51NRQS12C/Z4GGmmKtFmZ90wLrbRF2rd2OuikK8G+vHMDU1ygTAAQAAA=
+  </data>
+ </layer>
+ <layer name="Kachelebene 4" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OMQ0AAAgEMSy8f7PsGCCEdrn1qgAA7sn2wGMZBeCGBntkl6YAEAAA
+  </data>
+ </layer>
+ <objectgroup name="Collision 2" width="32" height="32">
+  <object x="735" y="928" width="61" height="31"/>
+  <object x="609" y="897" width="30" height="31"/>
+  <object x="1" y="672" width="317" height="30"/>
+  <object x="462" y="685" width="49" height="48"/>
+  <object x="321" y="681" width="45" height="51"/>
+  <object x="607" y="688" width="96" height="47"/>
+  <object x="687" y="544" width="14" height="143"/>
+  <object x="320" y="549" width="9" height="132"/>
+  <object x="254" y="609" width="34" height="32"/>
+  <object x="320" y="539" width="192" height="9"/>
+  <object x="608" y="539" width="78" height="13"/>
+  <object x="501" y="550" width="11" height="135"/>
+  <object x="607" y="553" width="9" height="134"/>
+ </objectgroup>
+ <objectgroup name="Collision 4" width="32" height="32">
+  <object x="322" y="543" width="379" height="14"/>
+  <object x="689" y="559" width="12" height="132"/>
+  <object x="320" y="558" width="14" height="126"/>
+  <object x="322" y="685" width="47" height="10"/>
+  <object x="463" y="686" width="223" height="14"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="Trigger" width="32" height="32">
+  <object type="TriggerEnter" x="371" y="671" width="91" height="31">
+   <properties>
+    <property name="setProperty" value="z=4"/>
+   </properties>
+  </object>
+  <object type="TriggerEnter" x="372" y="733" width="90" height="33">
+   <properties>
+    <property name="setProperty" value="z=2"/>
+   </properties>
+  </object>
+  <object name="onMapLoad" type="TriggerMapLoad" x="351" y="40" width="129" height="55">
+   <properties>
+    <property name="playMusic" value="audio/music/field.ogg"/>
+   </properties>
+  </object>
+  <object name="onTimeout" type="TriggerTimeout" x="539" y="44" width="177" height="57">
+   <properties>
+    <property name="playSound" value="audio/sounds/darkness.ogg"/>
+    <property name="timeout" value="5"/>
+   </properties>
+  </object>
+  <object type="TriggerEnter" x="643" y="640" width="28" height="29">
+   <properties>
+    <property name="createObject" value="class=Effect,type=LIGHTNING"/>
+    <property name="playSound" value="audio/sounds/Thunder.ogg"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
