@@ -38,15 +38,17 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private void draw(){
 		ms.DrawBackground();
 		player.draw();
+
 		ms.DrawForeground();
 	}
 	private void update(){
+		this.cs.update();
 		player.update();
 	}
 	void loadMap(String name){
         ms.loadMap(name);
         player.resetPos();
-        cs.resetPosition();
+
     }
 
 	@Override
