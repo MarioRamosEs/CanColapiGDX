@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.io.File;
 import java.util.Properties;
 import static java.lang.System.getProperties;
 
@@ -29,6 +30,7 @@ public class MapSystem {
     }
 
     void loadMap(String name){
+        name = "maps" + File.separator + name + ".tmx";
         tiledMap = new TmxMapLoader().load(name);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
     }

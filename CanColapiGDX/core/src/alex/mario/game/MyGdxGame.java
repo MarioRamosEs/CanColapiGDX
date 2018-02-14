@@ -35,7 +35,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         ms = new MapSystem(cs, ts);
         player = new Player(cs, ms);
 
-        loadMap("MapaTest.tmx");
+        loadMap("MapaTest");
 		Gdx.input.setInputProcessor(this);
 	}
 

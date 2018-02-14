@@ -19,6 +19,6 @@ public class TriggersSystem {
 
         if(mp.containsKey("EnviarMensaje")) System.out.println(mp.get("EnviarMensaje"));
 
-        if(mp.containsKey("CambioMapa")) main.loadMap((String)mp.get("CambioMapa")+".tmx");
+        if(mp.containsKey("CambioMapa")) main.loadMap((String)mp.get("CambioMapa"));
     }
 }
