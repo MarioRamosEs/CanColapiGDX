@@ -1,25 +1,10 @@
-package alex.mario.game;
+package alex.mario.game.GUI;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.objects.TextureMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
@@ -28,9 +13,15 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	CameraSystem cs;
 	TriggersSystem ts;
 
+	//Directions
+	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
+	public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
+	public static final Vector2 DIRECTION_RIGHT = new Vector2(1, 0);
+	public static final Vector2 DIRECTION_DOWN = new Vector2(0, -1);
+
 	@Override
 	public void create () {
-	    cs = new CameraSystem();
+	    cs = new CameraSystem(this);
 	    ts = new TriggersSystem(this);
         ms = new MapSystem(cs, ts);
         player = new Player(cs, ms);
@@ -41,11 +32,17 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void render () {
-        ms.DrawBackground();
-        player.draw();
-        ms.DrawForeground();
+		this.update();
+		this.draw();
 	}
-
+	private void draw(){
+		ms.DrawBackground();
+		player.draw();
+		ms.DrawForeground();
+	}
+	private void update(){
+		player.update();
+	}
 	void loadMap(String name){
         ms.loadMap(name);
         player.resetPos();
@@ -54,17 +51,35 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.LEFT)  player.setDir(new Vector2(-1,0));
-        if(keycode == Input.Keys.RIGHT) player.setDir(new Vector2(1,0));
-        if(keycode == Input.Keys.UP)    player.setDir(new Vector2(0,1));
-        if(keycode == Input.Keys.DOWN)  player.setDir(new Vector2(0,-1));
+		Vector2 newDirection = player.getDir();
+
+		if(keycode == Input.Keys.LEFT)
+        	newDirection.add(DIRECTION_LEFT);
+        else if(keycode == Input.Keys.RIGHT)
+        	newDirection.add(DIRECTION_RIGHT);
+        else if(keycode == Input.Keys.UP)
+        	newDirection.add(DIRECTION_UP);
+        else if(keycode == Input.Keys.DOWN)
+        	newDirection.add(DIRECTION_DOWN);
+        this.player.setDir(newDirection);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-        player.setDir(new Vector2(0,0));
+        //player.setDir(new Vector2(0,0));
+		Vector2 newDirection = player.getDir();
 
+		if(keycode == Input.Keys.LEFT)
+			newDirection.sub(DIRECTION_LEFT);
+		else if(keycode == Input.Keys.RIGHT)
+			newDirection.sub(DIRECTION_RIGHT);
+		else if(keycode == Input.Keys.UP)
+			newDirection.sub(DIRECTION_UP);
+		else if(keycode == Input.Keys.DOWN)
+			newDirection.sub(DIRECTION_DOWN);
+
+		this.player.setDir(newDirection);
 		/*if(keycode == Input.Keys.NUM_1)
 			tiledMap.getLayers().get(0).setVisible(!tiledMap.getLayers().get(0).isVisible());
 		if(keycode == Input.Keys.NUM_2)
@@ -100,5 +115,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
+	}
+
+	public Player getPlayer(){
+		return this.player;
 	}
 }

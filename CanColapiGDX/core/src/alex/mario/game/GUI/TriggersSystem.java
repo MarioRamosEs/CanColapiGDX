@@ -1,7 +1,6 @@
-package alex.mario.game;
+package alex.mario.game.GUI;
 
 import com.badlogic.gdx.maps.MapProperties;
-import java.util.Iterator;
 
 public class TriggersSystem {
 
@@ -11,7 +10,7 @@ public class TriggersSystem {
         this.main = main;
     }
 
-    void trigger(MapProperties mp){
+    public void trigger(MapProperties mp){
         //Iterator<String> keys = mp.getKeys();
         //Iterator<Object> values = mp.getValues();
         //System.out.println(keys.next().toString());
