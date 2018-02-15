@@ -29,12 +29,17 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public void create () {
 		//Creamos toda la pesca
 	    cameraSystem = new CameraSystem(this);
-	    triggersSystem = new TriggersSystem(this);
         mapSystem = new MapSystem(this);
-        player = new Player(this);
 
-        //Cargamos el mapa
-        this.loadMap("MapaTest");
+		//Cargamos el mapa
+		this.loadMap("MapaTest");
+
+		triggersSystem = new TriggersSystem(this);
+		player = new Player(this);
+
+
+
+
 		Gdx.input.setInputProcessor(this);
 	}
 
@@ -70,8 +75,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	}
 	public void loadMap(String name){
         mapSystem.loadMap(name);
-        player.resetPos();
-
     }
 
 	@Override
