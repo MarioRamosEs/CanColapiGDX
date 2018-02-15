@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
@@ -14,10 +15,10 @@ import java.io.File;
 public class MapSystem_L {
     protected TiledMap tiledMap;
     protected MyGdxGame game;
-    protected TriggersSystem_L triggersSystemL;
+    protected TriggersSystem triggersSystem;
     public MapSystem_L(MyGdxGame game){
         this.game = game;
-        this.triggersSystemL = this.game.getTriggersSystemL();
+        this.triggersSystem = this.game.getTriggersSystem();
     }
     public void loadMap(String name){
         //Load map
@@ -32,7 +33,7 @@ public class MapSystem_L {
             Rectangle rectangle = rectangleObject.getRectangle();
 
             if (Intersector.overlaps(rectangle, playerRectangle)){
-                this.triggersSystemL.trigger(rectangleObject.getProperties());
+                this.triggersSystem.trigger(rectangleObject.getProperties());
             }
         }
     }
