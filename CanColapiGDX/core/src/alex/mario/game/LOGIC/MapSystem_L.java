@@ -25,16 +25,7 @@ public class MapSystem_L {
         name = "maps" + File.separator + name + ".tmx";
         tiledMap = new TmxMapLoader().load(name);
     }
-    public void checkTriggers(Rectangle playerRectangle){
-        MapLayer TriggerObjectLayer = tiledMap.getLayers().get("Triggers");
-        MapObjects triggers = TriggerObjectLayer.getObjects();
-
-        for (RectangleMapObject rectangleObject : triggers.getByType(RectangleMapObject.class)) {
-            Rectangle rectangle = rectangleObject.getRectangle();
-
-            if (Intersector.overlaps(rectangle, playerRectangle)){
-                this.triggersSystem.trigger(rectangleObject.getProperties());
-            }
-        }
+    public TiledMap getTiledMap() {
+        return tiledMap;
     }
 }

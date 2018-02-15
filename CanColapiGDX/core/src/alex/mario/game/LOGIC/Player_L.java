@@ -1,21 +1,30 @@
 package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.MapSystem;
+import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+
 public class Player_L {
     protected MapSystem mapSystem;
+    protected TriggersSystem triggersSystem;
     protected MapLayer playerLayer;
     protected Vector2 position, direction, size;
     protected MyGdxGame game;
     protected int vel = 4;
+    protected ArrayList<String> triggeredBy;
+
     public Player_L(MyGdxGame game){
         this.game = game;
         this.mapSystem = this.game.getMapSystem();
+        this.triggersSystem = this.game.getTriggersSystem();
+
+        this.triggeredBy = new ArrayList<String>();
 
         this.position = new Vector2(0,0);
         this.direction = new Vector2(0,0);
@@ -33,9 +42,25 @@ public class Player_L {
             //direction = new Vector2(0,0);
         }
 
-        //Compruebo Triggers
-        mapSystem.checkTriggers(playerRectNewPosition);
 
+        //Compruebo Triggers
+        this.triggersSystem.checkTriggers(this, playerRectNewPosition);
+    }
+    public boolean trigger(String triggerName){
+        if(this.triggeredBy.contains(triggerName)){
+            return false;
+        }else{
+            this.triggeredBy.add(triggerName);
+            return true;
+        }
+    }
+    public boolean untrigger(String triggerName){
+        if(!this.triggeredBy.contains(triggerName)){
+            return false;
+        }else{
+            this.triggeredBy.remove(triggerName);
+            return true;
+        }
     }
     public Rectangle getRect(Vector2 playerPos){
         return new Rectangle(playerPos.x, playerPos.y, this.size.x, this.size.y);
@@ -57,4 +82,5 @@ public class Player_L {
     public Vector2 getPosition(){
         return this.position;
     }
+
 }
