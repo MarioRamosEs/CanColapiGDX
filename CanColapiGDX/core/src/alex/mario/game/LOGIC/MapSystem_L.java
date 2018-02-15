@@ -1,6 +1,5 @@
 package alex.mario.game.LOGIC;
 
-import alex.mario.game.GUI.TriggersSystem;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;

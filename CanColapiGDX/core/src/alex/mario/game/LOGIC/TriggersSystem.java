@@ -1,13 +1,14 @@
-package alex.mario.game.GUI;
+package alex.mario.game.LOGIC;
 
+import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapProperties;
 
 public class TriggersSystem {
 
-    MyGdxGame main;
+    MyGdxGame game;
 
-    TriggersSystem(MyGdxGame main) {
-        this.main = main;
+    public TriggersSystem(MyGdxGame game) {
+        this.game = game;
     }
 
     public void trigger(MapProperties mp){
@@ -18,6 +19,6 @@ public class TriggersSystem {
 
         if(mp.containsKey("EnviarMensaje")) System.out.println(mp.get("EnviarMensaje"));
 
-        if(mp.containsKey("CambioMapa")) main.loadMap((String)mp.get("CambioMapa"));
+        if(mp.containsKey("CambioMapa")) this.game.loadMap((String)mp.get("CambioMapa"));
     }
 }

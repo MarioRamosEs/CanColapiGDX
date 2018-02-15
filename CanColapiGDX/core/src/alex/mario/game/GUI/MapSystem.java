@@ -1,6 +1,7 @@
 package alex.mario.game.GUI;
 
 import alex.mario.game.LOGIC.MapSystem_L;
+import alex.mario.game.LOGIC.TriggersSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.MapLayer;
@@ -26,16 +27,15 @@ public class MapSystem extends MapSystem_L{
         tiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap);
     }
 
-    void DrawBackground(){
+    public void DrawBackground(){
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        cameraSystem.camera.update();
-        tiledMapRenderer.setView(cameraSystem.camera);
+        tiledMapRenderer.setView(cameraSystem.getCamera());
         tiledMapRenderer.render(new int[]{0,1});
     }
 
-    void DrawForeground(){
+    public void DrawForeground(){
         tiledMapRenderer.render(new int[]{2,4});
     }
 

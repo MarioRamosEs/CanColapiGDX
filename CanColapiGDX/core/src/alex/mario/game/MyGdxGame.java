@@ -1,5 +1,9 @@
-package alex.mario.game.GUI;
+package alex.mario.game;
 
+import alex.mario.game.GUI.CameraSystem;
+import alex.mario.game.GUI.MapSystem;
+import alex.mario.game.GUI.Player;
+import alex.mario.game.LOGIC.TriggersSystem;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -8,10 +12,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
-	MapSystem ms;
+	MapSystem mapSystem;
 	Player player;
-	CameraSystem cs;
-	TriggersSystem ts;
+	CameraSystem cameraSystem;
+	TriggersSystem triggersSystem;
 
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
@@ -21,32 +25,49 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void create () {
-	    cs = new CameraSystem(this);
-	    ts = new TriggersSystem(this);
-        ms = new MapSystem(cs, ts);
-        player = new Player(cs, ms);
+		//Creamos toda la pesca
+	    cameraSystem = new CameraSystem(this);
+	    triggersSystem = new TriggersSystem(this);
+        mapSystem = new MapSystem(cameraSystem, triggersSystem);
+        player = new Player(cameraSystem, mapSystem);
 
-        loadMap("MapaTest");
+        //Cargamos el mapa
+        this.loadMap("MapaTest");
 		Gdx.input.setInputProcessor(this);
 	}
 
 	@Override
 	public void render () {
+		//Bucle principal
+
+		//Update todas las variables, movimiento, etc
 		this.update();
+
+		//Dibujamos
 		this.draw();
 	}
+	private void update(){
+		//Actualizamos al jugador
+		player.update();
+
+		//Actualizamos la cámara
+		this.cameraSystem.update();
+	}
 	private void draw(){
-		ms.DrawBackground();
+		//Dibujamos el fondo del mapa
+		mapSystem.DrawBackground();
+
+		//Dibujamos al jugador
 		player.draw();
 
-		ms.DrawForeground();
+		//Dibujamos la parte "superior"
+		mapSystem.DrawForeground();
+
+		//Hacemos que la cámara se actualice
+		cameraSystem.draw();
 	}
-	private void update(){
-		this.cs.update();
-		player.update();
-	}
-	void loadMap(String name){
-        ms.loadMap(name);
+	public void loadMap(String name){
+        mapSystem.loadMap(name);
         player.resetPos();
 
     }

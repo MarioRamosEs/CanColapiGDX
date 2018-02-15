@@ -29,10 +29,10 @@ public class Player extends Player_L{
 
     }
 
-    void draw(){
+    public void draw(){
         //Pintado
         batch.begin();
-        batch.setProjectionMatrix(cameraSystem.camera.combined);
+        batch.setProjectionMatrix(cameraSystem.getCamera().combined);
         batch.draw(player, position.x, position.y);
         batch.end();
     }
