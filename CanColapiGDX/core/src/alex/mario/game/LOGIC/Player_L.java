@@ -19,12 +19,12 @@ public class Player_L {
 
         this.position = new Vector2(0,0);
         this.direction = new Vector2(0,0);
-        this.size = new Vector2(20,50);
+        this.size = new Vector2(20,30);
     }
     public void update(){
         
         //Movimiento
-        Vector2 comprobacionTemporal = position.add(direction.cpy().scl(vel,vel));
+        Vector2 comprobacionTemporal = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle rect = new Rectangle(comprobacionTemporal.x, comprobacionTemporal.y, this.size.x, this.size.y);
 
         if(!mapSystem.amIColliding(rect)){
