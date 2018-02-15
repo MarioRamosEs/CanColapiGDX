@@ -27,7 +27,7 @@ public class Player_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.amIColliding(playerRectNewPosition)){
+        if(!mapSystem.isPlayerRectColliding(playerRectNewPosition)){
             position.add(direction.cpy().scl(vel,vel)); //Movimiento básico
         }else{
             //direction = new Vector2(0,0);

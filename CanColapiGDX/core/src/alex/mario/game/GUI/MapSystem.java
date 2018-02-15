@@ -40,7 +40,7 @@ public class MapSystem extends MapSystem_L{
         tiledMapRenderer.render(new int[]{2,4});
     }
 
-    public boolean amIColliding(Rectangle playerRectangle){
+    public boolean isPlayerRectColliding(Rectangle playerRectangle){
         MapLayer collisionObjectLayer = tiledMap.getLayers().get("Colisiones");
         MapObjects objects = collisionObjectLayer.getObjects();
 
