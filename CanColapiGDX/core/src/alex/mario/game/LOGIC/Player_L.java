@@ -24,17 +24,24 @@ public class Player_L {
     public void update(){
         
         //Movimiento
-        Vector2 comprobacionTemporal = position.cpy().add(direction.cpy().scl(vel,vel));
-        Rectangle rect = new Rectangle(comprobacionTemporal.x, comprobacionTemporal.y, this.size.x, this.size.y);
+        Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
+        Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.amIColliding(rect)){
+        if(!mapSystem.amIColliding(playerRectNewPosition)){
             position.add(direction.cpy().scl(vel,vel)); //Movimiento básico
         }else{
             //direction = new Vector2(0,0);
         }
-        //Compruebo Triggers
-        mapSystem.checkTriggers(rect);
 
+        //Compruebo Triggers
+        mapSystem.checkTriggers(playerRectNewPosition);
+
+    }
+    public Rectangle getRect(Vector2 playerPos){
+        return new Rectangle(playerPos.x, playerPos.y, this.size.x, this.size.y);
+    }
+    public Rectangle getRect(){
+        return this.getRect(this.position);
     }
     public void setDir(Vector2 newDir){
         this.direction = newDir;
