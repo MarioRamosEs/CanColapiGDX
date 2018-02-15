@@ -3,11 +3,11 @@ package alex.mario.game.LOGIC;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapProperties;
 
-public class TriggersSystem {
+public class TriggersSystem_L {
 
     MyGdxGame game;
 
-    public TriggersSystem(MyGdxGame game) {
+    public TriggersSystem_L(MyGdxGame game) {
         this.game = game;
     }
 

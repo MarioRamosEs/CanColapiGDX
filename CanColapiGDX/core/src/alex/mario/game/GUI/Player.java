@@ -1,6 +1,7 @@
 package alex.mario.game.GUI;
 
 import alex.mario.game.LOGIC.Player_L;
+import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,11 +20,13 @@ public class Player extends Player_L{
 
 
 
-    public Player(CameraSystem cameraSystem, MapSystem mapSystem){
-        super(mapSystem);
+    public Player(MyGdxGame game){
+        super(game);
 
         this.position = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
-        this.cameraSystem = cameraSystem;
+
+        this.cameraSystem = game.getCameraSystem();
+
         batch = new SpriteBatch();
         player = new Texture("pokeTest.png");
 

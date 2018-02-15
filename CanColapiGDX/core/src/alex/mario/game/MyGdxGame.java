@@ -3,7 +3,8 @@ package alex.mario.game;
 import alex.mario.game.GUI.CameraSystem;
 import alex.mario.game.GUI.MapSystem;
 import alex.mario.game.GUI.Player;
-import alex.mario.game.LOGIC.TriggersSystem;
+import alex.mario.game.GUI.TriggersSystem;
+import alex.mario.game.LOGIC.TriggersSystem_L;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -12,10 +13,11 @@ import com.badlogic.gdx.math.Vector2;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
-	MapSystem mapSystem;
-	Player player;
-	CameraSystem cameraSystem;
-	TriggersSystem triggersSystem;
+	private MapSystem mapSystem;
+	private Player player;
+	private CameraSystem cameraSystem;
+	private TriggersSystem triggersSystem;
+
 
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
@@ -28,8 +30,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Creamos toda la pesca
 	    cameraSystem = new CameraSystem(this);
 	    triggersSystem = new TriggersSystem(this);
-        mapSystem = new MapSystem(cameraSystem, triggersSystem);
-        player = new Player(cameraSystem, mapSystem);
+        mapSystem = new MapSystem(this);
+        player = new Player(this);
 
         //Cargamos el mapa
         this.loadMap("MapaTest");
@@ -140,7 +142,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return false;
 	}
 
-	public Player getPlayer(){
-		return this.player;
-	}
+	//GETTERS
+	public Player getPlayer(){ return player; }
+	public MapSystem getMapSystem() {return mapSystem;}
+	public CameraSystem getCameraSystem() {return cameraSystem;}
+	public TriggersSystem getTriggersSystem() {return triggersSystem;}
 }

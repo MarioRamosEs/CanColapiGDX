@@ -1,7 +1,7 @@
 package alex.mario.game.GUI;
 
 import alex.mario.game.LOGIC.MapSystem_L;
-import alex.mario.game.LOGIC.TriggersSystem;
+import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.MapLayer;
@@ -15,11 +15,12 @@ import com.badlogic.gdx.math.Rectangle;
 public class MapSystem extends MapSystem_L{
 
     private TiledMapRenderer tiledMapRenderer;
+
     private CameraSystem cameraSystem;
 
-    public MapSystem(CameraSystem cameraSystem, TriggersSystem triggersSystem){
-        super(triggersSystem);
-        this.cameraSystem = cameraSystem;
+    public MapSystem(MyGdxGame game){
+        super(game);
+        this.cameraSystem = game.getCameraSystem();
     }
 
     public void loadMap(String name){
@@ -39,7 +40,7 @@ public class MapSystem extends MapSystem_L{
         tiledMapRenderer.render(new int[]{2,4});
     }
 
-    public boolean colisiono(Rectangle playerRectangle){
+    public boolean amIColliding(Rectangle playerRectangle){
         MapLayer collisionObjectLayer = tiledMap.getLayers().get("Colisiones");
         MapObjects objects = collisionObjectLayer.getObjects();
 
