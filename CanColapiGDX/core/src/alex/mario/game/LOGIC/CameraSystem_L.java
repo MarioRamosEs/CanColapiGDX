@@ -30,11 +30,6 @@ public class CameraSystem_L {
         //Actualizo la posición de la cámara respecto a la posición del jugador
         this.setPosition(this.game.getPlayer().getPosition());
     }
-    public void draw(){
-        //Se actualiza la cámara Orthographic
-        this.camera.update();
-        //Esta funcion hará que se mueva la cámara realmente
-    }
     public void resetPosition(){
         camera.setToOrtho(false,w,h);
     }

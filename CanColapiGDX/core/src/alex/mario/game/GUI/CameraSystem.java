@@ -9,4 +9,9 @@ public class CameraSystem extends CameraSystem_L{
         super(game);
     }
 
+    public void draw(){
+        //Se actualiza la cámara Orthographic
+        this.camera.update();
+        //Esta funcion hará que se mueva la cámara realmente
+    }
 }
