@@ -12,13 +12,8 @@ import com.badlogic.gdx.math.Vector2;
 public class Player extends Player_L{
     private SpriteBatch batch;
     private CameraSystem cameraSystem;
-
-
-    private Texture player;
-
-    private TextureRegion textureRegion;
-
-
+    //private Texture player;
+    private TextureRegion[][] playerFrames;
 
     public Player(MyGdxGame game){
         super(game);
@@ -28,17 +23,18 @@ public class Player extends Player_L{
         this.cameraSystem = game.getCameraSystem();
 
         batch = new SpriteBatch();
-        player = new Texture("pokeTest.png");
-
+        playerFrames = TextureRegion.split(new Texture("Avatar-Red1.png"),48,64);
     }
 
     public void draw(){
+        //getSentido();
+
         //Pintado
         batch.begin();
         batch.setProjectionMatrix(cameraSystem.getCamera().combined);
-        batch.draw(player, position.x, position.y);
+        int tempStep = getStep();
+        System.out.println(tempStep);
+        batch.draw(playerFrames[getSentido()][tempStep], position.x, position.y);
         batch.end();
     }
-
-
 }

@@ -19,6 +19,11 @@ public class Player_L {
     protected int vel = 4;
     protected ArrayList<String> triggeredBy;
 
+    protected int lastDir = 0;
+    protected long millis = System.currentTimeMillis();
+    protected int dir;
+    protected int step;
+
     public Player_L(MyGdxGame game){
         this.game = game;
         this.mapSystem = this.game.getMapSystem();
@@ -28,7 +33,7 @@ public class Player_L {
 
         this.position = new Vector2(0,0);
         this.direction = new Vector2(0,0);
-        this.size = new Vector2(20,30);
+        this.size = new Vector2(40,32);
     }
     public void update(){
         
@@ -83,4 +88,39 @@ public class Player_L {
         return this.position;
     }
 
+    protected void updateSentidoStep(){
+
+    }
+    protected int getSentido(){ //TODO hacer cambios temporales
+        if(direction.x < 0){
+            lastDir = 1;
+            return 1;
+        }
+        if(direction.x > 0){
+            lastDir = 2;
+            return 2;
+        }
+        if(direction.y < 0){
+            lastDir = 0;
+            return 0;
+        }
+        if(direction.y > 0){
+            lastDir = 3;
+            return 3;
+        }
+
+        step = 0;
+        return lastDir;
+    }
+
+    protected int getStep(){
+        if(System.currentTimeMillis() > millis+200 && !direction.epsilonEquals(0,0)){
+            millis = System.currentTimeMillis();
+            if(step == 0) step++;
+            step += 2;
+            if(step > 3) step = 1;
+        }
+
+        return step;
+    }
 }
