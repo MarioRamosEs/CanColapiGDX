@@ -34,7 +34,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Cargamos el mapa
 		this.loadMap("MapaTest");
 
-		triggersSystem = new TriggersSystem(this);
 		player = new Player(this);
 
 
@@ -75,6 +74,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	}
 	public void loadMap(String name){
         mapSystem.loadMap(name);
+		triggersSystem = new TriggersSystem(this);
     }
 
 	@Override

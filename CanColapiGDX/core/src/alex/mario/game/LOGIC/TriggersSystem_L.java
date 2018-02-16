@@ -15,14 +15,18 @@ import java.util.Iterator;
 
 public class TriggersSystem_L {
 
-    MyGdxGame game;
-    TiledMap tiledMap;
+    protected MyGdxGame game;
+    protected TiledMap tiledMap;
     public TriggersSystem_L(MyGdxGame game) {
         this.game = game;
-        this.tiledMap = this.game.getMapSystem().getTiledMap();
+        this.tiledMap = this.game.getMapSystem().getTiledMap();//NOT WORKING PROPERLY
+
     }
     public void checkTriggers(Player_L player, Rectangle playerRectangle){
-        MapLayer TriggerObjectLayer = tiledMap.getLayers().get("Triggers");
+        /// BUGG WITH this.tiledMap not updated ///
+        // MapLayer TriggerObjectLayer = this.tiledMap.getLayers().get("Triggers");
+        //////
+        MapLayer TriggerObjectLayer = this.game.getMapSystem().getTiledMap().getLayers().get("Triggers");
         MapObjects triggers = TriggerObjectLayer.getObjects();
 
         for (RectangleMapObject rectangleObject : triggers.getByType(RectangleMapObject.class)) {
@@ -43,7 +47,6 @@ public class TriggersSystem_L {
 
         }
     }
-
     public void triggers(Player_L player, String triggerName, String triggerValue, boolean triggered){
         switch(triggerName){
             case "EnviarMensaje":

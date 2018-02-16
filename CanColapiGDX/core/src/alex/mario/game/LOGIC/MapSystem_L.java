@@ -23,9 +23,11 @@ public class MapSystem_L {
     public void loadMap(String name){
         //Load map
         name = "maps" + File.separator + name + ".tmx";
+        System.out.println(name);
+
         tiledMap = new TmxMapLoader().load(name);
     }
     public TiledMap getTiledMap() {
-        return tiledMap;
+        return this.tiledMap;
     }
 }
