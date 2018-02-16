@@ -32,9 +32,7 @@ public class Player extends Player_L{
         //Pintado
         batch.begin();
         batch.setProjectionMatrix(cameraSystem.getCamera().combined);
-        int tempStep = getStep();
-        System.out.println(tempStep);
-        batch.draw(playerFrames[getSentido()][tempStep], position.x, position.y);
+        batch.draw(playerFrames[getSentido()][getStep()], position.x, position.y);
         batch.end();
     }
 }
