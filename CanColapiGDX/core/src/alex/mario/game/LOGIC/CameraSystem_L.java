@@ -12,6 +12,7 @@ public class CameraSystem_L {
     protected int zoom = 0;
     protected float w = Gdx.graphics.getWidth();
     protected float h = Gdx.graphics.getHeight();
+    private static final float SCALE_RATE = 100;
 
     public CameraSystem_L(MyGdxGame game){
         this.game = game;
@@ -36,5 +37,11 @@ public class CameraSystem_L {
 
     public OrthographicCamera getCamera() {
         return camera;
+    }
+
+    public void proportionalZoom(float delta) {
+        float aspectRatio = w/h;
+        camera.viewportWidth += SCALE_RATE * delta;
+        camera.viewportHeight += SCALE_RATE / aspectRatio * delta;
     }
 }

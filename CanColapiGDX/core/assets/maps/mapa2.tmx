@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="27">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="36">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
- <layer name="Suelo" width="20" height="20">
+ <layer name="Floor" width="20" height="20">
   <data encoding="csv">
 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,
 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,
@@ -25,14 +25,14 @@
 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9
 </data>
  </layer>
- <layer name="Objetos" width="20" height="20">
+ <layer name="Objects" width="20" height="20">
   <data encoding="csv">
 288,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,288,
 288,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,288,
 288,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,288,
-288,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,288,
-288,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,288,
-288,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,1062,1063,1064,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,1070,1071,1072,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,1078,1079,1080,0,0,0,0,0,0,0,0,288,
 296,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,296,
 304,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,304,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -49,7 +49,7 @@
 304,304,304,304,304,304,304,304,304,304,304,304,304,304,304,304,304,304,304,304
 </data>
  </layer>
- <objectgroup name="Colisiones">
+ <objectgroup name="Collisions">
   <object id="8" x="-2.66667" y="-1.33333" width="641.333" height="66.6667"/>
   <object id="18" x="0" y="66.6667" width="30.6667" height="573.333"/>
   <object id="19" x="32" y="576" width="608" height="64"/>
@@ -62,8 +62,13 @@
     <property name="CambioMapa" value="MapaTest"/>
    </properties>
   </object>
+  <object id="27" x="266" y="105" width="77" height="78">
+   <properties>
+    <property name="CameraZoom" value="-3"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer name="ObjetosSuperior" width="20" height="20">
+ <layer name="SuperiorObjects" width="20" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,42,0,0,0,0,0,0,0,0,

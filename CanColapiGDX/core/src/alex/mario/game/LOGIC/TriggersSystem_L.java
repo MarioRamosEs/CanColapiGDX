@@ -66,6 +66,17 @@ public class TriggersSystem_L {
                     player.resetPos();
                 }
                 break;
+            case "CameraZoom":
+                if(triggered){ //Zoom
+                    if(player.trigger(triggerName)) {
+                        this.game.getCameraSystem().proportionalZoom(Float.parseFloat(triggerValue));
+                    }
+                }else { //DesZoom
+                    if (player.untrigger(triggerName)) {
+                        this.game.getCameraSystem().proportionalZoom(-Float.parseFloat(triggerValue));
+                    }
+                }
+                break;
         }
     }
 }

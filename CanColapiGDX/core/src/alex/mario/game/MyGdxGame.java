@@ -90,6 +90,11 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         else if(keycode == Input.Keys.DOWN)
         	newDirection.add(DIRECTION_DOWN);
         this.player.setDir(newDirection);
+
+		// Zoom
+        if(keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);
+        if(keycode == Input.Keys.X) cameraSystem.proportionalZoom(0.5f);
+
 		return false;
 	}
 

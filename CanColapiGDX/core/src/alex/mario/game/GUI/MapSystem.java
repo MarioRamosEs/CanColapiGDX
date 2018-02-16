@@ -41,7 +41,7 @@ public class MapSystem extends MapSystem_L{
     }
 
     public boolean isPlayerRectColliding(Rectangle playerRectangle){
-        MapLayer collisionObjectLayer = tiledMap.getLayers().get("Colisiones");
+        MapLayer collisionObjectLayer = tiledMap.getLayers().get("Collisions");
         MapObjects objects = collisionObjectLayer.getObjects();
 
         for (RectangleMapObject rectangleObject : objects.getByType(RectangleMapObject.class)) {

@@ -21,7 +21,6 @@ public class Player_L {
 
     protected int lastDir = 0;
     protected long millis = System.currentTimeMillis();
-    protected int dir;
     protected int step;
 
     public Player_L(MyGdxGame game){
@@ -46,7 +45,6 @@ public class Player_L {
         }else{
             //direction = new Vector2(0,0);
         }
-
 
         //Compruebo Triggers
         this.triggersSystem.checkTriggers(this, playerRectNewPosition);
@@ -88,10 +86,7 @@ public class Player_L {
         return this.position;
     }
 
-    protected void updateSentidoStep(){
-
-    }
-    protected int getSentido(){ //TODO hacer cambios temporales
+    protected int getDirection(){ //TODO hacer cambios temporales
         if(direction.x < 0){
             lastDir = 1;
             return 1;
