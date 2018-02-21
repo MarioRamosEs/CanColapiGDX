@@ -52,11 +52,11 @@ public class TriggersSystem_L {
             case "EnviarMensaje":
                 if(triggered){
                     if(player.trigger(triggerName)){
-                        System.out.println("Activado xD");
+                        this.game.getNotificationsSystem().addNotification("Has pisado la alfombra...");
                     }
                 }else{
                     if(player.untrigger(triggerName)){
-                        System.out.println("Desactivado xD");
+                        this.game.getNotificationsSystem().addNotification("Gracias por dejar de pisar la alfombra!");
                     }
                 }
                 break;

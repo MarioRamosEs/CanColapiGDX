@@ -27,7 +27,6 @@ public class NotificationsSystem_L {
         for(Notification notification : this.notifications){
             if(notification.shouldDelete()){
                 this.notifications.remove(notification);
-                System.out.println("removed xd");
                 break;
             }
         }

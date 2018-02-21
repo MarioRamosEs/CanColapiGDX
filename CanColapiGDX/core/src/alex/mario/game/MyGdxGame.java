@@ -134,7 +134,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		this.notificationsSystem.addNotification("Hola que ase tu");
+		this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
         return false;
     }
 
@@ -163,4 +163,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public MapSystem getMapSystem() {return mapSystem;}
 	public CameraSystem getCameraSystem() {return cameraSystem;}
 	public TriggersSystem getTriggersSystem() {return triggersSystem;}
+	public NotificationsSystem getNotificationsSystem() {
+		return notificationsSystem;
+	}
 }
