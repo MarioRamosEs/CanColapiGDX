@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="28">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="30">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <layer name="Floor" width="20" height="20">
   <data encoding="csv">
@@ -66,11 +66,17 @@
   <object id="22" x="610.667" y="252" width="26.6667" height="94.6667">
    <properties>
     <property name="CambioMapa" value="mapa2"/>
+    <property name="linkTo" value="entry_1"/>
    </properties>
   </object>
   <object id="23" x="101.333" y="424" width="80" height="80">
    <properties>
     <property name="EnviarMensaje" value="Trigger1"/>
+   </properties>
+  </object>
+  <object id="28" x="546" y="290" width="31" height="29">
+   <properties>
+    <property name="isLinkedTo" value="entry_1"/>
    </properties>
   </object>
  </objectgroup>
