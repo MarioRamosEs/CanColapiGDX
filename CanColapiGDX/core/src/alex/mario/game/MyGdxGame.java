@@ -35,6 +35,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		//Cargamos el mapa
 		this.loadMap("MapaTest");
+		//this.loadMap("Planta1");
 
 		player = new Player(this);
 

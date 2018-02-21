@@ -40,11 +40,8 @@ public class Player_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.isPlayerRectColliding(playerRectNewPosition)){
-            position.add(direction.cpy().scl(vel,vel)); //Movimiento básico
-        }else{
-            //direction = new Vector2(0,0);
-        }
+        if(!mapSystem.isPlayerRectColliding(playerRectNewPosition))
+            position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
 
         //Compruebo Triggers
         this.triggersSystem.checkTriggers(this, playerRectNewPosition);
@@ -75,7 +72,7 @@ public class Player_L {
         this.direction = newDir;
     }
     public void resetPos(){
-        position = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);}
+        position = new Vector2(Gdx.graphics.getWidth()/2 ,Gdx.graphics.getHeight()/2);}
     public void setPos(Vector2 newPos){
         this.position = newPos;
     }

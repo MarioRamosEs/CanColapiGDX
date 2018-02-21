@@ -33,11 +33,11 @@ public class MapSystem extends MapSystem_L{
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         tiledMapRenderer.setView(cameraSystem.getCamera());
-        tiledMapRenderer.render(new int[]{0,1});
+        tiledMapRenderer.render(new int[]{0,1,2}); //Capa Floor Objects Wall
     }
 
     public void DrawForeground(){
-        tiledMapRenderer.render(new int[]{2,4});
+        tiledMapRenderer.render(new int[]{5}); //Capa superior Objects
     }
 
     public boolean isPlayerRectColliding(Rectangle playerRectangle){
