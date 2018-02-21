@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<effects>	
+	<effect>
+		<id>LIGHTNING</id>
+		<textureID>TEXTURE_LIGHTNING</textureID>
+		<width>192</width>
+		<height>384</height>
+		<lifespan>0.6</lifespan>
+	</effect>
+</effects>
