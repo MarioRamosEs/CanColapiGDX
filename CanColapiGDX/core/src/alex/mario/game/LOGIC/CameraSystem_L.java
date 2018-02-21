@@ -33,7 +33,9 @@ public class CameraSystem_L {
     public void resetPosition(){
         camera.setToOrtho(false,w,h);
     }
-
+    public Vector2 getScreenSize(){
+        return new Vector2(this.w, this.h);
+    }
     public OrthographicCamera getCamera() {
         return camera;
     }
