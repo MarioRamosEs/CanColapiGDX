@@ -1,14 +1,14 @@
 package alex.mario.game;
 
-import alex.mario.game.GUI.CameraSystem;
-import alex.mario.game.GUI.MapSystem;
-import alex.mario.game.GUI.Player;
-import alex.mario.game.GUI.TriggersSystem;
+import alex.mario.game.GUI.*;
 import alex.mario.game.LOGIC.TriggersSystem_L;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
@@ -17,7 +17,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private Player player;
 	private CameraSystem cameraSystem;
 	private TriggersSystem triggersSystem;
+	private NotificationsSystem notificationsSystem;
 
+	private BitmapFont mainFont;
 
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
@@ -36,8 +38,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		player = new Player(this);
 
-
-
+		this.mainFont = new BitmapFont();
+		this.notificationsSystem = new NotificationsSystem(this, this.mainFont);
 
 		Gdx.input.setInputProcessor(this);
 	}
@@ -56,6 +58,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Actualizamos al jugador
 		player.update();
 
+		this.notificationsSystem.update();
+
 		//Actualizamos la cámara
 		this.cameraSystem.update();
 	}
@@ -68,6 +72,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		//Dibujamos la parte "superior"
 		mapSystem.DrawForeground();
+
+		//Sistema de notificaciones
+		this.notificationsSystem.draw();
 
 		//Hacemos que la cámara se actualice
 		cameraSystem.draw();
@@ -127,6 +134,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		this.notificationsSystem.addNotification("Hola que ase tu");
         return false;
     }
 
