@@ -220,6 +220,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return this.directions[new Random().nextInt(this.directions.length)];
 	}
 
+	public ArrayList<Character> getCharacters() {
+		return this.characters;
+	}
+
 	public static String formatToFilePath(String mapName){
 		return "maps" + File.separator + mapName + ".tmx";
 	}
