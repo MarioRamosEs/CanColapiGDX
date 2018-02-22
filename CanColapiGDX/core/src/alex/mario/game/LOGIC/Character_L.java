@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-public class Player_L {
+public class Character_L {
     protected MapSystem mapSystem;
     protected TriggersSystem triggersSystem;
     protected MapLayer playerLayer;
@@ -23,7 +23,7 @@ public class Player_L {
     protected long millis = System.currentTimeMillis();
     protected int step;
 
-    public Player_L(MyGdxGame game){
+    public Character_L(MyGdxGame game){
         this.game = game;
         this.mapSystem = this.game.getMapSystem();
         this.triggersSystem = this.game.getTriggersSystem();
@@ -35,7 +35,7 @@ public class Player_L {
         this.size = new Vector2(40,32);
     }
     public void update(){
-        
+
         //Movimiento
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);

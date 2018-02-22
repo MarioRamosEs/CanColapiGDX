@@ -1,7 +1,5 @@
 package alex.mario.game.LOGIC;
 
-import alex.mario.game.GUI.Player;
-import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
@@ -22,7 +20,7 @@ public class TriggersSystem_L {
         this.tiledMap = this.game.getMapSystem().getTiledMap();//NOT WORKING PROPERLY
 
     }
-    public void checkTriggers(Player_L player, Rectangle playerRectangle){
+    public void checkTriggers(Character_L character, Rectangle playerRectangle){
         /// BUGG WITH this.tiledMap not updated ///
         // MapLayer TriggerObjectLayer = this.tiledMap.getLayers().get("Triggers");
         //////
@@ -40,7 +38,7 @@ public class TriggersSystem_L {
             while(keys.hasNext()){
                 String key = keys.next();
                 this.triggers(
-                        player,
+                        character,
                         key,
                         mapProperties.get(key).toString(),
                         Intersector.overlaps(rectangle, playerRectangle),
@@ -50,15 +48,15 @@ public class TriggersSystem_L {
 
         }
     }
-    public void triggers(Player_L player, String triggerName, String triggerValue, boolean triggered, MapProperties mapProperties){
+    public void triggers(Character_L character, String triggerName, String triggerValue, boolean triggered, MapProperties mapProperties){
         switch(triggerName){
             case "EnviarMensaje":
                 if(triggered){
-                    if(player.trigger(triggerName)){
+                    if(character.trigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Has pisado la alfombra...");
                     }
                 }else{
-                    if(player.untrigger(triggerName)){
+                    if(character.untrigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Gracias por dejar de pisar la alfombra!");
                     }
                 }
@@ -66,20 +64,20 @@ public class TriggersSystem_L {
             case "CambioMapa":
                 if(triggered){
                     this.game.loadMap(triggerValue);
-                    //player.resetPos();
+                    //character.resetPos();
 
                     //Get value of key "linkTo":
                     String linkTo = mapProperties.get("linkTo").toString();
-                    player.setPos(this.game.getMapSystem().getEntryPos(linkTo));
+                    character.setPos(this.game.getMapSystem().getEntryPos(linkTo));
                 }
                 break;
             case "CameraZoom":
                 if(triggered){ //Zoom
-                    if(player.trigger(triggerName)) {
+                    if(character.trigger(triggerName)) {
                         this.game.getCameraSystem().proportionalZoom(Float.parseFloat(triggerValue));
                     }
                 }else { //DesZoom
-                    if (player.untrigger(triggerName)) {
+                    if (character.untrigger(triggerName)) {
                         this.game.getCameraSystem().proportionalZoom(-Float.parseFloat(triggerValue));
                     }
                 }
