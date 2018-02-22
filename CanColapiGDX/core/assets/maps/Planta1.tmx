@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="45">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="49">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -158,8 +158,8 @@
   <object id="7" x="801" y="272" width="190" height="15"/>
   <object id="8" x="465" y="273" width="239" height="15"/>
   <object id="9" x="467" y="96" width="10" height="176"/>
-  <object id="10" x="688" y="289" width="13" height="126"/>
-  <object id="11" x="801" y="286" width="15" height="130"/>
+  <object id="10" x="688" y="289" width="13" height="92"/>
+  <object id="11" x="801" y="286" width="15" height="97"/>
   <object id="15" x="804" y="382.667" width="310.667" height="96"/>
   <object id="16" x="1185.33" y="370.667" width="189.333" height="109.333"/>
   <object id="17" x="1090.67" y="126.667" width="28" height="254.667"/>
@@ -169,15 +169,15 @@
   <object id="21" x="1345.33" y="222.667" width="61.3333" height="46.6667"/>
   <object id="22" x="1374.67" y="270.667" width="32" height="109.333"/>
   <object id="23" x="1348" y="477.333" width="29.3333" height="129.333"/>
-  <object id="25" x="448" y="449.333" width="33.3333" height="58.6667"/>
+  <object id="25" x="448" y="449.333" width="28" height="58.6667"/>
   <object id="27" x="930.667" y="78.6667" width="25.3333" height="46.6667"/>
   <object id="29" x="1255.67" y="544" width="17" height="15.3333"/>
   <object id="30" x="386" y="589" width="961" height="16"/>
-  <object id="31" x="209" y="382" width="494" height="96"/>
+  <object id="31" x="209" y="382" width="487.333" height="96"/>
   <object id="32" x="208" y="477.333" width="12" height="613.333"/>
   <object id="34" x="385.333" y="608" width="12" height="128"/>
   <object id="35" x="382.667" y="737.333" width="605.333" height="89.3333"/>
-  <object id="36" x="961.333" y="825.333" width="30.6667" height="161.333"/>
+  <object id="36" x="961.333" y="825.333" width="30.6667" height="175.333"/>
   <object id="37" x="936" y="862.667" width="18.6667" height="125.333"/>
   <object id="38" x="676.667" y="828.667" width="90" height="194.667"/>
   <object id="39" x="768" y="895.333" width="32" height="95.3333"/>
@@ -185,11 +185,22 @@
   <object id="41" x="514" y="894" width="28" height="96"/>
   <object id="42" x="418" y="832" width="92.6667" height="190.667"/>
   <object id="43" x="384.667" y="895.333" width="30" height="90"/>
+  <object id="46" x="207" y="1073" width="722" height="15"/>
  </objectgroup>
- <objectgroup color="#ff0000" name="Triggers" visible="0">
+ <objectgroup color="#ff0000" name="Triggers">
   <object id="12" x="735.5" y="53.5" width="63.25" height="42">
    <properties>
     <property name="CambioMapa" value="Exterior1"/>
+   </properties>
+  </object>
+  <object id="45" x="754.667" y="144" width="28.6667" height="23.3333">
+   <properties>
+    <property name="isLinkedTo" value="start"/>
+   </properties>
+  </object>
+  <object id="48" x="913.5" y="1001.5" width="78.5" height="85">
+   <properties>
+    <property name="changeMap" value="planta2"/>
    </properties>
   </object>
  </objectgroup>

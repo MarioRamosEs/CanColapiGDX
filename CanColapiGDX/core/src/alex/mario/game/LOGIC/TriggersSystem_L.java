@@ -48,7 +48,7 @@ public class TriggersSystem_L {
     }
     public void triggers(Character_L character, String triggerName, String triggerValue, boolean triggered, MapProperties mapProperties){
         switch(triggerName){
-            case "EnviarMensaje":
+            case "sendMessage":
                 //Si no es el jugador
                 if(character != this.game.getPlayer()){return;}
 
@@ -62,7 +62,7 @@ public class TriggersSystem_L {
                     }
                 }
                 break;
-            case "CambioMapa":
+            case "changeMap":
 
                 if(triggered){
                     this.game.getMapSystem().loadMap(MyGdxGame.formatToFilePath(triggerValue));
@@ -74,7 +74,7 @@ public class TriggersSystem_L {
                     character.setPos(this.game.getMapSystem().getEntryPos(character.getMap(), linkTo));
                 }
                 break;
-            case "CameraZoom":
+            case "cameraZoom":
                 //Si no es el jugador
                 if(character != this.game.getPlayer()){return;}
 

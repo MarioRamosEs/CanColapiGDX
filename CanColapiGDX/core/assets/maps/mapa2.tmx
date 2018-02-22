@@ -83,13 +83,13 @@
  <objectgroup color="#ff0000" name="Triggers">
   <object id="24" x="4" y="257" width="25" height="90">
    <properties>
-    <property name="CambioMapa" value="MapaTest"/>
+    <property name="changeMap" value="mapaTest"/>
     <property name="linkTo" value="entry_1"/>
    </properties>
   </object>
   <object id="27" x="266" y="105" width="77" height="78">
    <properties>
-    <property name="CameraZoom" value="-3"/>
+    <property name="cameraZoom" value="-3"/>
    </properties>
   </object>
   <object id="36" x="64" y="290.667" width="30.6667" height="26.6667">
