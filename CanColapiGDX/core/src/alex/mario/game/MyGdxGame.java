@@ -119,6 +119,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         	newDirection.add(DIRECTION_DOWN);
         this.player.setDir(newDirection);
 
+		if(this.dog == null){return false;}
 		newDirection = this.dog.getDir();
 		if(keycode == Input.Keys.A)
 			newDirection.add(DIRECTION_LEFT);
@@ -154,6 +155,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		this.player.setDir(newDirection);
 
+		if(this.dog == null){return false;}
 		newDirection = this.dog.getDir();
 		if(keycode == Input.Keys.A)
 			newDirection.sub(DIRECTION_LEFT);
