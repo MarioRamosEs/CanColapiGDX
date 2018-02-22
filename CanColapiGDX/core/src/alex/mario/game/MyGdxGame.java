@@ -1,7 +1,10 @@
 package alex.mario.game;
 
 import alex.mario.game.GUI.*;
+import alex.mario.game.GUI.Character;
 import alex.mario.game.LOGIC.TriggersSystem_L;
+import alex.mario.game.characters.Dog;
+import alex.mario.game.characters.Player;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -10,6 +13,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
@@ -21,11 +27,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	private BitmapFont mainFont;
 
+	private ArrayList<Character> characters;
+
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
 	public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
 	public static final Vector2 DIRECTION_RIGHT = new Vector2(1, 0);
 	public static final Vector2 DIRECTION_DOWN = new Vector2(0, -1);
+	private Vector2[] directions = new Vector2[]{DIRECTION_LEFT, DIRECTION_DOWN, DIRECTION_RIGHT, DIRECTION_UP};
 
 	@Override
 	public void create () {
@@ -39,6 +48,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		player = new Player(this);
 
+		this.characters = new ArrayList<Character>();
 		this.mainFont = new BitmapFont();
 		this.notificationsSystem = new NotificationsSystem(this, this.mainFont);
 
@@ -63,6 +73,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		//Actualizamos la cámara
 		this.cameraSystem.update();
+
+		for(Character character : this.characters){
+			character.update();
+		}
 	}
 	private void draw(){
 		//Dibujamos el fondo del mapa
@@ -70,6 +84,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		//Dibujamos al jugador
 		player.draw();
+
+		for(Character character : this.characters){
+			character.draw();
+		}
 
 		//Dibujamos la parte "superior"
 		mapSystem.DrawForeground();
@@ -136,7 +154,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
-        return false;
+		this.characters.add(new Dog(this));
+		return false;
     }
 
     @Override
@@ -166,5 +185,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public TriggersSystem getTriggersSystem() {return triggersSystem;}
 	public NotificationsSystem getNotificationsSystem() {
 		return notificationsSystem;
+	}
+
+	public Vector2 getRandomDirection(){
+		return this.directions[new Random().nextInt(this.directions.length)];
 	}
 }
