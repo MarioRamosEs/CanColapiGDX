@@ -35,19 +35,22 @@ public class TriggersSystem_L {
             MapProperties mapProperties = rectangleObject.getProperties();
             Iterator<String> keys = mapProperties.getKeys();
 
+            //Se llama a la función trigger para cada llave, incluimos todas las propiedades por si hace falta información
+            //extra
             while(keys.hasNext()){
                 String key = keys.next();
                 this.triggers(
                         player,
                         key,
                         mapProperties.get(key).toString(),
-                        Intersector.overlaps(rectangle, playerRectangle)
+                        Intersector.overlaps(rectangle, playerRectangle),
+                        mapProperties//Todas las propiedades del objeto
                 );
             }
 
         }
     }
-    public void triggers(Player_L player, String triggerName, String triggerValue, boolean triggered){
+    public void triggers(Player_L player, String triggerName, String triggerValue, boolean triggered, MapProperties mapProperties){
         switch(triggerName){
             case "EnviarMensaje":
                 if(triggered){
@@ -63,7 +66,11 @@ public class TriggersSystem_L {
             case "CambioMapa":
                 if(triggered){
                     this.game.loadMap(triggerValue);
-                    player.resetPos();
+                    //player.resetPos();
+
+                    //Get value of key "linkTo":
+                    String linkTo = mapProperties.get("linkTo").toString();
+                    player.setPos(this.game.getMapSystem().getEntryPos(linkTo));
                 }
                 break;
             case "CameraZoom":
