@@ -27,6 +27,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private NotificationsSystem notificationsSystem;
 
 	private BitmapFont mainFont;
+	private SpriteBatch spriteBatch;
+	private ShapeRenderer shapeRenderer;
 
 	private ArrayList<Character> characters;
 
@@ -41,6 +43,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void create () {
+		this.spriteBatch = new SpriteBatch();
+		this.mainFont = new BitmapFont();
+		this.shapeRenderer = new ShapeRenderer();
+
 		//Creamos toda la pesca
 	    this.cameraSystem = new CameraSystem(this);
         this.mapSystem = new MapSystem(this);
@@ -53,8 +59,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
 
 		this.characters = new ArrayList<Character>();
-		this.mainFont = new BitmapFont();
-		this.notificationsSystem = new NotificationsSystem(this, this.mainFont);
+
+		this.notificationsSystem = new NotificationsSystem(this);
 		Gdx.input.setInputProcessor(this);
 		System.out.println("ALL LOADED OK");
 	}
@@ -226,5 +232,17 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	public static String formatToFilePath(String mapName){
 		return "maps" + File.separator + mapName + ".tmx";
+	}
+
+	public BitmapFont getMainFont() {
+		return mainFont;
+	}
+
+	public SpriteBatch getSpriteBatch() {
+		return spriteBatch;
+	}
+
+	public ShapeRenderer getShapeRenderer() {
+		return shapeRenderer;
 	}
 }

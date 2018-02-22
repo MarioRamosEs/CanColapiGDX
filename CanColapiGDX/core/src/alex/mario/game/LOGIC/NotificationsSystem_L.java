@@ -16,8 +16,8 @@ public class NotificationsSystem_L {
     protected ArrayList<Notification> notifications;
     public NotificationsSystem_L(MyGdxGame game){
         this.game = game;
-        this.spriteBatch = new SpriteBatch();
-        this.shapeRenderer = new ShapeRenderer();
+        this.spriteBatch = this.game.getSpriteBatch();
+        this.shapeRenderer = this.game.getShapeRenderer();
         this.notifications = new ArrayList<Notification>();
         this.spriteBatch.setProjectionMatrix(game.getCameraSystem().getCamera().combined);
     }
@@ -35,5 +35,9 @@ public class NotificationsSystem_L {
     public void addNotification(String message){
         this.notifications.add(new Notification(message));
 
+    }
+
+    public SpriteBatch getSpriteBatch() {
+        return spriteBatch;
     }
 }

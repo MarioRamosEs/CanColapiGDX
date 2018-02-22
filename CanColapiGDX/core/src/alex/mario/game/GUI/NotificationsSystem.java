@@ -8,9 +8,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class NotificationsSystem extends NotificationsSystem_L {
     private BitmapFont font;
-    public NotificationsSystem(MyGdxGame game, BitmapFont font){
+    public NotificationsSystem(MyGdxGame game){
         super(game);
-        this.font = font;
+        this.font = this.game.getMainFont();
         font.setColor(Color.WHITE);
 
         this.shapeRenderer.setAutoShapeType(true);
