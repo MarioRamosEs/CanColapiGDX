@@ -14,17 +14,15 @@ import java.util.Iterator;
 public class TriggersSystem_L {
 
     protected MyGdxGame game;
-    protected TiledMap tiledMap;
     public TriggersSystem_L(MyGdxGame game) {
         this.game = game;
-        this.tiledMap = this.game.getMapSystem().getTiledMap();//NOT WORKING PROPERLY
 
     }
     public void checkTriggers(Character_L character, Rectangle playerRectangle){
         /// BUGG WITH this.tiledMap not updated ///
         // MapLayer TriggerObjectLayer = this.tiledMap.getLayers().get("Triggers");
         //////
-        MapLayer TriggerObjectLayer = this.game.getMapSystem().getTiledMap().getLayers().get("Triggers");
+        MapLayer TriggerObjectLayer = character.getMap().getTiledMap().getLayers().get("Triggers");
         MapObjects triggers = TriggerObjectLayer.getObjects();
 
         for (RectangleMapObject rectangleObject : triggers.getByType(RectangleMapObject.class)) {
@@ -63,12 +61,13 @@ public class TriggersSystem_L {
                 break;
             case "CambioMapa":
                 if(triggered){
-                    this.game.loadMap(triggerValue);
+                    this.game.getMapSystem().loadMap(MyGdxGame.formatToFilePath(triggerValue));
+                    character.setMap(this.game.getMapSystem().getMap(MyGdxGame.formatToFilePath(triggerValue)));
                     //character.resetPos();
 
                     //Get value of key "linkTo":
                     String linkTo = mapProperties.get("linkTo").toString();
-                    character.setPos(this.game.getMapSystem().getEntryPos(linkTo));
+                    character.setPos(this.game.getMapSystem().getEntryPos(character.getMap(), linkTo));
                 }
                 break;
             case "CameraZoom":

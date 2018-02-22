@@ -1,12 +1,13 @@
 package alex.mario.game.characters;
 
 import alex.mario.game.GUI.Character;
+import alex.mario.game.GUI.Map;
 import alex.mario.game.MyGdxGame;
 
 public class Dog extends Character {
-    public Dog(MyGdxGame game){
-        super(game);
-        this.direction = this.game.getRandomDirection();
+    public Dog(MyGdxGame game, Map map){
+        super(game, map);
+        //this.direction = this.game.getRandomDirection();
     }
 
     @Override

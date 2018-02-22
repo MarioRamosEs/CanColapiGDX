@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,6 +30,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	private ArrayList<Character> characters;
 
+	private Character dog;
+
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
 	public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
@@ -39,20 +42,21 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public void create () {
 		//Creamos toda la pesca
-	    cameraSystem = new CameraSystem(this);
-        mapSystem = new MapSystem(this);
+	    this.cameraSystem = new CameraSystem(this);
+        this.mapSystem = new MapSystem(this);
+		this.triggersSystem = new TriggersSystem(this);
 
 		//Cargamos el mapa
-		this.loadMap("MapaTest");
+		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this);
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
 
 		this.characters = new ArrayList<Character>();
 		this.mainFont = new BitmapFont();
 		this.notificationsSystem = new NotificationsSystem(this, this.mainFont);
-
 		Gdx.input.setInputProcessor(this);
+		System.out.println("ALL LOADED OK");
 	}
 
 	@Override
@@ -80,17 +84,19 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	}
 	private void draw(){
 		//Dibujamos el fondo del mapa
-		mapSystem.DrawBackground();
+		this.player.getMap().DrawBackground(this.cameraSystem);
 
 		//Dibujamos al jugador
 		player.draw();
 
 		for(Character character : this.characters){
-			character.draw();
+			if(character.getMap() == this.player.getMap()){
+				character.draw();
+			}
 		}
 
 		//Dibujamos la parte "superior"
-		mapSystem.DrawForeground();
+		this.player.getMap().DrawForeground();
 
 		//Sistema de notificaciones
 		this.notificationsSystem.draw();
@@ -98,10 +104,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Hacemos que la cámara se actualice
 		cameraSystem.draw();
 	}
-	public void loadMap(String name){
-        mapSystem.loadMap(name);
-		triggersSystem = new TriggersSystem(this);
-    }
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -116,6 +118,18 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         else if(keycode == Input.Keys.DOWN)
         	newDirection.add(DIRECTION_DOWN);
         this.player.setDir(newDirection);
+
+		newDirection = this.dog.getDir();
+		if(keycode == Input.Keys.A)
+			newDirection.add(DIRECTION_LEFT);
+		else if(keycode == Input.Keys.D)
+			newDirection.add(DIRECTION_RIGHT);
+		else if(keycode == Input.Keys.W)
+			newDirection.add(DIRECTION_UP);
+		else if(keycode == Input.Keys.S)
+			newDirection.add(DIRECTION_DOWN);
+		this.dog.setDir(newDirection);
+
 
 		// Zoom
         if(keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);
@@ -139,6 +153,18 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			newDirection.sub(DIRECTION_DOWN);
 
 		this.player.setDir(newDirection);
+
+		newDirection = this.dog.getDir();
+		if(keycode == Input.Keys.A)
+			newDirection.sub(DIRECTION_LEFT);
+		else if(keycode == Input.Keys.D)
+			newDirection.sub(DIRECTION_RIGHT);
+		else if(keycode == Input.Keys.W)
+			newDirection.sub(DIRECTION_UP);
+		else if(keycode == Input.Keys.S)
+			newDirection.sub(DIRECTION_DOWN);
+
+		this.dog.setDir(newDirection);
 		/*if(keycode == Input.Keys.NUM_1)
 			tiledMap.getLayers().get(0).setVisible(!tiledMap.getLayers().get(0).isVisible());
 		if(keycode == Input.Keys.NUM_2)
@@ -154,7 +180,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
-		this.characters.add(new Dog(this));
+		this.dog = new Dog(this, this.player.getMap());
+		this.characters.add(this.dog);
 		return false;
     }
 
@@ -189,5 +216,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	public Vector2 getRandomDirection(){
 		return this.directions[new Random().nextInt(this.directions.length)];
+	}
+
+	public static String formatToFilePath(String mapName){
+		return "maps" + File.separator + mapName + ".tmx";
 	}
 }
