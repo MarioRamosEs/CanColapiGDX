@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.InventorySystem;
 import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.MapSystem;
 import alex.mario.game.GUI.TriggersSystem;
@@ -22,6 +23,8 @@ public class Character_L {
     protected int lastDir = 0;
     protected long millis = System.currentTimeMillis();
     protected int step;
+
+    protected InventorySystem inventorySystem;
 
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
@@ -124,5 +127,9 @@ public class Character_L {
     }
     public void setMap(Map map){
         this.map = map;
+    }
+
+    public InventorySystem getInventorySystem() {
+        return inventorySystem;
     }
 }
