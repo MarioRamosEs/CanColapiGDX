@@ -14,10 +14,10 @@ public class Character extends Character_L {
     //private Texture player;
     private TextureRegion[][] playerFrames;
 
-    public Character(MyGdxGame game){
-        super(game);
+    public Character(MyGdxGame game, Map map){
+        super(game, map);
 
-        this.position = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
+        this.position = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2 - 20);
 
         this.cameraSystem = game.getCameraSystem();
 

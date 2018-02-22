@@ -1,10 +1,10 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.MapSystem;
 import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Character_L {
     protected MapSystem mapSystem;
     protected TriggersSystem triggersSystem;
-    protected MapLayer playerLayer;
+    protected Map map;
     protected Vector2 position, direction, size;
     protected MyGdxGame game;
     protected int vel = 4;
@@ -23,8 +23,9 @@ public class Character_L {
     protected long millis = System.currentTimeMillis();
     protected int step;
 
-    public Character_L(MyGdxGame game){
+    public Character_L(MyGdxGame game, Map map){
         this.game = game;
+        this.map = map;
         this.mapSystem = this.game.getMapSystem();
         this.triggersSystem = this.game.getTriggersSystem();
 
@@ -40,11 +41,13 @@ public class Character_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.isPlayerRectColliding(playerRectNewPosition))
+        if(!mapSystem.isCharacterColliding(this, playerRectNewPosition)) {
             position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+        }
 
         //Compruebo Triggers
         this.triggersSystem.checkTriggers(this, playerRectNewPosition);
+
     }
     public boolean trigger(String triggerName){
         if(this.triggeredBy.contains(triggerName)){
@@ -114,5 +117,11 @@ public class Character_L {
         }
 
         return step;
+    }
+    public Map getMap(){
+        return this.map;
+    }
+    public void setMap(Map map){
+        this.map = map;
     }
 }
