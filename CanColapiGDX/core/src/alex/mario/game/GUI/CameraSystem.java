@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Align;
 
 public class CameraSystem extends CameraSystem_L{
     //CLASS vacía, pero aquí debería ir lo relacionado con HUD, mostrar cosas en pantalla etc (la cámara es lo último que se dibuja)
@@ -18,7 +17,7 @@ public class CameraSystem extends CameraSystem_L{
         super(game);
         this.spriteBatch = this.game.getSpriteBatch();
         this.shapeRenderer = this.game.getShapeRenderer();
-        this.font = this.game.getMainFont();
+        this.font = this.game.getNotificationsFont();
     }
 
     public void draw(){

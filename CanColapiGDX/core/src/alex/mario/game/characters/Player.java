@@ -9,4 +9,8 @@ public class Player extends Character {
         super(game, map);
         System.out.println("CREANDO PLAYER");
     }
+
+    public void showInventory(){
+        this.inventorySystem.show();
+    }
 }
