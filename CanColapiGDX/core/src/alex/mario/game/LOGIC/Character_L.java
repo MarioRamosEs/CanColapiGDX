@@ -26,6 +26,7 @@ public class Character_L {
 
     protected InventorySystem inventorySystem;
 
+    protected boolean isPassable = false;
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
         this.map = map;
@@ -44,9 +45,12 @@ public class Character_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition) && !mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)) {
-
-            position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition)) {
+            if(!mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)){
+                position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+            }else{
+                position.add(direction.cpy().scl(0.5f, 0.5f)); //Movimiento reducido atravesando jugadores
+            }
         }
 
         //Compruebo Triggers
@@ -131,5 +135,9 @@ public class Character_L {
 
     public InventorySystem getInventorySystem() {
         return inventorySystem;
+    }
+
+    public boolean isPassable() {
+        return isPassable;
     }
 }
