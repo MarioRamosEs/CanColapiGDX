@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Item;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
@@ -55,10 +56,12 @@ public class TriggersSystem_L {
                 if(triggered){
                     if(character.trigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Has pisado la alfombra...");
+                        character.addItem(new Item("Llave magica"));
                     }
                 }else{
                     if(character.untrigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Gracias por dejar de pisar la alfombra!");
+                        character.addItem(new Item("Llave magnética roja"));
                     }
                 }
                 break;

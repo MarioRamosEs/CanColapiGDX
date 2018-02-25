@@ -1,9 +1,6 @@
 package alex.mario.game.LOGIC;
 
-import alex.mario.game.GUI.InventorySystem;
-import alex.mario.game.GUI.Map;
-import alex.mario.game.GUI.MapSystem;
-import alex.mario.game.GUI.TriggersSystem;
+import alex.mario.game.GUI.*;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
@@ -32,6 +29,7 @@ public class Character_L {
         this.map = map;
         this.mapSystem = this.game.getMapSystem();
         this.triggersSystem = this.game.getTriggersSystem();
+        this.inventorySystem = new InventorySystem(this.game);
 
         this.triggeredBy = new ArrayList<String>();
 
@@ -133,6 +131,12 @@ public class Character_L {
         this.map = map;
     }
 
+    public void addItem(Item item){
+        this.inventorySystem.add(item);
+    }
+    public ArrayList<Item> getItems(){
+        return this.inventorySystem.getItems();
+    }
     public InventorySystem getInventorySystem() {
         return inventorySystem;
     }
