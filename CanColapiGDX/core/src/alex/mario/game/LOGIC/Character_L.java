@@ -43,7 +43,9 @@ public class Character_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition)) {
+        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition)
+           && !mapSystem.isCharacterCollidingWithItem(this, playerRectNewPosition)
+                ) {
             if(!mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)){
                 position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
             }else{

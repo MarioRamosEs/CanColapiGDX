@@ -10,5 +10,6 @@ public class Key extends Item {
         super(isPicked);
         this.texture = new Texture("pokeBall.png");
         this.pos = pos;
+        this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
     }
 }

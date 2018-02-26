@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.ItemsSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -19,5 +20,7 @@ public class Map_L {
     public TiledMap getTiledMap() {
         return this.tiledMap;
     }
-
+    public ArrayList<Item> getMapItems(){
+            return this.itemsSystem.getItems();
+    }
 }
