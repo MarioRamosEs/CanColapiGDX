@@ -204,6 +204,7 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup color="#00ff00" name="Items"/>
  <layer name="SuperiorObjects" width="45" height="45">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
