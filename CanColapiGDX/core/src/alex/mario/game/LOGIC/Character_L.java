@@ -1,8 +1,6 @@
 package alex.mario.game.LOGIC;
 
-import alex.mario.game.GUI.Map;
-import alex.mario.game.GUI.MapSystem;
-import alex.mario.game.GUI.TriggersSystem;
+import alex.mario.game.GUI.*;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
@@ -23,11 +21,15 @@ public class Character_L {
     protected long millis = System.currentTimeMillis();
     protected int step;
 
+    protected InventorySystem inventorySystem;
+
+    protected boolean isPassable = false;
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
         this.map = map;
         this.mapSystem = this.game.getMapSystem();
         this.triggersSystem = this.game.getTriggersSystem();
+        this.inventorySystem = new InventorySystem(this.game);
 
         this.triggeredBy = new ArrayList<String>();
 
@@ -41,9 +43,12 @@ public class Character_L {
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
 
-        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition) && !mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)) {
-
-            position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+        if(!mapSystem.isCharacterCollidingWithCollisionsLayer(this, playerRectNewPosition)) {
+            if(!mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)){
+                position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+            }else{
+                position.add(direction.cpy().scl(0.5f, 0.5f)); //Movimiento reducido atravesando jugadores
+            }
         }
 
         //Compruebo Triggers
@@ -124,5 +129,19 @@ public class Character_L {
     }
     public void setMap(Map map){
         this.map = map;
+    }
+
+    public void addItem(Item item){
+        this.inventorySystem.add(item);
+    }
+    public ArrayList<Item> getItems(){
+        return this.inventorySystem.getItems();
+    }
+    public InventorySystem getInventorySystem() {
+        return inventorySystem;
+    }
+
+    public boolean isPassable() {
+        return isPassable;
     }
 }

@@ -44,6 +44,8 @@ public class MapSystem extends MapSystem_L{
         characters.add(this.game.getPlayer());
         for (Character character2 : characters) {
             if(character2 == character){continue;}
+            if(character2.getMap() != character.getMap()){continue;} //If players are in different maps
+            if(character2.isPassable() || character.isPassable()){continue;}
             Rectangle rectangle = character2.getRect();
             if (Intersector.overlaps(rectangle, playerRectNewPosition)){
                 return true;

@@ -2,7 +2,6 @@ package alex.mario.game;
 
 import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
-import alex.mario.game.LOGIC.TriggersSystem_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Player;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -26,7 +25,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private TriggersSystem triggersSystem;
 	private NotificationsSystem notificationsSystem;
 
-	private BitmapFont mainFont;
+	private BitmapFont notificationsFont;
+	private BitmapFont inventoryFont;
 	private SpriteBatch spriteBatch;
 	private ShapeRenderer shapeRenderer;
 
@@ -44,7 +44,12 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public void create () {
 		this.spriteBatch = new SpriteBatch();
-		this.mainFont = new BitmapFont();
+
+		this.notificationsFont = new BitmapFont();
+
+		this.inventoryFont = new BitmapFont();
+		this.inventoryFont.getData().setScale(0.9f);
+
 		this.shapeRenderer = new ShapeRenderer();
 
 		//Creamos toda la pesca
@@ -108,6 +113,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Sistema de notificaciones
 		this.notificationsSystem.draw();
 
+		this.player.getInventorySystem().draw();
+
 		//Hacemos que la cámara se actualice
 		cameraSystem.draw();
 	}
@@ -124,6 +131,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         	newDirection.add(DIRECTION_UP);
         else if(keycode == Input.Keys.DOWN)
         	newDirection.add(DIRECTION_DOWN);
+		else if(keycode == Input.Keys.I)
+			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
         this.player.setDir(newDirection);
 
 		if(this.dog == null){return false;}
@@ -227,6 +236,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return this.directions[new Random().nextInt(this.directions.length)];
 	}
 
+	public BitmapFont getInventoryFont() {
+		return inventoryFont;
+	}
+
 	public ArrayList<Character> getCharacters() {
 		return this.characters;
 	}
@@ -235,8 +248,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return "maps" + File.separator + mapName + ".tmx";
 	}
 
-	public BitmapFont getMainFont() {
-		return mainFont;
+	public BitmapFont getNotificationsFont() {
+		return notificationsFont;
 	}
 
 	public SpriteBatch getSpriteBatch() {

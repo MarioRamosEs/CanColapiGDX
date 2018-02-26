@@ -10,7 +10,7 @@ public class NotificationsSystem extends NotificationsSystem_L {
     private BitmapFont font;
     public NotificationsSystem(MyGdxGame game){
         super(game);
-        this.font = this.game.getMainFont();
+        this.font = this.game.getNotificationsFont();
         font.setColor(Color.WHITE);
 
         this.shapeRenderer.setAutoShapeType(true);
