@@ -134,6 +134,7 @@ public class Character_L {
     }
 
     public void addItem(Item item){
+        this.game.getNotificationsSystem().addNotification("Se ha añadido '" + item.getName() + "' al inventario");
         this.inventorySystem.add(item);
     }
     public ArrayList<Item> getItems(){

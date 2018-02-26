@@ -28,4 +28,10 @@ public class ItemsSystem extends ItemsSystem_L {
         spriteBatch.setProjectionMatrix(this.originalProjection);
         spriteBatch.end();
     }
+    public void removeItem(Item item){
+        this.items.remove(item);
+    }
+    public void addItem(Item item){
+        this.items.add(item);
+    }
 }

@@ -1,6 +1,7 @@
 package alex.mario.game.GUI;
 
 import alex.mario.game.LOGIC.Item_L;
+import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -56,5 +57,16 @@ public class Item extends Item_L {
     {
         //Requires .begin()!!!
         spriteBatch.draw(texture, this.pos.x, this.pos.y);
+    }
+
+    @Override
+    public void useGround(MyGdxGame game, Character character){
+        Map map = character.getMap();
+        map.removeItem(this);
+        return;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

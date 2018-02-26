@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;

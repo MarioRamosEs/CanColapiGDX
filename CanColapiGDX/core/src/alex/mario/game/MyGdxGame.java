@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
+
 	private MapSystem mapSystem;
 	private Player player;
 	private CameraSystem cameraSystem;
@@ -33,6 +34,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private ArrayList<Character> characters;
 
 	private Character dog;
+
+	private static final float DISTANCE_USEGROUND_ITEM = 45f;
 
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
@@ -134,6 +137,18 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		else if(keycode == Input.Keys.I)
 			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
         this.player.setDir(newDirection);
+
+		if(keycode == Input.Keys.E){
+			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getPosition());
+			if(closestItem != null){
+				float distance = closestItem.getPos().dst(this.player.getPosition());
+				if(distance <= DISTANCE_USEGROUND_ITEM){
+					closestItem.useGround(this, this.player);
+				}else{
+					System.out.println(distance);
+				}
+			}
+		}
 
 		if(this.dog == null){return false;}
 		newDirection = this.dog.getDir();
