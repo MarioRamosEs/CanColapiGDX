@@ -1,16 +1,20 @@
 package alex.mario.game.GUI;
 
 import alex.mario.game.LOGIC.Item_L;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 
 public class Item extends Item_L {
-    private GlyphLayout notificationLayout;
+    protected GlyphLayout notificationLayout;
+    protected static Texture texture;
 
     public Item(){
         this.notificationLayout = new GlyphLayout();
@@ -18,6 +22,10 @@ public class Item extends Item_L {
     public Item(String name){
         this.notificationLayout = new GlyphLayout();
         this.name = name;
+    }
+    public Item(Boolean isPicked){
+        this.notificationLayout = new GlyphLayout();
+        this.isPicked = isPicked;
     }
     public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size)
     {
@@ -40,6 +48,13 @@ public class Item extends Item_L {
                 pos.x + 5, pos.y + notificationLayout.height + 5,
                 size.x - 5, Align.center, true);
 
+        spriteBatch.end();
+    }
+    public void drawGround(SpriteBatch spriteBatch, Camera camera)
+    {
+        spriteBatch.begin();
+        spriteBatch.setProjectionMatrix(camera.combined);
+        spriteBatch.draw(texture, this.pos.x, this.pos.y);
         spriteBatch.end();
     }
 }
