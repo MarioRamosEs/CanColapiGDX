@@ -56,12 +56,12 @@ public class TriggersSystem_L {
                 if(triggered){
                     if(character.trigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Has pisado la alfombra...");
-                        character.addItem(new Item("Llave magica"));
+                        //character.addItem(new Item("Llave magica"));
                     }
                 }else{
                     if(character.untrigger(triggerName)){
                         this.game.getNotificationsSystem().addNotification("Gracias por dejar de pisar la alfombra!");
-                        character.addItem(new Item("Llave magnética roja"));
+                        //character.addItem(new Item("Llave magnética roja"));
                     }
                 }
                 break;

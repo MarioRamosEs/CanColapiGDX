@@ -5,6 +5,7 @@ import alex.mario.game.GUI.Character;
 import alex.mario.game.LOGIC.Item_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Player;
+import alex.mario.game.objects.Door;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -85,6 +86,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		HashMap<String, Class> ret = new HashMap<String, Class>();
 
 		ret.put("key", Key.class);
+		ret.put("door", Door.class);
 
 		return ret;
 	}

@@ -116,6 +116,11 @@
     <property name="type" value="key"/>
    </properties>
   </object>
+  <object id="33" x="800.333" y="325.333" width="28" height="28">
+   <properties>
+    <property name="type" value="door"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="SuperiorObjects" width="40" height="20">
   <data encoding="csv">
