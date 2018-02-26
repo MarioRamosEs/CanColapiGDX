@@ -68,6 +68,7 @@ public class Character_L {
         }
     }
     public boolean untrigger(MapProperties mapProperties){
+        if(mapProperties.get("justOnce", false, Boolean.class)){return false;}
         if(!this.triggeredBy.contains(mapProperties.get("id").toString())){
             return false;
         }else{
