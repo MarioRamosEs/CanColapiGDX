@@ -109,7 +109,12 @@
     <property name="type" value="key"/>
    </properties>
   </object>
-  <object id="39" x="516" y="392" width="22.6667" height="21.3333"/>
+  <object id="39" x="516" y="392" width="22.6667" height="21.3333">
+   <properties>
+    <property name="isPicked" type="bool" value="false"/>
+    <property name="type" value="key"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="SuperiorObjects" width="30" height="20">
   <data encoding="csv">
