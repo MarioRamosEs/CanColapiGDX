@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.Align;
 
 public class Item extends Item_L {
     protected GlyphLayout notificationLayout;
-    protected static Texture texture;
+    protected Texture texture;
 
     public Item(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
