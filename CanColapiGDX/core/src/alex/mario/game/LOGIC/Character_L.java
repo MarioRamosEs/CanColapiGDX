@@ -4,6 +4,7 @@ import alex.mario.game.GUI.*;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -58,19 +59,19 @@ public class Character_L {
         this.triggersSystem.checkTriggers(this, playerRectNewPosition);
 
     }
-    public boolean trigger(String triggerName){
-        if(this.triggeredBy.contains(triggerName)){
+    public boolean trigger(MapProperties mapProperties){
+        if(this.triggeredBy.contains(mapProperties.get("id").toString())){
             return false;
         }else{
-            this.triggeredBy.add(triggerName);
+            this.triggeredBy.add(mapProperties.get("id").toString());
             return true;
         }
     }
-    public boolean untrigger(String triggerName){
-        if(!this.triggeredBy.contains(triggerName)){
+    public boolean untrigger(MapProperties mapProperties){
+        if(!this.triggeredBy.contains(mapProperties.get("id").toString())){
             return false;
         }else{
-            this.triggeredBy.remove(triggerName);
+            this.triggeredBy.remove(mapProperties.get("id").toString());
             return true;
         }
     }

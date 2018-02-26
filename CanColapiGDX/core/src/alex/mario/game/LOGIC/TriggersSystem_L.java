@@ -54,13 +54,13 @@ public class TriggersSystem_L {
                 if(character != this.game.getPlayer()){return;}
 
                 if(triggered){
-                    if(character.trigger(triggerName)){
-                        this.game.getNotificationsSystem().addNotification("Has pisado la alfombra...");
+                    if(character.trigger(mapProperties)){
+                        this.game.getNotificationsSystem().addNotification(triggerValue);
                         //character.addItem(new Item("Llave magica"));
                     }
                 }else{
-                    if(character.untrigger(triggerName)){
-                        this.game.getNotificationsSystem().addNotification("Gracias por dejar de pisar la alfombra!");
+                    if(character.untrigger(mapProperties)){
+                        this.game.getNotificationsSystem().addNotification(triggerValue);
                         //character.addItem(new Item("Llave magnética roja"));
                     }
                 }
@@ -82,11 +82,11 @@ public class TriggersSystem_L {
                 if(character != this.game.getPlayer()){return;}
 
                 if(triggered){ //Zoom
-                    if(character.trigger(triggerName)) {
+                    if(character.trigger(mapProperties)) {
                         this.game.getCameraSystem().proportionalZoom(Float.parseFloat(triggerValue));
                     }
                 }else { //DesZoom
-                    if (character.untrigger(triggerName)) {
+                    if (character.untrigger(mapProperties)) {
                         this.game.getCameraSystem().proportionalZoom(-Float.parseFloat(triggerValue));
                     }
                 }
