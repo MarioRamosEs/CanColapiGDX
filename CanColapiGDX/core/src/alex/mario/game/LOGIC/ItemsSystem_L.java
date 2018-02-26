@@ -61,7 +61,6 @@ public class ItemsSystem_L {
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
-            System.out.println("------------------");
         }
         return items;
     }
