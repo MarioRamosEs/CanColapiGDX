@@ -12,6 +12,8 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,9 +25,9 @@ public class ItemsSystem_L {
         this.game = game;
         this.tiledMap = tiledMap;
 
-        this.items = loadItems(this.tiledMap);
+        this.items = loadItems(this.game, this.tiledMap);
     }
-    public static ArrayList<Item> loadItems(TiledMap tiledMap){
+    public static ArrayList<Item> loadItems(MyGdxGame game, TiledMap tiledMap){
         ArrayList<Item> items = new ArrayList<Item>();
         /*for(MapObject object : tiledMap.getLayers().get("Items").getObjects()){
             MapProperties properties = object.getProperties();
@@ -34,12 +36,30 @@ public class ItemsSystem_L {
         }
 */
         for (RectangleMapObject rectangleObject : tiledMap.getLayers().get("Items").getObjects().getByType(RectangleMapObject.class)) {
+
             Rectangle rectangle = rectangleObject.getRectangle();
             MapProperties properties = rectangleObject.getProperties();
 
+            String type = properties.get("type", "error", String.class);
             Boolean isPicked = properties.get("isPicked", true, Boolean.class);
-            items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
+            //items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
 
+
+            Class cl = game.getAvailableItems().get(type);
+            try {
+                Constructor constructor = cl.getConstructor(new Class[]{RectangleMapObject.class});
+                items.add((Item)constructor.newInstance(rectangleObject));
+
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            System.out.println("------------------");
         }
         return items;
     }

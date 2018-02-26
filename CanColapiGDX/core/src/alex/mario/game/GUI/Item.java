@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
@@ -19,16 +21,9 @@ public class Item extends Item_L {
     protected GlyphLayout notificationLayout;
     protected static Texture texture;
 
-    public Item(){
+    public Item(RectangleMapObject rectangleMapObject){
+        super(rectangleMapObject);
         this.notificationLayout = new GlyphLayout();
-    }
-    public Item(String name){
-        this.notificationLayout = new GlyphLayout();
-        this.name = name;
-    }
-    public Item(Boolean isPicked){
-        this.notificationLayout = new GlyphLayout();
-        this.isPicked = isPicked;
     }
     public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size)
     {

@@ -2,6 +2,7 @@ package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.*;
 import alex.mario.game.MyGdxGame;
+import alex.mario.game.objects.Key;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -146,5 +147,14 @@ public class Character_L {
 
     public boolean isPassable() {
         return isPassable;
+    }
+
+    public Item hasItemType(Class type) {
+        for(Item item : this.inventorySystem.items){
+            if(item.getClass() == type){
+                return item;
+            }
+        }
+        return null;
     }
 }
