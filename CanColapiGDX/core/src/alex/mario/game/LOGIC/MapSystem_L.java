@@ -34,7 +34,7 @@ public class MapSystem_L {
 
         System.out.println(filePath);
         if(!this.maps.containsKey(filePath)){
-            this.maps.put(filePath, new Map(this.game, filePath));
+            this.maps.put(filePath, new Map(filePath));
         }
         System.out.println("CARGADO!");
     }
