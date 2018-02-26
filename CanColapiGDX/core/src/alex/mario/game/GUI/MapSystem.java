@@ -43,7 +43,10 @@ public class MapSystem extends MapSystem_L{
             if(item.isPassable() || character.isPassable()){continue;}
             Rectangle itemRectangle = item.getRectangle();
             if(Intersector.overlaps(itemRectangle, playerRectNewPosition)){
+                item.touch(this.game, character);
                 return true;
+            }else{
+                item.untouch(this.game, character);
             }
         }
         return false;
