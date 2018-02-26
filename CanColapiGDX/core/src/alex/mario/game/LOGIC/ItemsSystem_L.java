@@ -36,8 +36,9 @@ public class ItemsSystem_L {
         for (RectangleMapObject rectangleObject : tiledMap.getLayers().get("Items").getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rectangle = rectangleObject.getRectangle();
             MapProperties properties = rectangleObject.getProperties();
-            String isPicked = properties.get("isPicked").toString();
-            items.add(new Key(isPicked.equals("true") ? true : false, new Vector2(rectangle.getX(), rectangle.getY())));
+
+            Boolean isPicked = properties.get("isPicked", true, Boolean.class);
+            items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
 
         }
         return items;
