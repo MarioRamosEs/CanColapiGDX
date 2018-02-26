@@ -144,8 +144,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 				float distance = closestItem.getPos().dst(this.player.getPosition());
 				if(distance <= DISTANCE_USEGROUND_ITEM){
 					closestItem.useGround(this, this.player);
-				}else{
-					System.out.println(distance);
 				}
 			}
 		}
