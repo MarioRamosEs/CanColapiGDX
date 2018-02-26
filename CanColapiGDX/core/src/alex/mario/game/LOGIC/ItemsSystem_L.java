@@ -44,6 +44,8 @@ public class ItemsSystem_L {
             Boolean isPicked = properties.get("isPicked", true, Boolean.class);
             //items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
 
+            //REFLECTION:
+            // http://tutorials.jenkov.com/java-reflection/constructors.html
 
             Class cl = game.getAvailableItems().get(type);
             try {
