@@ -18,7 +18,6 @@ public class Item extends Item_L {
     protected GlyphLayout notificationLayout;
     protected static Texture texture;
 
-    protected static Matrix4 originalProjection;
     public Item(){
         this.notificationLayout = new GlyphLayout();
     }
@@ -55,11 +54,7 @@ public class Item extends Item_L {
     }
     public void drawGround(SpriteBatch spriteBatch, Camera camera)
     {
-        spriteBatch.begin();
-        originalProjection = spriteBatch.getProjectionMatrix().cpy();
-        spriteBatch.setProjectionMatrix(camera.combined);
+        //Requires .begin()!!!
         spriteBatch.draw(texture, this.pos.x, this.pos.y);
-        spriteBatch.setProjectionMatrix(originalProjection);
-        spriteBatch.end();
     }
 }
