@@ -2,8 +2,10 @@ package alex.mario.game;
 
 import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
+import alex.mario.game.LOGIC.Item_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Player;
+import alex.mario.game.objects.Key;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -15,6 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
@@ -37,6 +40,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	private static final float DISTANCE_USEGROUND_ITEM = 45f;
 
+	protected HashMap<String, Class> availableItems;
+
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
 	public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
@@ -52,6 +57,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		this.inventoryFont = new BitmapFont();
 		this.inventoryFont.getData().setScale(0.9f);
+
+		this.availableItems = this.loadAvailableItems();
 
 		this.shapeRenderer = new ShapeRenderer();
 
@@ -72,6 +79,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.notificationsSystem = new NotificationsSystem(this);
 		Gdx.input.setInputProcessor(this);
 		System.out.println("ALL LOADED OK");
+	}
+
+	public static HashMap<String,Class> loadAvailableItems() {
+		HashMap<String, Class> ret = new HashMap<String, Class>();
+
+		ret.put("key", Key.class);
+
+		return ret;
 	}
 
 	@Override
@@ -271,5 +286,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	public ShapeRenderer getShapeRenderer() {
 		return shapeRenderer;
+	}
+
+	public HashMap<String, Class> getAvailableItems() {
+		return this.availableItems;
 	}
 }
