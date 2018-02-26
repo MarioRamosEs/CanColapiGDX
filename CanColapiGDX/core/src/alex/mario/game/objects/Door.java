@@ -8,11 +8,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 
+import java.io.File;
+
 public class Door extends Item {
+    Texture doorClosed = new Texture("objects" + File.separator + "DoorClosed.png");
+    Texture doorOpened = new Texture("objects" + File.separator + "DoorOpened.png");
+
     public Door(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
         this.name = "Puerta";
-        this.texture = new Texture("pokeBall.png");
+
+        if(this.isPassable) this.texture = doorOpened;
+        else this.texture = doorClosed;
+
         this.pos = pos;
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
     }
@@ -22,7 +30,7 @@ public class Door extends Item {
         Item key = character.hasItemType(game.getAvailableItems().get("key"));
         if(key != null){
             System.out.println("Has Item!!");
-            this.isPassable = true;
+            open();
         }
 
     }
@@ -32,7 +40,17 @@ public class Door extends Item {
         Item key = character.hasItemType(game.getAvailableItems().get("key"));
         if(key != null){
             System.out.println("Has Item!!");
-            this.isPassable = true;
+            open();
         }
+    }
+
+    private void open(){
+        this.isPassable = true;
+        this.texture = doorOpened;
+    }
+
+    private void close(){
+        this.isPassable = false;
+        this.texture = doorOpened;
     }
 }
