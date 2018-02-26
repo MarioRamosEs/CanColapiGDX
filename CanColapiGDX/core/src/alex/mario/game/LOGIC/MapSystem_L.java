@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.TriggersSystem;
 import alex.mario.game.MyGdxGame;
@@ -34,7 +35,7 @@ public class MapSystem_L {
 
         System.out.println(filePath);
         if(!this.maps.containsKey(filePath)){
-            this.maps.put(filePath, new Map(filePath));
+            this.maps.put(filePath, new Map(this.game, filePath));
         }
         System.out.println("CARGADO!");
     }

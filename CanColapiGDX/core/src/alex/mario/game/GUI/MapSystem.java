@@ -38,6 +38,16 @@ public class MapSystem extends MapSystem_L{
         }
         return false;
     }
+    public boolean isCharacterCollidingWithItem(Character_L character, Rectangle playerRectNewPosition){
+        for(Item item : character.getMap().getMapItems()){
+            if(item.isPassable() || character.isPassable()){continue;}
+            Rectangle itemRectangle = item.getRectangle();
+            if(Intersector.overlaps(itemRectangle, playerRectNewPosition)){
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean isCharacterCollidingWithAnyCharacter(Character_L character, Rectangle playerRectNewPosition){
         //Collide with characters
         ArrayList<Character> characters = (ArrayList<Character>)this.game.getCharacters().clone();
