@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix3;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 
@@ -16,6 +18,7 @@ public class Item extends Item_L {
     protected GlyphLayout notificationLayout;
     protected static Texture texture;
 
+    protected static Matrix4 originalProjection;
     public Item(){
         this.notificationLayout = new GlyphLayout();
     }
@@ -53,8 +56,10 @@ public class Item extends Item_L {
     public void drawGround(SpriteBatch spriteBatch, Camera camera)
     {
         spriteBatch.begin();
+        originalProjection = spriteBatch.getProjectionMatrix().cpy();
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.draw(texture, this.pos.x, this.pos.y);
+        spriteBatch.setProjectionMatrix(originalProjection);
         spriteBatch.end();
     }
 }
