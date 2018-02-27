@@ -9,27 +9,33 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Door extends Item {
-    protected Texture doorClosed = TexturesSystem.getTexture("DoorClosed.png");
-    protected Texture doorOpened = TexturesSystem.getTexture("DoorOpened.png");
+    protected Texture doorClosedTexture;
+    protected Texture doorOpenedTexture;
 
     protected String doorCode;
 
-    protected boolean locked = true;
+    protected boolean locked;
 
     public Door(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
-        this.name = "Puerta";
 
-        if(this.isPassable) this.texture = doorOpened;
-        else this.texture = doorClosed;
+        this.name = rectangleMapObject.getProperties().get("name", "Puerta", String.class);
+
+
+        this.doorClosedTexture = TexturesSystem.getTexture(rectangleMapObject.getProperties().get("doorClosedTexture", "DoorClosed.png", String.class));
+        this.doorOpenedTexture = TexturesSystem.getTexture(rectangleMapObject.getProperties().get("doorOpenedTexture", "DoorOpened.png", String.class));
+
+
+        if(this.isPassable) this.texture = doorOpenedTexture;
+        else this.texture = doorClosedTexture;
 
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
 
-        this.doorCode = rectangleMapObject.getProperties().get("doorCode").toString();
+        this.doorCode = rectangleMapObject.getProperties().get("doorCode", "", String.class);
+        this.locked = rectangleMapObject.getProperties().get("isLocked", true, Boolean.class);
     }
 
     @Override
@@ -79,12 +85,12 @@ public class Door extends Item {
 
     private void open(){
         this.isPassable = true;
-        this.texture = doorOpened;
+        this.texture = doorOpenedTexture;
     }
 
     private void close(){
         this.isPassable = false;
-        this.texture = doorClosed;
+        this.texture = doorClosedTexture;
     }
 
     public String getDoorCode(){

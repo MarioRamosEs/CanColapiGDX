@@ -20,9 +20,12 @@ import com.badlogic.gdx.utils.Align;
 public class Item extends Item_L {
     protected GlyphLayout notificationLayout;
     protected Texture texture;
+    protected boolean isVisible;
 
     public Item(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
+        this.isVisible = rectangleMapObject.getProperties().get("isVisible", true, Boolean.class);
+
         this.notificationLayout = new GlyphLayout();
     }
     public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size)
@@ -52,6 +55,9 @@ public class Item extends Item_L {
     public void drawGround(SpriteBatch spriteBatch, Camera camera)
     {
         //Requires .begin()!!!
+        if(!this.isVisible){
+            return;
+        }
         spriteBatch.draw(texture, this.pos.x, this.pos.y);
     }
 

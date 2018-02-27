@@ -18,8 +18,9 @@ public class Key extends Item {
     protected String keyCode;
     public Key(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
-        this.name = "Llave";
-        this.texture = TexturesSystem.getTexture("pokeBall.png");
+        this.name = rectangleMapObject.getProperties().get("name", "Llave", String.class);
+
+        this.texture = TexturesSystem.getTexture(rectangleMapObject.getProperties().get("texture", "pokeBall.png", String.class));
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
         this.keyCode = rectangleMapObject.getProperties().get("keyCode").toString();
     }
