@@ -22,7 +22,7 @@ public class Character extends Character_L {
         this.cameraSystem = game.getCameraSystem();
 
         batch = new SpriteBatch();
-        playerFrames = TextureRegion.split(new Texture("Avatar-Red1.png"),48,64);
+        playerFrames = TextureRegion.split(TexturesSystem.getTexture("Avatar-Red1.png"),48,64);
     }
 
     public void draw(){

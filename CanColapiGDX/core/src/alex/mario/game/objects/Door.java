@@ -2,6 +2,7 @@ package alex.mario.game.objects;
 
 import alex.mario.game.GUI.Character;
 import alex.mario.game.GUI.Item;
+import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.LOGIC.Character_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,8 +12,8 @@ import com.badlogic.gdx.math.Vector2;
 import java.io.File;
 
 public class Door extends Item {
-    Texture doorClosed = new Texture("objects" + File.separator + "DoorClosed.png");
-    Texture doorOpened = new Texture("objects" + File.separator + "DoorOpened.png");
+    Texture doorClosed = TexturesSystem.getTexture("DoorClosed.png");
+    Texture doorOpened = TexturesSystem.getTexture("DoorOpened.png");
 
     public Door(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
