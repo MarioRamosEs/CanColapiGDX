@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class Map extends Map_L {
@@ -27,5 +28,11 @@ public class Map extends Map_L {
     }
     public void DrawForeground(){
         this.tiledMapRenderer.render(new int[]{6}); //Capa superior Objects
+    }
+
+    public void reloadMap() {
+        this.tiledMap = new TmxMapLoader().load(this.mapName);
+        this.tiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap);
+        this.itemsSystem = new ItemsSystem(game, this.tiledMap);
     }
 }

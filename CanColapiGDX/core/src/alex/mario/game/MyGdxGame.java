@@ -71,10 +71,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.triggersSystem = new TriggersSystem(this);
 
 		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("mapaTest"));
+		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("mapaTest")));
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
 		this.characters = new ArrayList<Character>();
@@ -166,6 +166,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 				}
 			}
 		}
+		if(keycode == Input.Keys.R){
+			this.player.getMap().reloadMap();
+		}
 
 		if(this.dog == null){return false;}
 		newDirection = this.dog.getDir();
@@ -179,6 +182,16 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			newDirection.add(DIRECTION_DOWN);
 		this.dog.setDir(newDirection);
 
+
+		if(keycode == Input.Keys.E){
+			Item closestItem = this.dog.getMap().getClosestItemTo(this.dog.getPosition());
+			if(closestItem != null){
+				float distance = closestItem.getPos().dst(this.dog.getPosition());
+				if(distance <= DISTANCE_USEGROUND_ITEM){
+					closestItem.useGround(this, this.dog);
+				}
+			}
+		}
 
 		// Zoom
         if(keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);

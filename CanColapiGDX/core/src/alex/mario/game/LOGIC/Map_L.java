@@ -11,11 +11,13 @@ import java.util.ArrayList;
 
 public class Map_L {
     protected TiledMap tiledMap;
+    protected String mapName;
     protected ItemsSystem itemsSystem;
     protected MyGdxGame game;
     public Map_L(MyGdxGame game, String mapName){
         this.game = game;
-        this.tiledMap = new TmxMapLoader().load(mapName);
+        this.mapName = mapName;
+        this.tiledMap = new TmxMapLoader().load(this.mapName);
     }
 
     public TiledMap getTiledMap() {
