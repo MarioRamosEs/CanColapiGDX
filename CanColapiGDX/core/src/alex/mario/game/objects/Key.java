@@ -2,6 +2,7 @@ package alex.mario.game.objects;
 
 import alex.mario.game.GUI.Character;
 import alex.mario.game.GUI.Item;
+import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapProperties;
@@ -12,8 +13,7 @@ public class Key extends Item {
     public Key(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
         this.name = "Llave";
-        this.texture = new Texture("pokeBall.png");
-        this.pos = pos;
+        this.texture = TexturesSystem.getTexture("pokeBall.png");
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
     }
 
