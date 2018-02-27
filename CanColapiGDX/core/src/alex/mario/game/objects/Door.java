@@ -29,8 +29,8 @@ public class Door extends Item {
         this.doorOpenedTexture = TexturesSystem.getTexture(rectangleMapObject.getProperties().get("doorOpenedTexture", "DoorOpened.png", String.class));
 
 
-        if(this.isPassable) this.texture = doorOpenedTexture;
-        else this.texture = doorClosedTexture;
+        if(this.isPassable) this.open();
+        else this.close();
 
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
 

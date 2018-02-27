@@ -38,6 +38,7 @@ public class ItemsSystem_L {
         for (RectangleMapObject rectangleObject : tiledMap.getLayers().get("Items").getObjects().getByType(RectangleMapObject.class)) {
 
             Rectangle rectangle = rectangleObject.getRectangle();
+            
             MapProperties properties = rectangleObject.getProperties();
 
             String type = properties.get("type", "error", String.class);
@@ -46,9 +47,10 @@ public class ItemsSystem_L {
 
             //REFLECTION:
             // http://tutorials.jenkov.com/java-reflection/constructors.html
-
-            Class cl = game.getAvailableItems().get(type);
+            if(type.equals("error")){continue;}
             try {
+
+                Class cl = game.getAvailableItems().get(type);
                 Constructor constructor = cl.getConstructor(new Class[]{RectangleMapObject.class});
                 items.add((Item)constructor.newInstance(rectangleObject));
 
@@ -60,6 +62,8 @@ public class ItemsSystem_L {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e){
+                System.out.println(properties.get("type", "UNDEFINED", String.class));
             }
         }
         return items;
