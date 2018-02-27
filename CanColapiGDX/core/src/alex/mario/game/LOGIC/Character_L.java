@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 
 public class Character_L {
+    public static final int DEFAULT_VEL = 4;
     protected MapSystem mapSystem;
     protected TriggersSystem triggersSystem;
     protected Map map;
@@ -26,6 +27,7 @@ public class Character_L {
     protected InventorySystem inventorySystem;
 
     protected boolean isPassable = false;
+    public boolean isRunning = false;
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
         this.map = map;
@@ -49,6 +51,7 @@ public class Character_L {
            && !mapSystem.isCharacterCollidingWithItem(this, playerRectNewPosition)
                 ) {
             if(!mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)){
+            if(this.isRunning){this.vel = DEFAULT_VEL * 2;}else{this.vel = DEFAULT_VEL;}
                 position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
             }else{
                 position.add(direction.cpy().scl(0.5f, 0.5f)); //Movimiento reducido atravesando jugadores

@@ -71,10 +71,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.triggersSystem = new TriggersSystem(this);
 
 		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
+		this.mapSystem.loadMap(formatToFilePath("Planta1"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("Planta1")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
 		this.characters = new ArrayList<Character>();
@@ -157,6 +157,11 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
         this.player.setDir(newDirection);
 
+        //Running
+		if(keycode == Input.Keys.SHIFT_LEFT){
+			this.player.isRunning = true;
+		}
+
 		if(keycode == Input.Keys.E){
 			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getPosition());
 			if(closestItem != null){
@@ -215,6 +220,12 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			newDirection.sub(DIRECTION_DOWN);
 
 		this.player.setDir(newDirection);
+
+
+		//Running
+		if(keycode == Input.Keys.SHIFT_LEFT){
+			this.player.isRunning = false;
+		}
 
 		if(this.dog == null){return false;}
 		newDirection = this.dog.getDir();
