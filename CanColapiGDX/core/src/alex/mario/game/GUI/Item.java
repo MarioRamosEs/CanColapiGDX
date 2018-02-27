@@ -59,6 +59,7 @@ public class Item extends Item_L {
     public void useGround(MyGdxGame game, Character character){
         Map map = character.getMap();
         map.removeItem(this);
+        character.addItem(this);
         return;
     }
 
