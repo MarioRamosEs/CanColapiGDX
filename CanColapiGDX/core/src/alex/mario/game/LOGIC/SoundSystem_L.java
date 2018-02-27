@@ -17,7 +17,7 @@ public class SoundSystem_L {
     }
 
     public void play(String sound){
-        cleanSoundsPlaying();
+       cleanSoundsPlaying();
         if(!soundsPlaying.containsKey(sound)) { //No solapar dos veces el mismo audio
             Music tempSound = SoundsSystem.getMusic(sound);
             tempSound.play();
@@ -72,6 +72,7 @@ public class SoundSystem_L {
     private void remove(ArrayList<String> cue){
         for(String element : cue){
             soundsPlaying.remove(element);
+            //dispose
         }
     }
 }

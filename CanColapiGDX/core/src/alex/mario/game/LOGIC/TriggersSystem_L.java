@@ -66,34 +66,23 @@ public class TriggersSystem_L {
                 }
                 break;
             case "playSound":
-                //Si no es el jugador
-                if(character != this.game.getPlayer()){return;}
+                if(character != this.game.getPlayer()){return;} //Si no es el jugador
 
                 if(triggered){
                     if(character.trigger(mapProperties)){
-                        this.game.getSoundSystem().play(triggerValue);
-                        //character.addItem(new Item("Llave magica"));
-                    }
-                }else{
-                    if(character.untrigger(mapProperties)){
-                        //this.game.getNotificationsSystem().addNotification(triggerValue);
-                        //character.addItem(new Item("Llave magnética roja"));
+                        Boolean isLooped = mapProperties.get("isLooped", false, Boolean.class);
+
+                        if(isLooped) this.game.getSoundSystem().playLoop(triggerValue);
+                        else this.game.getSoundSystem().play(triggerValue);
                     }
                 }
                 break;
-                case "stopAllSounds":
-                //Si no es el jugador
-                if(character != this.game.getPlayer()){return;}
+            case "stopAllSounds":
+                if(character != this.game.getPlayer()){return;} //Si no es el jugador
 
                 if(triggered){
                     if(character.trigger(mapProperties)){
                         this.game.getSoundSystem().stopAll();
-                        //character.addItem(new Item("Llave magica"));
-                    }
-                }else{
-                    if(character.untrigger(mapProperties)){
-                        //this.game.getNotificationsSystem().addNotification(triggerValue);
-                        //character.addItem(new Item("Llave magnética roja"));
                     }
                 }
                 break;

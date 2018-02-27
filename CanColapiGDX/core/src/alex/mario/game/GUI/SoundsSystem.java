@@ -1,5 +1,6 @@
 package alex.mario.game.GUI;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -32,7 +33,9 @@ public class SoundsSystem {
             } else {
                 if(textureFormats.contains(getExtension(file.getName()))){
                     //Format available
-                    sounds.put(file.getName(), Gdx.audio.newMusic(Gdx.files.internal(file.getAbsolutePath())));
+                    Music temp = Gdx.audio.newMusic(Gdx.files.internal(file.getAbsolutePath()));
+                    preLoad(temp);
+                    sounds.put(file.getName(), temp);
                 }
             }
         }
@@ -48,5 +51,12 @@ public class SoundsSystem {
             extension = fileName.substring(i+1);
         }
         return extension;
+    }
+
+    private static void preLoad(Music temp){
+        temp.setVolume(0);
+        temp.play();
+        temp.stop();
+        temp.setVolume(1);
     }
 }
