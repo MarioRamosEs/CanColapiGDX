@@ -157,6 +157,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
         this.player.setDir(newDirection);
 
+        if(keycode == Input.Keys.T){
+            this.player.setCollideState(!this.player.getCollideState());
+        }
+
         //Running
 		if(keycode == Input.Keys.SHIFT_LEFT){
 			this.player.isRunning = true;

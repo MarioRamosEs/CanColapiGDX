@@ -24,6 +24,8 @@ public class Character_L {
     protected long millis = System.currentTimeMillis();
     protected int step;
 
+    protected Boolean collides;
+
     protected InventorySystem inventorySystem;
 
     protected boolean isPassable = false;
@@ -35,6 +37,8 @@ public class Character_L {
         this.triggersSystem = this.game.getTriggersSystem();
         this.inventorySystem = new InventorySystem(this.game);
 
+        this.collides = true;
+
         this.triggeredBy = new ArrayList<String>();
 
         this.position = new Vector2(0,0);
@@ -42,7 +46,11 @@ public class Character_L {
         this.size = new Vector2(40,32);
     }
     public void update(){
-
+        if(this.isRunning){this.vel = DEFAULT_VEL * 2;}else{this.vel = DEFAULT_VEL;}
+        if(!this.collides){
+            position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
+            return;
+        }
         //Movimiento
         Vector2 newPosition = position.cpy().add(direction.cpy().scl(vel,vel));
         Rectangle playerRectNewPosition = this.getRect(newPosition);
@@ -51,7 +59,7 @@ public class Character_L {
            && !mapSystem.isCharacterCollidingWithItem(this, playerRectNewPosition)
                 ) {
             if(!mapSystem.isCharacterCollidingWithAnyCharacter(this, playerRectNewPosition)){
-            if(this.isRunning){this.vel = DEFAULT_VEL * 2;}else{this.vel = DEFAULT_VEL;}
+
                 position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
             }else{
                 position.add(direction.cpy().scl(0.5f, 0.5f)); //Movimiento reducido atravesando jugadores
@@ -170,6 +178,12 @@ public class Character_L {
             }
         }
         return itemsFound;
+    }
+    public void setCollideState(Boolean newCollide){
+        this.collides = newCollide;
+    }
+    public Boolean getCollideState(){
+        return this.collides;
     }
     public Vector2 getCenterPos(){
         return this.position.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
