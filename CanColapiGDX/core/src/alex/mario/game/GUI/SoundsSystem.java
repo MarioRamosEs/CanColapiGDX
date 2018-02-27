@@ -1,6 +1,7 @@
 package alex.mario.game.GUI;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
 import java.io.File;
@@ -10,16 +11,15 @@ import java.util.Map;
 
 public class SoundsSystem {
     public final static File folder = new File(System.getProperty("user.dir"));
-    public static HashMap<String, Sound> sounds = new HashMap<String, Sound>();
+    public static HashMap<String, Music> sounds = new HashMap<String, Music>();
     public static ArrayList<String> textureFormats = new ArrayList<String>();
 
     public SoundsSystem(){
         textureFormats.add("mp3");
         loadTextures();
-        
     }
 
-    public static Sound getSound(String soundName){
+    public static Music getMusic(String soundName){
         return sounds.get(soundName);
     }
     public static void loadTextures(){
@@ -32,7 +32,7 @@ public class SoundsSystem {
             } else {
                 if(textureFormats.contains(getExtension(file.getName()))){
                     //Format available
-                    sounds.put(file.getName(), Gdx.audio.newSound(Gdx.files.internal(file.getAbsolutePath())));
+                    sounds.put(file.getName(), Gdx.audio.newMusic(Gdx.files.internal(file.getAbsolutePath())));
                 }
             }
         }

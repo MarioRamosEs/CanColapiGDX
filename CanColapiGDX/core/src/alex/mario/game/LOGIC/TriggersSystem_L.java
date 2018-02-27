@@ -81,6 +81,22 @@ public class TriggersSystem_L {
                     }
                 }
                 break;
+                case "stopAllSounds":
+                //Si no es el jugador
+                if(character != this.game.getPlayer()){return;}
+
+                if(triggered){
+                    if(character.trigger(mapProperties)){
+                        this.game.getSoundSystem().stopAll();
+                        //character.addItem(new Item("Llave magica"));
+                    }
+                }else{
+                    if(character.untrigger(mapProperties)){
+                        //this.game.getNotificationsSystem().addNotification(triggerValue);
+                        //character.addItem(new Item("Llave magnética roja"));
+                    }
+                }
+                break;
             case "changeMap":
 
                 if(triggered){
