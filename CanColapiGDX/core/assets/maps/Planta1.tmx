@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="68">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="72">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -208,36 +208,51 @@
   </object>
   <object id="48" x="880.167" y="985.5" width="21.1667" height="69">
    <properties>
-    <property name="changeMap" value="planta2"/>
+    <property name="changeMap" value="Planta2"/>
+    <property name="linkTo" value="entry_1"/>
    </properties>
   </object>
   <object id="52" x="274.083" y="1315.83" width="21.1667" height="58.3333">
    <properties>
-    <property name="changeMap" value="planta2"/>
+    <property name="changeMap" value="Planta3"/>
+    <property name="linkTo" value="entry_1"/>
    </properties>
   </object>
   <object id="54" x="695" y="1327" width="28.6667" height="23.3333">
    <properties>
-    <property name="isLinkedTo" value="2"/>
+    <property name="isLinkedTo" value="entry_2"/>
    </properties>
   </object>
   <object id="56" x="752.083" y="1305.5" width="21.1667" height="69">
    <properties>
-    <property name="changeMap" value="planta2"/>
+    <property name="changeMap" value="Planta2"/>
+    <property name="linkTo" value="entry_2"/>
    </properties>
   </object>
-  <object id="57" x="332.333" y="1329.67" width="28.6667" height="23.3333">
+  <object id="57" x="317.333" y="1328.67" width="28.6667" height="23.3333">
    <properties>
-    <property name="isLinkedTo" value="3"/>
+    <property name="isLinkedTo" value="entry_3"/>
    </properties>
   </object>
   <object id="66" x="479" y="1311" width="32" height="66">
    <properties>
+    <property name="justOnce" type="bool" value="true"/>
     <property name="sendMessage" value="Tiene mala pinta... no se si debería bajar a la planta de abajo."/>
    </properties>
   </object>
+  <object id="68" x="837.333" y="1004" width="28" height="49.3333">
+   <properties>
+    <property name="isLinkedTo" value="entry_1"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#00ff00" name="Items"/>
+ <objectgroup color="#00ff00" name="Items">
+  <object id="70" x="1338.67" y="318.667" width="26.6667" height="26.6667">
+   <properties>
+    <property name="type" value="key"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="SuperiorObjects" width="45" height="45">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

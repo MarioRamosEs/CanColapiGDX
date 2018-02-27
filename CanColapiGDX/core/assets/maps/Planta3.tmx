@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="32" tileheight="32" infinite="0" nextobjectid="62">
+ <tileset firstgid="1" source="Multi-Inside.tsx"/>
+ <tileset firstgid="1905" name="gravestones" tilewidth="32" tileheight="32" tilecount="36" columns="6">
+  <image source="xp_tiles_gravestones_by_schwarzenacht-datsi8g.png" width="192" height="192"/>
+ </tileset>
+ <layer name="Floor" width="12" height="8">
+  <data encoding="csv">
+9,9,9,9,9,9,9,9,23,23,23,9,
+9,9,9,9,9,9,9,9,9,31,31,9,
+9,1118,1119,1119,1119,1120,11,11,11,11,11,11,
+9,1126,1127,1127,1127,1128,9,9,9,9,9,9,
+9,1126,1127,1127,1127,1128,9,9,9,9,9,9,
+9,1134,1135,1135,1135,1136,9,9,9,9,9,9,
+9,9,9,9,9,9,9,9,9,9,9,9,
+9,9,9,9,9,9,9,9,9,9,9,9
+</data>
+ </layer>
+ <layer name="Objects" width="12" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,1215,1216,0,
+0,0,1931,0,1909,0,0,0,0,1223,1224,0,
+0,0,1937,0,1915,0,0,0,0,1231,1232,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Walls" width="12" height="8">
+  <data encoding="csv">
+288,23,23,23,23,23,23,23,23,23,0,288,
+288,31,31,31,31,31,31,31,31,0,0,288,
+288,0,0,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,0,0,0,288,
+288,0,0,0,0,0,0,0,0,0,0,288,
+23,23,23,23,23,23,23,23,23,23,23,23,
+31,31,31,31,31,31,31,31,31,31,31,31
+</data>
+ </layer>
+ <objectgroup name="Collisions">
+  <object id="8" x="-2.66667" y="-1.33333" width="386.333" height="66.6667"/>
+  <object id="18" x="0" y="66.6667" width="30.6667" height="182.333"/>
+  <object id="40" x="285" y="65" width="72" height="65"/>
+  <object id="60" x="66" y="63" width="28" height="32"/>
+  <object id="61" x="125" y="60" width="35" height="35"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="Triggers">
+  <object id="42" x="222" y="69" width="21" height="60">
+   <properties>
+    <property name="isLinkedTo" value="entry_1"/>
+    <property name="justOnce" type="bool" value="true"/>
+    <property name="sendMessage" value="Spooky...."/>
+   </properties>
+  </object>
+  <object id="43" x="264" y="69" width="20" height="54">
+   <properties>
+    <property name="changeMap" value="Planta1"/>
+    <property name="linkTo" value="entry_3"/>
+   </properties>
+  </object>
+  <object id="57" x="63" y="98" width="31" height="29">
+   <properties>
+    <property name="sendMessage" value="Los muertos de tu madre. Parece que la gente se ha cagado aquí..."/>
+   </properties>
+  </object>
+  <object id="59" x="128.5" y="97" width="31" height="28">
+   <properties>
+    <property name="justOnce" type="bool" value="true"/>
+    <property name="sendMessage" value="*Te has cagado en la tumba*"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#00ff00" name="Items">
+  <properties>
+   <property name="isPicked" type="bool" value="false"/>
+   <property name="type" value="key"/>
+  </properties>
+ </objectgroup>
+ <layer name="SuperiorObjects" width="12" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,34,0,0,0,0,0,
+0,0,0,0,0,0,42,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

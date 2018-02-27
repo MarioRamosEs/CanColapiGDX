@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="13" height="15" tilewidth="32" tileheight="32" infinite="0" nextobjectid="52">
+ <tileset firstgid="1" source="Multi-Inside.tsx"/>
+ <layer name="Floor" width="13" height="15">
+  <data encoding="csv">
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,11,11,11,11,11,11,11,11,11,11,11,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+0,9,9,9,9,9,9,9,9,9,9,9,0,
+0,9,9,9,9,9,9,9,9,9,9,9,0,
+0,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+9,9,9,9,9,9,9,9,9,9,9,9,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Objects" width="13" height="15">
+  <data encoding="csv">
+288,23,23,23,23,23,23,23,23,23,23,23,0,
+288,31,31,31,31,31,31,31,31,31,31,31,0,
+288,1201,1202,1203,0,0,0,0,0,0,0,0,0,
+288,1209,1210,1211,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,1201,1202,1203,0,0,0,0,0,0,0,0,0,
+288,1209,1210,1211,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+288,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Walls" width="13" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,23,23,23,23,23,0,23,23,23,23,288,0,
+0,31,31,31,31,31,0,31,31,31,31,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+0,0,0,0,0,0,0,0,0,0,0,288,0,
+23,23,23,23,23,23,23,23,23,23,23,23,0,
+304,304,304,304,304,304,304,304,304,304,304,304,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="Collisions">
+  <object id="8" x="-2.66667" y="-1.33333" width="383.333" height="66.6667"/>
+  <object id="18" x="0" y="66.6667" width="30.6667" height="378.333"/>
+  <object id="19" x="32" y="385" width="348" height="64"/>
+  <object id="40" x="37" y="64" width="72" height="62"/>
+  <object id="44" x="36" y="253" width="73" height="64"/>
+  <object id="46" x="353" y="62" width="31" height="321"/>
+  <object id="47" x="235" y="192" width="117" height="61"/>
+  <object id="48" x="32" y="192" width="147" height="61"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="Triggers">
+  <object id="42" x="159" y="67" width="21" height="60">
+   <properties>
+    <property name="isLinkedTo" value="entry_1"/>
+   </properties>
+  </object>
+  <object id="43" x="111" y="69" width="20" height="44">
+   <properties>
+    <property name="changeMap" value="Planta1"/>
+    <property name="linkTo" value="entry_1"/>
+   </properties>
+  </object>
+  <object id="50" x="113" y="262" width="20" height="44">
+   <properties>
+    <property name="changeMap" value="Planta1"/>
+    <property name="linkTo" value="entry_2"/>
+   </properties>
+  </object>
+  <object id="51" x="154.5" y="258" width="21" height="60">
+   <properties>
+    <property name="isLinkedTo" value="entry_2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#00ff00" name="Items">
+  <properties>
+   <property name="isPicked" type="bool" value="false"/>
+   <property name="type" value="key"/>
+  </properties>
+  <object id="49" x="193" y="189.813" width="32" height="64.375">
+   <properties>
+    <property name="type" value="door"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="SuperiorObjects" width="13" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,34,0,0,0,0,0,0,
+0,0,0,0,0,0,42,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
