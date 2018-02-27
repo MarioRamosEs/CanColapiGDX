@@ -3,9 +3,6 @@ package alex.mario.game.GUI;
 import com.badlogic.gdx.graphics.Texture;
 
 import java.io.File;
-import java.io.FilenameFilter;
-import java.net.FileNameMap;
-import java.nio.file.spi.FileTypeDetector;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,7 +19,7 @@ public class TexturesSystem {
     private static void loadTexturesFolder(File path){
         for (final File file : path.listFiles()) {
             if (file.isDirectory()) {
-                loadTexturesFolder(file);
+                loadTexturesFolder(file);//Recursividad cargar archivos de la carpeta encontrada
             } else {
                 if(textureFormats.contains(getExtension(file.getName()))){
                     //Format available
@@ -32,6 +29,7 @@ public class TexturesSystem {
         }
     }
     public static String getExtension(String fileName){
+        //Source: https://stackoverflow.com/a/3571239/6832219
         String extension = "";
 
         int i = fileName.lastIndexOf('.');
