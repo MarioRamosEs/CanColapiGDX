@@ -36,7 +36,7 @@ public class Door extends Item {
     public void useGround(MyGdxGame game, Character character){
         if(this.locked) {
             ArrayList<Item> itemsKey = character.hasItemsType(game.getAvailableItems().get("key"));
-            System.out.println(itemsKey.size());
+
             //Obtenemos todos los objetos del tipo key
             for (Item itemKey : itemsKey) {
                 Key key = (Key) itemKey;//Casteamos a key
