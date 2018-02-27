@@ -38,6 +38,7 @@ public class Item extends Item_L {
                 pos.x, pos.y,
                 size.x, size.y
         );
+
         shapeRenderer.end();
 
         spriteBatch.begin();
@@ -64,4 +65,5 @@ public class Item extends Item_L {
     public String getName() {
         return this.name;
     }
+
 }

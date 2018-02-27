@@ -162,4 +162,16 @@ public class Character_L {
         }
         return null;
     }
+    public ArrayList<Item> hasItemsType(Class type) {
+        ArrayList<Item> itemsFound = new ArrayList<Item>();
+        for(Item item : this.inventorySystem.items){
+            if(item.getClass() == type){
+                itemsFound.add(item);
+            }
+        }
+        return itemsFound;
+    }
+    public Vector2 getCenterPos(){
+        return this.position.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
+    }
 }

@@ -40,7 +40,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	private Character dog;
 
-	private static final float DISTANCE_USEGROUND_ITEM = 45f;
+	public static final float DISTANCE_USEGROUND_ITEM = 45f;
 
 	protected HashMap<String, Class> availableItems;
 
@@ -163,9 +163,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		}
 
 		if(keycode == Input.Keys.E){
-			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getPosition());
+			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getCenterPos());
 			if(closestItem != null){
-				float distance = closestItem.getPos().dst(this.player.getPosition());
+				float distance = closestItem.getCenterPos().dst(this.player.getCenterPos());
 				if(distance <= DISTANCE_USEGROUND_ITEM){
 					closestItem.useGround(this, this.player);
 				}

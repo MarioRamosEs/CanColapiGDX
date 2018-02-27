@@ -41,9 +41,9 @@ public class Map_L {
         Item closestItem = items.get(0);
         float closestItemDistance = closestItem.pos.dst(pos);
         for(Item item : this.itemsSystem.getItems()){
-            if(closestItemDistance >= item.pos.dst(pos)){
+            if(closestItemDistance >= item.getCenterPos().dst(pos)){
                 closestItem = item;
-                closestItemDistance = item.pos.dst(pos);
+                closestItemDistance = item.getCenterPos().dst(pos);
             }
         }
         return closestItem;

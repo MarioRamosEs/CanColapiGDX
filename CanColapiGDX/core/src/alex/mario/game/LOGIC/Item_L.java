@@ -49,4 +49,7 @@ public class Item_L {
     public Vector2 getPos(){
         return this.pos;
     }
+    public Vector2 getCenterPos(){
+        return this.pos.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
+    }
 }

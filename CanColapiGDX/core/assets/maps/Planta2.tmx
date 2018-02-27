@@ -65,8 +65,8 @@
   <object id="40" x="37" y="64" width="72" height="62"/>
   <object id="44" x="36" y="253" width="73" height="64"/>
   <object id="46" x="353" y="62" width="31" height="321"/>
-  <object id="47" x="235" y="192" width="117" height="61"/>
-  <object id="48" x="32" y="192" width="147" height="61"/>
+  <object id="47" x="249" y="192" width="103" height="61"/>
+  <object id="48" x="32" y="192" width="138" height="61"/>
  </objectgroup>
  <objectgroup color="#ff0000" name="Triggers">
   <object id="42" x="159" y="67" width="21" height="60">
@@ -97,8 +97,9 @@
    <property name="isPicked" type="bool" value="false"/>
    <property name="type" value="key"/>
   </properties>
-  <object id="49" x="193" y="189.813" width="32" height="64.375">
+  <object id="49" x="192" y="205.813" width="32" height="47.375">
    <properties>
+    <property name="doorCode" value="Llave planta 2"/>
     <property name="type" value="door"/>
    </properties>
   </object>

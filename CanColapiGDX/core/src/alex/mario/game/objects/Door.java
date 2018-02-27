@@ -10,10 +10,13 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Door extends Item {
-    Texture doorClosed = TexturesSystem.getTexture("DoorClosed.png");
-    Texture doorOpened = TexturesSystem.getTexture("DoorOpened.png");
+    protected Texture doorClosed = TexturesSystem.getTexture("DoorClosed.png");
+    protected Texture doorOpened = TexturesSystem.getTexture("DoorOpened.png");
+
+    protected String doorCode;
 
     public Door(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
@@ -22,27 +25,44 @@ public class Door extends Item {
         if(this.isPassable) this.texture = doorOpened;
         else this.texture = doorClosed;
 
-        this.pos = pos;
         this.size = new Vector2(this.texture.getWidth(), this.texture.getHeight());
+
+        this.doorCode = rectangleMapObject.getProperties().get("doorCode").toString();
     }
 
     @Override
     public void useGround(MyGdxGame game, Character character){
-        Item key = character.hasItemType(game.getAvailableItems().get("key"));
-        if(key != null){
-            System.out.println("Has Item!!");
-            open();
+        super.useGround(game, character);
+
+        ArrayList<Item> itemsKey = character.hasItemsType(game.getAvailableItems().get("key"));
+        System.out.println(itemsKey.size());
+        //Obtenemos todos los objetos del tipo key
+        for(Item itemKey : itemsKey){
+            Key key = (Key)itemKey;//Casteamos a key
+            if(key.getKeyCode().equals(this.doorCode)){
+                //Comprobamos si el código coincide
+               game.getNotificationsSystem().addNotification("Has abierto la puerta con código: '"+this.doorCode+"'.");
+                this.open();
+                return;
+            }else{
+                //La llave no tiene el código de la puerta
+            }
         }
 
+        //No tiene ninguna llave con el código de la puerta
     }
     @Override
     public void touch(MyGdxGame game, Character_L character){
-        super.touch(game, character);
-        Item key = character.hasItemType(game.getAvailableItems().get("key"));
-        if(key != null){
-            System.out.println("Has Item!!");
-            open();
-        }
+        //super.touch(game, character);
+        /*Item itemKey = character.hasItemType(game.getAvailableItems().get("key"));
+        if(itemKey != null){
+            Key key = (Key)itemKey;
+            if(key.getKeyCode().equals(this.doorCode)){
+                System.out.println("Has Item!!");
+                open();
+            }
+
+        }*/
     }
 
     private void open(){
@@ -53,5 +73,9 @@ public class Door extends Item {
     private void close(){
         this.isPassable = false;
         this.texture = doorOpened;
+    }
+
+    public String getDoorCode(){
+        return this.doorCode;
     }
 }
