@@ -65,6 +65,27 @@ public class TriggersSystem_L {
                     }
                 }
                 break;
+            case "playSound":
+                if(character != this.game.getPlayer()){return;} //Si no es el jugador
+
+                if(triggered){
+                    if(character.trigger(mapProperties)){
+                        Boolean isLooped = mapProperties.get("isLooped", false, Boolean.class);
+
+                        if(isLooped) this.game.getSoundSystem().playLoop(triggerValue);
+                        else this.game.getSoundSystem().play(triggerValue);
+                    }
+                }
+                break;
+            case "stopAllSounds":
+                if(character != this.game.getPlayer()){return;} //Si no es el jugador
+
+                if(triggered){
+                    if(character.trigger(mapProperties)){
+                        this.game.getSoundSystem().stopAll();
+                    }
+                }
+                break;
             case "changeMap":
 
                 if(triggered){
