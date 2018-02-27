@@ -158,6 +158,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         this.player.setDir(newDirection);
 
         if(keycode == Input.Keys.T){
+            this.notificationsSystem.addNotification("Collide: " + !this.player.getCollideState());
             this.player.setCollideState(!this.player.getCollideState());
         }
 
