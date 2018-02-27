@@ -41,11 +41,12 @@ public class Door extends Item {
             Key key = (Key)itemKey;//Casteamos a key
             if(key.getKeyCode().equals(this.doorCode)){
                 //Comprobamos si el código coincide
-               game.getNotificationsSystem().addNotification("Has abierto la puerta con código: '"+this.doorCode+"'.");
+                game.getNotificationsSystem().addNotification("Has abierto la puerta con código: '"+this.doorCode+"'.");
                 this.open();
                 return;
             }else{
                 //La llave no tiene el código de la puerta
+                game.getNotificationsSystem().addNotification("No puedo abrir esta puerta.");
             }
         }
 
@@ -72,7 +73,7 @@ public class Door extends Item {
 
     private void close(){
         this.isPassable = false;
-        this.texture = doorOpened;
+        this.texture = doorClosed;
     }
 
     public String getDoorCode(){
