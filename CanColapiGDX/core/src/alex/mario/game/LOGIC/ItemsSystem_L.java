@@ -46,16 +46,9 @@ public class ItemsSystem_L {
 
             //REFLECTION:
             // http://tutorials.jenkov.com/java-reflection/constructors.html
-            Iterator<String> keys = properties.getKeys();
-
             //Se llama a la función trigger para cada llave, incluimos todas las propiedades por si hace falta información
             //extra
-            System.out.println("OBJECT: " + rectangleObject.getName());
-            while(keys.hasNext()){
-                String key = keys.next();
-                System.out.println(key);
-            }
-            System.out.println("----------------");
+
             try {
 
                 Class cl = game.getAvailableItems().get(type);
