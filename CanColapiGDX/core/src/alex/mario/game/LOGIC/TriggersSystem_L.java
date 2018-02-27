@@ -75,6 +75,10 @@ public class TriggersSystem_L {
                         if(isLooped) this.game.getSoundSystem().playLoop(triggerValue);
                         else this.game.getSoundSystem().play(triggerValue);
                     }
+                }else{
+                    if(character.untrigger(mapProperties)){
+
+                    }
                 }
                 break;
             case "stopAllSounds":
@@ -83,6 +87,10 @@ public class TriggersSystem_L {
                 if(triggered){
                     if(character.trigger(mapProperties)){
                         this.game.getSoundSystem().stopAll();
+                    }
+                }else{
+                    if(character.untrigger(mapProperties)){
+
                     }
                 }
                 break;
