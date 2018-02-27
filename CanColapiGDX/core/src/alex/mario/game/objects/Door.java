@@ -18,6 +18,8 @@ public class Door extends Item {
 
     protected String doorCode;
 
+    protected boolean locked = true;
+
     public Door(RectangleMapObject rectangleMapObject){
         super(rectangleMapObject);
         this.name = "Puerta";
@@ -32,25 +34,34 @@ public class Door extends Item {
 
     @Override
     public void useGround(MyGdxGame game, Character character){
-        super.useGround(game, character);
+        if(this.locked) {
+            ArrayList<Item> itemsKey = character.hasItemsType(game.getAvailableItems().get("key"));
+            System.out.println(itemsKey.size());
+            //Obtenemos todos los objetos del tipo key
+            for (Item itemKey : itemsKey) {
+                Key key = (Key) itemKey;//Casteamos a key
+                if (key.getKeyCode().equals(this.doorCode)) {
+                    //Comprobamos si el código coincide
+                    game.getNotificationsSystem().addNotification("Has abierto la puerta con código: '" + this.doorCode + "'.");
+                    this.locked = false;
+                    this.open();
+                    return;
+                } else {
+                    //La llave no tiene el código de la puerta
 
-        ArrayList<Item> itemsKey = character.hasItemsType(game.getAvailableItems().get("key"));
-        System.out.println(itemsKey.size());
-        //Obtenemos todos los objetos del tipo key
-        for(Item itemKey : itemsKey){
-            Key key = (Key)itemKey;//Casteamos a key
-            if(key.getKeyCode().equals(this.doorCode)){
-                //Comprobamos si el código coincide
-                game.getNotificationsSystem().addNotification("Has abierto la puerta con código: '"+this.doorCode+"'.");
-                this.open();
-                return;
+                }
+            }
+            //No tiene ninguna llave con el código de la puerta
+            game.getNotificationsSystem().addNotification("No puedo abrir esta puerta.");
+            return;
+        }else{
+            if(this.isPassable){
+                this.close();
             }else{
-                //La llave no tiene el código de la puerta
-                game.getNotificationsSystem().addNotification("No puedo abrir esta puerta.");
+                this.open();
             }
         }
 
-        //No tiene ninguna llave con el código de la puerta
     }
     @Override
     public void touch(MyGdxGame game, Character_L character){
