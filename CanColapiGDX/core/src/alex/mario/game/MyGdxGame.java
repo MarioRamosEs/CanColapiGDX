@@ -29,6 +29,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private CameraSystem cameraSystem;
 	private TriggersSystem triggersSystem;
 	private NotificationsSystem notificationsSystem;
+	private TexturesSystem texturesSystem;
 
 	private BitmapFont notificationsFont;
 	private BitmapFont inventoryFont;
@@ -53,6 +54,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public void create () {
 		this.spriteBatch = new SpriteBatch();
+		this.texturesSystem = new TexturesSystem();
+		TexturesSystem.loadTextures();
 
 		this.notificationsFont = new BitmapFont();
 
