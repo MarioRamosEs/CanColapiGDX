@@ -55,7 +55,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public void create () {
 		this.spriteBatch = new SpriteBatch();
 		this.texturesSystem = new TexturesSystem();
-		TexturesSystem.loadTextures();
 
 		this.notificationsFont = new BitmapFont();
 

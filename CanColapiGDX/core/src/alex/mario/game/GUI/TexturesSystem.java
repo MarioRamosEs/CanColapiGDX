@@ -9,7 +9,11 @@ import java.util.HashMap;
 public class TexturesSystem {
     public final static File folder = new File(System.getProperty("user.dir"));
     public static HashMap<String, Texture> textures = new HashMap<String, Texture>();
-    public static ArrayList<String> textureFormats = new ArrayList<String>(){{add("png");}};
+    public static ArrayList<String> textureFormats = new ArrayList<String>();
+    public TexturesSystem(){
+        textureFormats.add("png");
+        loadTextures();
+    }
     public static Texture getTexture(String textureName){
         return textures.get(textureName);
     }
