@@ -1,0 +1,52 @@
+package alex.mario.game.GUI;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class SoundsSystem {
+    public final static File folder = new File(System.getProperty("user.dir"));
+    public static HashMap<String, Sound> sounds = new HashMap<String, Sound>();
+    public static ArrayList<String> textureFormats = new ArrayList<String>();
+
+    public SoundsSystem(){
+        textureFormats.add("mp3");
+        loadTextures();
+        
+    }
+
+    public static Sound getSound(String soundName){
+        return sounds.get(soundName);
+    }
+    public static void loadTextures(){
+        loadTexturesFolder(folder);
+    }
+    private static void loadTexturesFolder(File path){
+        for (final File file : path.listFiles()) {
+            if (file.isDirectory()) {
+                loadTexturesFolder(file);//Recursividad cargar archivos de la carpeta encontrada
+            } else {
+                if(textureFormats.contains(getExtension(file.getName()))){
+                    //Format available
+                    sounds.put(file.getName(), Gdx.audio.newSound(Gdx.files.internal(file.getAbsolutePath())));
+                }
+            }
+        }
+    }
+    public static String getExtension(String fileName){
+        //Source: https://stackoverflow.com/a/3571239/6832219
+        String extension = "";
+
+        int i = fileName.lastIndexOf('.');
+        int p = Math.max(fileName.lastIndexOf('/'), fileName.lastIndexOf('\\'));
+
+        if (i > p) {
+            extension = fileName.substring(i+1);
+        }
+        return extension;
+    }
+}

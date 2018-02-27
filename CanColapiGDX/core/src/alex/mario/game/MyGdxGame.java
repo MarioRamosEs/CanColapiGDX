@@ -23,13 +23,14 @@ import java.util.Random;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
-
 	private MapSystem mapSystem;
 	private Player player;
 	private CameraSystem cameraSystem;
 	private TriggersSystem triggersSystem;
 	private NotificationsSystem notificationsSystem;
+	private SoundSystem soundSystem;
 	private TexturesSystem texturesSystem;
+	private SoundsSystem soundsSystem;
 
 	private BitmapFont notificationsFont;
 	private BitmapFont inventoryFont;
@@ -55,6 +56,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public void create () {
 		this.spriteBatch = new SpriteBatch();
 		this.texturesSystem = new TexturesSystem();
+		this.soundsSystem = new SoundsSystem();
 
 		this.notificationsFont = new BitmapFont();
 
@@ -69,12 +71,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	    this.cameraSystem = new CameraSystem(this);
         this.mapSystem = new MapSystem(this);
 		this.triggersSystem = new TriggersSystem(this);
+		this.soundSystem = new SoundSystem(this);
 
 		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("Planta1"));
+		this.mapSystem.loadMap(formatToFilePath("mapaTest"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("Planta1")));
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("mapaTest")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
 		this.characters = new ArrayList<Character>();
@@ -287,8 +290,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public NotificationsSystem getNotificationsSystem() {
 		return notificationsSystem;
 	}
+	public SoundSystem getSoundSystem() { return soundSystem; }
 
-	public Vector2 getRandomDirection(){
+    public Vector2 getRandomDirection(){
 		return this.directions[new Random().nextInt(this.directions.length)];
 	}
 
