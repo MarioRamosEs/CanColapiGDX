@@ -42,12 +42,13 @@ public class ItemsSystem_L {
             MapProperties properties = rectangleObject.getProperties();
 
             String type = properties.get("type", "error", String.class);
-            Boolean isPicked = properties.get("isPicked", true, Boolean.class);
             //items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
 
             //REFLECTION:
             // http://tutorials.jenkov.com/java-reflection/constructors.html
-            if(type.equals("error")){continue;}
+            //Se llama a la función trigger para cada llave, incluimos todas las propiedades por si hace falta información
+            //extra
+
             try {
 
                 Class cl = game.getAvailableItems().get(type);
