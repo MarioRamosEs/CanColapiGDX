@@ -74,10 +74,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.soundSystem = new SoundSystem(this);
 
 		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("mapaTest"));
+		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("mapaTest")));
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
 		this.characters = new ArrayList<Character>();
