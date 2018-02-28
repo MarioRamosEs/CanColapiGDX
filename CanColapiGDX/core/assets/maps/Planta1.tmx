@@ -160,9 +160,9 @@
   <object id="9" x="467" y="96" width="10" height="176"/>
   <object id="10" x="688" y="289" width="8.33333" height="92"/>
   <object id="11" x="805" y="286" width="11" height="97"/>
-  <object id="15" x="804" y="382.667" width="310.667" height="96"/>
+  <object id="15" x="804" y="382.542" width="313.417" height="96.125"/>
   <object id="16" x="1165.33" y="370.667" width="209.333" height="109.333"/>
-  <object id="17" x="1090.67" y="126.667" width="26.6667" height="254.667"/>
+  <object id="17" x="1090.67" y="126.667" width="26.6667" height="258.167"/>
   <object id="19" x="1121.67" y="129.333" width="285" height="93.3333"/>
   <object id="20" x="1251" y="220.333" width="58.3333" height="65.3333"/>
   <object id="22" x="1374.67" y="225.667" width="32" height="158.333"/>
@@ -203,7 +203,7 @@
     <property name="CambioMapa" value="Exterior1"/>
    </properties>
   </object>
-  <object id="45" x="824.667" y="898" width="28.6667" height="23.3333">
+  <object id="45" x="737.667" y="205" width="28.6667" height="23.3333">
    <properties>
     <property name="isLinkedTo" value="start"/>
    </properties>
@@ -251,6 +251,28 @@
    <properties>
     <property name="justOnce" type="bool" value="false"/>
     <property name="sendMessage" value="Menudo cuadro más escalofriante "/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#00ff00" name="Items">
+  <object id="70" template="items/key.tx" type="key" x="1315.33" y="225.334">
+   <properties>
+    <property name="keyCode" value="Llave planta 2"/>
+   </properties>
+  </object>
+  <object id="79" template="items/key.tx" type="key" x="925.333" y="201.333">
+   <properties>
+    <property name="keyCode" value="Puerta Principal"/>
+   </properties>
+  </object>
+  <object id="97" template="items/door.tx" type="door" x="735.333" y="96.3125">
+   <properties>
+    <property name="doorCode" value="Puerta Principal"/>
+   </properties>
+  </object>
+  <object id="98" template="items/door.tx" type="door" x="1120.33" y="476.667">
+   <properties>
+    <property name="isLocked" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -303,28 +325,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#00ff00" name="Items">
-  <object id="70" x="880.667" y="892.667" width="26.6667" height="26.6667">
-   <properties>
-    <property name="keyCode" value="Llave planta 2"/>
-    <property name="type" value="key"/>
-   </properties>
-  </object>
-  <object id="79" x="925.333" y="201.333" width="26.6667" height="26.6667">
-   <properties>
-    <property name="keyCode" value="Puerta Principal"/>
-    <property name="type" value="key"/>
-   </properties>
-  </object>
-  <object id="97" template="items/door.tx" type="door" x="735" y="49.6458">
-   <properties>
-    <property name="doorCode" value="Puerta Principal"/>
-   </properties>
-  </object>
-  <object id="98" template="items/door.tx" type="door" x="1121.33" y="448.667">
-   <properties>
-    <property name="isLocked" type="bool" value="false"/>
-   </properties>
-  </object>
- </objectgroup>
 </map>
