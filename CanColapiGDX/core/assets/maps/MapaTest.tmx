@@ -91,6 +91,7 @@
   <object id="42" x="580" y="193" width="51.375" height="62.875"/>
   <object id="49" x="829.333" y="-1.33333" width="33.3333" height="253.333"/>
  </objectgroup>
+ <objectgroup name="Path"/>
  <objectgroup color="#ff0000" name="Triggers">
   <object id="22" x="1252.67" y="254" width="26.6667" height="94.6667">
    <properties>

@@ -27,7 +27,7 @@ public class Map extends Map_L {
         this.itemsSystem.draw();
     }
     public void DrawForeground(){
-        this.tiledMapRenderer.render(new int[]{6}); //Capa superior Objects
+        this.tiledMapRenderer.render(new int[]{7}); //Capa superior Objects
     }
 
     public void reloadMap() {
