@@ -1,12 +1,13 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-public class CameraSystem_L {
+public class CameraSystem_L implements iSystem_L {
     protected MyGdxGame game;
     protected OrthographicCamera camera;
     protected int zoom = 0;
@@ -29,7 +30,7 @@ public class CameraSystem_L {
 
     public void update(){
         //Actualizo la posición de la cámara respecto a la posición del jugador
-        this.setPosition(this.game.getPlayer().getPosition());
+        this.setPosition(this.game.getPlayer().getPos());
     }
     public void resetPosition(){
         camera.setToOrtho(false,w,h);

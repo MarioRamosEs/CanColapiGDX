@@ -1,5 +1,6 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iSystem;
 import alex.mario.game.LOGIC.Character_L;
 import alex.mario.game.LOGIC.MapSystem_L;
 import alex.mario.game.MyGdxGame;
@@ -12,7 +13,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.ArrayList;
 
-public class MapSystem extends MapSystem_L{
+public class MapSystem extends MapSystem_L implements iSystem {
 
     public MapSystem(MyGdxGame game){
         super(game);
@@ -67,4 +68,8 @@ public class MapSystem extends MapSystem_L{
         return false;
     }
 
+    @Override
+    public void draw() {
+
+    }
 }

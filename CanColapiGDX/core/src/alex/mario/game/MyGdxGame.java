@@ -2,7 +2,8 @@ package alex.mario.game;
 
 import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
-import alex.mario.game.LOGIC.Item_L;
+import alex.mario.game.Interfaces.iSystem;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Player;
 import alex.mario.game.objects.Door;
@@ -82,6 +83,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		this.notificationsSystem = new NotificationsSystem(this);
 		Gdx.input.setInputProcessor(this);
+
 		System.out.println("ALL LOADED OK");
 	}
 
@@ -195,9 +197,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 
 		if(keycode == Input.Keys.E){
-			Item closestItem = this.dog.getMap().getClosestItemTo(this.dog.getPosition());
+			Item closestItem = this.dog.getMap().getClosestItemTo(this.dog.getPos());
 			if(closestItem != null){
-				float distance = closestItem.getPos().dst(this.dog.getPosition());
+				float distance = closestItem.getPos().dst(this.dog.getPos());
 				if(distance <= DISTANCE_USEGROUND_ITEM){
 					closestItem.useGround(this, this.dog);
 				}

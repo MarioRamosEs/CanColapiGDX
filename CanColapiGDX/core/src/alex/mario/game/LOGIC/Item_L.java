@@ -1,13 +1,10 @@
 package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.Character;
-import alex.mario.game.GUI.Map;
 import alex.mario.game.MyGdxGame;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.HashMap;
 
@@ -36,7 +33,7 @@ public class Item_L {
     }
     public void touch(MyGdxGame game, Character_L character){
         if(!this.touchedBy.containsKey(character)){
-            this.touchedBy.put(character, Double.parseDouble(character.getPosition().dst(this.getPos())+""));
+            this.touchedBy.put(character, Double.parseDouble(character.getPos().dst(this.getPos())+""));
             //Object touchec
         }
     }

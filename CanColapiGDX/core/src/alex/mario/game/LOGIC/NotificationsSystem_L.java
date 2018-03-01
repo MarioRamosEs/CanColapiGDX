@@ -1,6 +1,7 @@
 package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.Notification;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,7 +10,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 import java.util.ArrayList;
 
-public class NotificationsSystem_L {
+public class NotificationsSystem_L implements iSystem_L {
     protected MyGdxGame game;
     protected ShapeRenderer shapeRenderer;
     protected SpriteBatch spriteBatch;

@@ -1,5 +1,6 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iSystem;
 import alex.mario.game.LOGIC.CameraSystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
@@ -8,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class CameraSystem extends CameraSystem_L{
+public class CameraSystem extends CameraSystem_L implements iSystem {
     //CLASS vacía, pero aquí debería ir lo relacionado con HUD, mostrar cosas en pantalla etc (la cámara es lo último que se dibuja)
     private SpriteBatch spriteBatch;
     private ShapeRenderer shapeRenderer;

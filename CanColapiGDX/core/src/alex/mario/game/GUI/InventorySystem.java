@@ -1,5 +1,6 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iSystem;
 import alex.mario.game.LOGIC.InventorySystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-public class InventorySystem extends InventorySystem_L {
+public class InventorySystem extends InventorySystem_L implements iSystem {
     protected SpriteBatch spriteBatch;
     protected ShapeRenderer shapeRenderer;
     public boolean isVisible = false;

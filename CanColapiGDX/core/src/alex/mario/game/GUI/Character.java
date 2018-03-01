@@ -1,14 +1,14 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iCharacter;
 import alex.mario.game.LOGIC.Character_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-public class Character extends Character_L {
+public class Character extends Character_L implements iCharacter {
     private SpriteBatch batch;
     private CameraSystem cameraSystem;
     //private Texture player;
@@ -31,7 +31,7 @@ public class Character extends Character_L {
         //Pintado
         batch.begin();
         batch.setProjectionMatrix(cameraSystem.getCamera().combined);
-        batch.draw(playerFrames[getDirection()][getStep()], position.x, position.y);
+        batch.draw(playerFrames[getLastDir()][getStep()], position.x, position.y);
         batch.end();
     }
 }
