@@ -1,6 +1,8 @@
 package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.*;
+import alex.mario.game.Interfaces.iCharacter_L;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.Gdx;
@@ -10,7 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-public class Character_L {
+public class Character_L implements iCharacter_L {
     public static final int DEFAULT_VEL = 4;
     protected MapSystem mapSystem;
     protected TriggersSystem triggersSystem;
@@ -78,7 +80,7 @@ public class Character_L {
             return true;
         }
     }
-    public boolean untrigger(MapProperties mapProperties){
+    public boolean unTrigger(MapProperties mapProperties){
         if(mapProperties.get("justOnce", false, Boolean.class)){return false;}
         if(!this.triggeredBy.contains(mapProperties.get("id").toString())){
             return false;
@@ -104,11 +106,11 @@ public class Character_L {
     public Vector2 getDir(){
         return this.direction;
     }
-    public Vector2 getPosition(){
+    public Vector2 getPos(){
         return this.position;
     }
 
-    protected int getDirection(){ //TODO hacer cambios temporales
+    public int getLastDir(){ //TODO hacer cambios temporales
         if(direction.x < 0){
             lastDir = 1;
             return 1;
@@ -130,7 +132,7 @@ public class Character_L {
         return lastDir;
     }
 
-    protected int getStep(){
+    public int getStep(){
         if(System.currentTimeMillis() > millis+200 && !direction.epsilonEquals(0,0)){
             millis = System.currentTimeMillis();
             if(step == 0) step++;

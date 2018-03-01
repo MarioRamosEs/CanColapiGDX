@@ -1,6 +1,7 @@
 package alex.mario.game.LOGIC;
 
 import alex.mario.game.GUI.Item;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.maps.MapLayer;
@@ -17,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ItemsSystem_L {
+public class ItemsSystem_L implements iSystem_L {
     protected MyGdxGame game;
     protected TiledMap tiledMap;
     protected ArrayList<Item> items;

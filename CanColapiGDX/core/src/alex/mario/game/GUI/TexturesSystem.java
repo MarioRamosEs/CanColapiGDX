@@ -1,12 +1,13 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iSystem;
 import com.badlogic.gdx.graphics.Texture;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TexturesSystem {
+public class TexturesSystem{
     public final static File folder = new File(System.getProperty("user.dir"));
     public static HashMap<String, Texture> textures = new HashMap<String, Texture>();
     public static ArrayList<String> textureFormats = new ArrayList<String>();

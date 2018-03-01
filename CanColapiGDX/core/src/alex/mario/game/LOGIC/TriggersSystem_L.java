@@ -1,18 +1,17 @@
 package alex.mario.game.LOGIC;
 
-import alex.mario.game.GUI.Item;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Iterator;
 
-public class TriggersSystem_L {
+public class TriggersSystem_L implements iSystem_L {
 
     protected MyGdxGame game;
     public TriggersSystem_L(MyGdxGame game) {
@@ -59,7 +58,7 @@ public class TriggersSystem_L {
                         //character.addItem(new Item("Llave magica"));
                     }
                 }else{
-                    if(character.untrigger(mapProperties)){
+                    if(character.unTrigger(mapProperties)){
                         this.game.getNotificationsSystem().addNotification(triggerValue);
                         //character.addItem(new Item("Llave magnética roja"));
                     }
@@ -76,7 +75,7 @@ public class TriggersSystem_L {
                         else this.game.getSoundsSystem().play(triggerValue);
                     }
                 }else{
-                    if(character.untrigger(mapProperties)){
+                    if(character.unTrigger(mapProperties)){
 
                     }
                 }
@@ -89,7 +88,7 @@ public class TriggersSystem_L {
                         this.game.getSoundsSystem().stopAll();
                     }
                 }else{
-                    if(character.untrigger(mapProperties)){
+                    if(character.unTrigger(mapProperties)){
 
                     }
                 }
@@ -115,11 +114,16 @@ public class TriggersSystem_L {
                         this.game.getCameraSystem().proportionalZoom(Float.parseFloat(triggerValue));
                     }
                 }else { //DesZoom
-                    if (character.untrigger(mapProperties)) {
+                    if (character.unTrigger(mapProperties)) {
                         this.game.getCameraSystem().proportionalZoom(-Float.parseFloat(triggerValue));
                     }
                 }
                 break;
         }
+    }
+
+    @Override
+    public void update() {
+
     }
 }
