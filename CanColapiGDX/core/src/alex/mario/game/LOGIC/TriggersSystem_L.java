@@ -72,8 +72,8 @@ public class TriggersSystem_L {
                     if(character.trigger(mapProperties)){
                         Boolean isLooped = mapProperties.get("isLooped", false, Boolean.class);
 
-                        if(isLooped) this.game.getSoundSystem().playLoop(triggerValue);
-                        else this.game.getSoundSystem().play(triggerValue);
+                        if(isLooped) this.game.getSoundsSystem().playLoop(triggerValue);
+                        else this.game.getSoundsSystem().play(triggerValue);
                     }
                 }else{
                     if(character.untrigger(mapProperties)){
@@ -86,7 +86,7 @@ public class TriggersSystem_L {
 
                 if(triggered){
                     if(character.trigger(mapProperties)){
-                        this.game.getSoundSystem().stopAll();
+                        this.game.getSoundsSystem().stopAll();
                     }
                 }else{
                     if(character.untrigger(mapProperties)){
