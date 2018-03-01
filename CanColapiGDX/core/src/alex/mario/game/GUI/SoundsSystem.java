@@ -1,5 +1,6 @@
 package alex.mario.game.GUI;
 
+import alex.mario.game.Interfaces.iSystem;
 import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SoundsSystem {
+public class SoundsSystem{
     public final static File folder = new File(System.getProperty("user.dir"));
     public static HashMap<String, Music> sounds = new HashMap<String, Music>();
     public static ArrayList<String> textureFormats = new ArrayList<String>();
@@ -119,4 +120,5 @@ public class SoundsSystem {
             //dispose
         }
     }
+
 }

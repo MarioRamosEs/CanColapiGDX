@@ -3,6 +3,7 @@ package alex.mario.game.LOGIC;
 import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.TriggersSystem;
+import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.LOGIC.Character_L;
 import com.badlogic.gdx.maps.MapLayer;
@@ -21,7 +22,7 @@ import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
 
-public class MapSystem_L {
+public class MapSystem_L implements iSystem_L {
 
     protected MyGdxGame game;
     protected HashMap<String, Map> maps;
@@ -87,5 +88,10 @@ public class MapSystem_L {
         }else{
             return null;
         }
+    }
+
+    @Override
+    public void update() {
+
     }
 }
