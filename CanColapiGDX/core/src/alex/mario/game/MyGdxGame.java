@@ -28,7 +28,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private CameraSystem cameraSystem;
 	private TriggersSystem triggersSystem;
 	private NotificationsSystem notificationsSystem;
-	private SoundSystem soundSystem;
 	private TexturesSystem texturesSystem;
 	private SoundsSystem soundsSystem;
 
@@ -71,7 +70,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	    this.cameraSystem = new CameraSystem(this);
         this.mapSystem = new MapSystem(this);
 		this.triggersSystem = new TriggersSystem(this);
-		this.soundSystem = new SoundSystem(this);
 
 		//Cargamos el mapa
 		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
@@ -295,7 +293,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public NotificationsSystem getNotificationsSystem() {
 		return notificationsSystem;
 	}
-	public SoundSystem getSoundSystem() { return soundSystem; }
+	public SoundsSystem getSoundsSystem() {
+		return this.soundsSystem;
+	}
 
     public Vector2 getRandomDirection(){
 		return this.directions[new Random().nextInt(this.directions.length)];

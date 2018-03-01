@@ -14,6 +14,7 @@ public class SoundsSystem {
     public final static File folder = new File(System.getProperty("user.dir"));
     public static HashMap<String, Music> sounds = new HashMap<String, Music>();
     public static ArrayList<String> textureFormats = new ArrayList<String>();
+    public static HashMap<String, Music> soundsPlaying = new HashMap<String, Music>();
 
     public SoundsSystem(){
         textureFormats.add("mp3");
@@ -53,10 +54,69 @@ public class SoundsSystem {
         return extension;
     }
 
+    public void play(String sound){
+        cleanSoundsPlaying();
+        if(!soundsPlaying.containsKey(sound)) { //No solapar dos veces el mismo audio
+            Music tempSound = SoundsSystem.getMusic(sound);
+            tempSound.play();
+            soundsPlaying.put(sound, tempSound);
+        }
+    }
     private static void preLoad(Music temp){
         temp.setVolume(0);
         temp.play();
         temp.stop();
         temp.setVolume(1);
+    }
+
+    public void playLoop(String sound){
+        cleanSoundsPlaying();
+        if(!soundsPlaying.containsKey(sound)) { //No solapar dos veces el mismo audio
+            Music tempSound = SoundsSystem.getMusic(sound);
+            tempSound.setLooping(true);
+            tempSound.play();
+            soundsPlaying.put(sound, tempSound);
+        }
+    }
+
+    public void stop(String sound){
+        cleanSoundsPlaying();
+        if(soundsPlaying.containsKey(sound)) {
+            Music tempSound = soundsPlaying.get(sound);
+            tempSound.stop();
+            soundsPlaying.remove(sound);
+        }
+    }
+
+    public void stopAll(){
+        cleanSoundsPlaying();
+
+        ArrayList<String> cue = new ArrayList<>();
+        for(Map.Entry<String, Music> entry : soundsPlaying.entrySet()) {
+            String key = entry.getKey();
+
+            Music tempSound = soundsPlaying.get(key);
+            tempSound.stop();
+            cue.add(key);
+        }
+        remove(cue);
+    }
+
+    private void cleanSoundsPlaying(){ //Elimina los audios que no están sonando
+        ArrayList<String> cue = new ArrayList<>();
+        for(Map.Entry<String, Music> entry : soundsPlaying.entrySet()) {
+            String key = entry.getKey();
+            Music tempSound = soundsPlaying.get(key);
+
+            if(!tempSound.isPlaying()) cue.add(key); //soundsPlaying.remove(key);
+        }
+        remove(cue);
+    }
+
+    private void remove(ArrayList<String> cue){
+        for(String element : cue){
+            soundsPlaying.remove(element);
+            //dispose
+        }
     }
 }
