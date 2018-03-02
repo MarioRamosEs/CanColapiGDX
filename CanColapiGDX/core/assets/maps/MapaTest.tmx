@@ -108,7 +108,7 @@
     <property name="isLinkedTo" value="entry_1"/>
    </properties>
   </object>
-  <object id="30" x="707" y="270" width="28" height="16">
+  <object id="30" x="543" y="378" width="28" height="16">
    <properties>
     <property name="isLinkedTo" value="start"/>
    </properties>

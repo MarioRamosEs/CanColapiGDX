@@ -59,7 +59,7 @@ public class TriggersSystem_L implements iSystem_L {
                     }
                 }else{
                     if(character.unTrigger(mapProperties)){
-                        this.game.getNotificationsSystem().addNotification(triggerValue);
+                        //this.game.getNotificationsSystem().addNotification(triggerValue);
                         //character.addItem(new Item("Llave magnética roja"));
                     }
                 }
