@@ -61,7 +61,7 @@ public class CharacterSpawner extends Item {
             System.out.println("SPAWNED");
             this.lastSpawn = System.currentTimeMillis();
             Character character = new Dog(this.game, this.map);
-            character.setPos(this.pos);
+            character.setPos(this.pos.cpy());
             System.out.println(this.name);
             this.game.addCharacter(character);
             this.quantity_spawned++;
