@@ -2,6 +2,7 @@ package alex.mario.game.objects;
 
 import alex.mario.game.GUI.Character;
 import alex.mario.game.GUI.Item;
+import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.graphics.Color;
@@ -16,8 +17,8 @@ import com.badlogic.gdx.utils.Align;
 
 public class Key extends Item {
     protected String keyCode;
-    public Key(RectangleMapObject rectangleMapObject){
-        super(rectangleMapObject);
+    public Key(MyGdxGame game, Map map, RectangleMapObject rectangleMapObject){
+        super(game, map, rectangleMapObject);
         this.name = rectangleMapObject.getProperties().get("name", "Llave", String.class);
 
         this.texture = TexturesSystem.getTexture(rectangleMapObject.getProperties().get("texture", "pokeBall.png", String.class));

@@ -6,6 +6,7 @@ import alex.mario.game.Interfaces.iSystem;
 import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Player;
+import alex.mario.game.objects.CharacterSpawner;
 import alex.mario.game.objects.Door;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -44,6 +45,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public static final float DISTANCE_USEGROUND_ITEM = 45f;
 
 	protected HashMap<String, Class> availableItems;
+
+	public static final Vector2 DEFAULT_TILE_SIZE= new Vector2(32, 32);
 
 	//Directions
 	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
@@ -92,6 +95,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		ret.put("key", Key.class);
 		ret.put("door", Door.class);
+		ret.put("characterSpawner", CharacterSpawner.class);
 
 		return ret;
 	}
@@ -109,6 +113,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private void update(){
 		//Actualizamos al jugador
 		player.update();
+
+		this.mapSystem.update();
 
 		this.notificationsSystem.update();
 
@@ -175,7 +181,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			if(closestItem != null){
 				float distance = closestItem.getCenterPos().dst(this.player.getCenterPos());
 				if(distance <= DISTANCE_USEGROUND_ITEM){
-					closestItem.useGround(this, this.player);
+					closestItem.useGround(this.player);
 				}
 			}
 		}
@@ -201,7 +207,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			if(closestItem != null){
 				float distance = closestItem.getPos().dst(this.dog.getPos());
 				if(distance <= DISTANCE_USEGROUND_ITEM){
-					closestItem.useGround(this, this.dog);
+					closestItem.useGround(this.dog);
 				}
 			}
 		}
@@ -329,5 +335,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	public HashMap<String, Class> getAvailableItems() {
 		return this.availableItems;
+	}
+
+	public void addCharacter(Character character) {
+		this.characters.add(character);
 	}
 }

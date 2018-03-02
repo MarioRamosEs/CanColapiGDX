@@ -2,6 +2,7 @@ package alex.mario.game.objects;
 
 import alex.mario.game.GUI.Character;
 import alex.mario.game.GUI.Item;
+import alex.mario.game.GUI.Map;
 import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.LOGIC.Character_L;
 import alex.mario.game.MyGdxGame;
@@ -19,8 +20,8 @@ public class Door extends Item {
 
     protected boolean locked;
 
-    public Door(RectangleMapObject rectangleMapObject){
-        super(rectangleMapObject);
+    public Door(MyGdxGame game, Map map, RectangleMapObject rectangleMapObject){
+        super(game, map, rectangleMapObject);
 
         this.name = rectangleMapObject.getProperties().get("name", "Puerta", String.class);
 
@@ -39,7 +40,7 @@ public class Door extends Item {
     }
 
     @Override
-    public void useGround(MyGdxGame game, Character character){
+    public void useGround(Character character){
         if(this.locked) {
             ArrayList<Item> itemsKey = character.hasItemsType(game.getAvailableItems().get("key"));
 
@@ -70,7 +71,7 @@ public class Door extends Item {
 
     }
     @Override
-    public void touch(MyGdxGame game, Character_L character){
+    public void touch(Character_L character){
         //super.touch(game, character);
         /*Item itemKey = character.hasItemType(game.getAvailableItems().get("key"));
         if(itemKey != null){

@@ -22,8 +22,8 @@ public class Item extends Item_L {
     protected Texture texture;
     protected boolean isVisible;
 
-    public Item(RectangleMapObject rectangleMapObject){
-        super(rectangleMapObject);
+    public Item(MyGdxGame game, Map map, RectangleMapObject rectangleMapObject){
+        super(game, map, rectangleMapObject);
         this.isVisible = rectangleMapObject.getProperties().get("isVisible", true, Boolean.class);
 
         this.notificationLayout = new GlyphLayout();
@@ -62,7 +62,7 @@ public class Item extends Item_L {
     }
 
     @Override
-    public void useGround(MyGdxGame game, Character character){
+    public void useGround(Character character){
         Map map = character.getMap();
         map.removeItem(this);
         character.addItem(this);

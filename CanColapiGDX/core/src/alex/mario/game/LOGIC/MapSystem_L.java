@@ -92,6 +92,8 @@ public class MapSystem_L implements iSystem_L {
 
     @Override
     public void update() {
-
+        for(Map map : maps.values()){
+            map.update();
+        }
     }
 }

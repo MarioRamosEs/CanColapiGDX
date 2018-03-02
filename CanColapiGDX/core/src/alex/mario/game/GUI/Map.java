@@ -16,7 +16,7 @@ public class Map extends Map_L {
     public Map(MyGdxGame game, String mapName){
         super(game, mapName);
         this.tiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap);
-        this.itemsSystem = new ItemsSystem(game, this.tiledMap);
+        this.itemsSystem = new ItemsSystem(game, this.tiledMap, this);
     }
     public void DrawBackground(CameraSystem_L cameraSystem){
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -33,6 +33,6 @@ public class Map extends Map_L {
     public void reloadMap() {
         this.tiledMap = new TmxMapLoader().load(this.mapName);
         this.tiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap);
-        this.itemsSystem = new ItemsSystem(game, this.tiledMap);
+        this.itemsSystem = new ItemsSystem(game, this.tiledMap, this);
     }
 }
