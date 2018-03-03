@@ -119,6 +119,17 @@ public class TriggersSystem_L implements iSystem_L {
                     }
                 }
                 break;
+            case "hidden":
+                if(triggered){
+                    if(character.trigger(mapProperties)) {
+                        character.setIsHiding(true);
+                    }
+                }else {
+                    if (character.unTrigger(mapProperties)) {
+                        character.setIsHiding(false);
+                    }
+                }
+                break;
         }
     }
 

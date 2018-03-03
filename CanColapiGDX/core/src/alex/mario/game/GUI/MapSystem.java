@@ -44,10 +44,10 @@ public class MapSystem extends MapSystem_L implements iSystem {
             if(item.isPassable() || character.isPassable()){continue;}
             Rectangle itemRectangle = item.getRectangle();
             if(Intersector.overlaps(itemRectangle, playerRectNewPosition)){
-                item.touch(this.game, character);
+                item.touch(character);
                 return true;
             }else{
-                item.untouch(this.game, character);
+                item.untouch(character);
             }
         }
         return false;

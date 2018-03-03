@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object width="20" height="20">
+  <properties>
+   <property name="isPassable" type="bool" value="false"/>
+   <property name="isVisible" type="bool" value="false"/>
+   <property name="quantity" type="int" value="2"/>
+   <property name="spawnEvery" type="int" value="5000"/>
+  </properties>
+ </object>
+</template>

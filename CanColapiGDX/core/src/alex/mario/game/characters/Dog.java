@@ -7,7 +7,7 @@ import alex.mario.game.MyGdxGame;
 public class Dog extends Character {
     public Dog(MyGdxGame game, Map map){
         super(game, map);
-        //this.direction = this.game.getRandomDirection();
+        this.direction = this.game.getRandomDirection();
     }
 
     @Override

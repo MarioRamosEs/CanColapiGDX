@@ -12,8 +12,8 @@ public class ItemsSystem extends ItemsSystem_L implements iSystem {
     protected SpriteBatch spriteBatch;
     protected CameraSystem cameraSystem;
     protected Matrix4 originalProjection;
-    public ItemsSystem(MyGdxGame game, TiledMap tiledMap){
-        super(game, tiledMap);
+    public ItemsSystem(MyGdxGame game, TiledMap tiledMap, Map map){
+        super(game, tiledMap, map);
         this.cameraSystem = this.game.getCameraSystem();
         this.spriteBatch = this.game.getSpriteBatch();
 

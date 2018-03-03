@@ -48,4 +48,8 @@ public class Map_L {
         }
         return closestItem;
     }
+
+    public void update() {
+        this.itemsSystem.update();
+    }
 }
