@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="66">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="76">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <layer name="Floor" width="40" height="20">
   <data encoding="csv">
@@ -91,7 +91,43 @@
   <object id="42" x="580" y="193" width="51.375" height="62.875"/>
   <object id="49" x="829.333" y="-1.33333" width="33.3333" height="253.333"/>
  </objectgroup>
- <objectgroup name="Path"/>
+ <objectgroup name="Path">
+  <object id="67" x="128" y="129.333" width="32.6667" height="32">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="68" x="138" y="211.333" width="11.3333" height="6">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="70" x="248" y="204" width="10" height="10">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="72" x="234" y="312" width="9.33337" height="10.6667">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="73" x="539.333" y="300.667" width="9.33337" height="7.33337">
+   <properties>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
+  <object id="74" x="522.667" y="76" width="9.33337" height="8.00003">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="75" x="126" y="76" width="14" height="8.6667">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup color="#ff0000" name="Triggers">
   <object id="22" x="1252.67" y="254" width="26.6667" height="94.6667">
    <properties>
