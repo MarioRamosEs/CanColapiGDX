@@ -22,7 +22,7 @@ public class Character extends Character_L implements iCharacter {
         this.cameraSystem = game.getCameraSystem();
 
         batch = new SpriteBatch();
-        playerFrames = TextureRegion.split(TexturesSystem.getTexture("Avatar-Red1.png"),48,64);
+        playerFrames = TextureRegion.split(TexturesSystem.getTexture("fk002-brendan.png"),32,50);
     }
 
     public void draw(){

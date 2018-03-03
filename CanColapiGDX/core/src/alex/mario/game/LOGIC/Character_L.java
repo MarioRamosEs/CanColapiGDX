@@ -34,6 +34,7 @@ public class Character_L implements iCharacter_L {
     protected boolean isPassable = false;
     protected boolean isRunning = false;
     protected boolean isHiding = false;
+
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
         this.map = map;
@@ -47,7 +48,7 @@ public class Character_L implements iCharacter_L {
 
         this.position = new Vector2(0,0);
         this.direction = new Vector2(0,0);
-        this.size = new Vector2(40,32);
+        this.size = new Vector2(32,40); //Valor ajustado a mano, no sobreescribir.
     }
     public void update(){
         if(this.isRunning){this.vel = DEFAULT_VEL * 2;}else{this.vel = DEFAULT_VEL;}

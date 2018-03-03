@@ -75,10 +75,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.triggersSystem = new TriggersSystem(this);
 
 		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("MapaTest"));
+		this.mapSystem.loadMap(formatToFilePath("Planta1"));
 		//this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
+		player = new Player(this, this.mapSystem.getMap(formatToFilePath("Planta1")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
 		this.characters = new ArrayList<Character_IA>();
