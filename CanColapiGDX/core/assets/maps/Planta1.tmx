@@ -3,7 +3,6 @@
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
- <tileset firstgid="2313" source="sewer_1.tsx"/>
  <layer name="Floor" width="45" height="45">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,1113,1114,1115,1115,1115,1115,1115,1115,1115,0,0,1115,1115,1115,1115,1115,1116,1117,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -151,6 +150,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="Path"/>
  <objectgroup name="Collisions">
   <object id="1" x="535.667" y="134.667" width="80" height="67"/>
   <object id="4" x="464" y="0" width="261.5" height="95"/>
