@@ -107,7 +107,7 @@
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="72" x="234" y="312" width="9.33337" height="10.6667">
+  <object id="72" template="items/pathDirection.tx" x="234" y="312">
    <properties>
     <property name="direction" value="right"/>
    </properties>
@@ -161,23 +161,23 @@
     <property name="sendMessage" value="Me has pisado pero no te lo diré más"/>
    </properties>
   </object>
-  <object id="50" x="640" y="68" width="33.3333" height="32">
+  <object id="50" x="640" y="66" width="33.3333" height="32">
    <properties>
     <property name="changeMap" value="MapaTest"/>
     <property name="linkTo" value="teleport_1"/>
    </properties>
   </object>
-  <object id="51" x="640.667" y="107" width="34.6667" height="33.3333">
+  <object id="51" x="639.334" y="128.333" width="31.3334" height="32">
    <properties>
     <property name="isLinkedTo" value="teleport_2"/>
    </properties>
   </object>
-  <object id="52" x="766.333" y="117.667" width="34.6667" height="33.3333">
+  <object id="52" x="766.333" y="104.334" width="34.6667" height="33.3333">
    <properties>
     <property name="isLinkedTo" value="teleport_1"/>
    </properties>
   </object>
-  <object id="53" x="767.333" y="156" width="33.3333" height="32">
+  <object id="53" x="768" y="162" width="33.3333" height="32">
    <properties>
     <property name="changeMap" value="MapaTest"/>
     <property name="linkTo" value="teleport_2"/>
@@ -218,12 +218,9 @@
     <property name="keyCode" value="Puerta Prueba 1"/>
    </properties>
   </object>
-  <object id="64" type="characterSpawner" x="128" y="129.333" width="32" height="32">
+  <object id="64" template="items/character spawner.tx" name="" type="characterSpawner" x="129.333" y="129.333" width="31.3333" height="31.3333">
    <properties>
     <property name="isPassable" type="bool" value="true"/>
-    <property name="isVisible" type="bool" value="false"/>
-    <property name="quantity" type="int" value="2"/>
-    <property name="spawnEvery" type="int" value="5000"/>
    </properties>
   </object>
  </objectgroup>
