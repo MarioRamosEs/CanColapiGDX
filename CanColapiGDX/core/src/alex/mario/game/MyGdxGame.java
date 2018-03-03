@@ -172,7 +172,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
         //Running
 		if(keycode == Input.Keys.SHIFT_LEFT){
-			this.player.isRunning = true;
+			this.player.setIsRunning(true);
 		}
 
 		if(keycode == Input.Keys.E){
@@ -213,7 +213,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		//Running
 		if(keycode == Input.Keys.SHIFT_LEFT){
-			this.player.isRunning = false;
+			this.player.setIsRunning(false);
 		}
 
 		return false;

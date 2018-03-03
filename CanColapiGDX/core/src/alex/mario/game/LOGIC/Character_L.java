@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,8 @@ public class Character_L implements iCharacter_L {
     protected InventorySystem inventorySystem;
 
     protected boolean isPassable = false;
-    public boolean isRunning = false;
+    protected boolean isRunning = false;
+    protected boolean isHiding = false;
     public Character_L(MyGdxGame game, Map map){
         this.game = game;
         this.map = map;
@@ -72,22 +74,29 @@ public class Character_L implements iCharacter_L {
         this.triggersSystem.checkTriggers(this, playerRectNewPosition);
 
     }
-    public boolean trigger(MapProperties mapProperties){
-        if(this.triggeredBy.contains(mapProperties.get("id").toString())){
+
+    public boolean trigger(String triggerId){
+        if(this.triggeredBy.contains(triggerId)){
             return false;
         }else{
-            this.triggeredBy.add(mapProperties.get("id").toString());
+            this.triggeredBy.add(triggerId);
             return true;
         }
     }
-    public boolean unTrigger(MapProperties mapProperties){
-        if(mapProperties.get("justOnce", false, Boolean.class)){return false;}
-        if(!this.triggeredBy.contains(mapProperties.get("id").toString())){
+    public boolean unTrigger(String triggerId, boolean justOnce){
+        if(justOnce){return false;}
+        if(!this.triggeredBy.contains(triggerId)){
             return false;
         }else{
-            this.triggeredBy.remove(mapProperties.get("id").toString());
+            this.triggeredBy.remove(triggerId);
             return true;
         }
+    }
+    public boolean trigger(MapProperties mapProperties){
+        return this.trigger(mapProperties.get("id").toString());
+    }
+    public boolean unTrigger(MapProperties mapProperties){
+        return this.unTrigger(mapProperties.get("id").toString(), mapProperties.get("justOnce", false, Boolean.class));
     }
     public Rectangle getRect(Vector2 playerPos){
         return new Rectangle(playerPos.x, playerPos.y, this.size.x, this.size.y);
@@ -189,5 +198,19 @@ public class Character_L implements iCharacter_L {
     }
     public Vector2 getCenterPos(){
         return this.position.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
+    }
+    public boolean isHiding() {
+        return this.isHiding;
+    }
+    public void setIsHiding(boolean newValue){
+        this.isHiding = newValue;
+    }
+
+    public boolean isRunning() {
+        return this.isRunning;
+    }
+
+    public void setIsRunning(boolean running) {
+        this.isRunning = running;
     }
 }

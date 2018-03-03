@@ -10,12 +10,15 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Iterator;
+import java.util.UUID;
 
 public class Character_IA extends Character implements iCharacter_IA_L {
+    protected String id;
+
     public Character_IA(MyGdxGame game, Map map) {
         super(game, map);
+        this.id = UUID.randomUUID().toString();
     }
-
     @Override
     public void think() {
 
@@ -29,5 +32,10 @@ public class Character_IA extends Character implements iCharacter_IA_L {
                 this.direction = MyGdxGame.getDirectionFromString(mapProperties.get("direction", "undefined", String.class));
             }
         }
+    }
+
+    @Override
+    public String getId() {
+        return this.id;
     }
 }
