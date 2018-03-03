@@ -1,12 +1,11 @@
 package alex.mario.game.objects;
 
+import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
-import alex.mario.game.GUI.Item;
-import alex.mario.game.GUI.Map;
-import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.LOGIC.Character_L;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.characters.Dog;
+import alex.mario.game.characters.Ghost;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -60,7 +59,7 @@ public class CharacterSpawner extends Item {
         if( (lastSpawn + this.spawnEvery) < System.currentTimeMillis()){
             System.out.println("SPAWNED");
             this.lastSpawn = System.currentTimeMillis();
-            Character character = new Dog(this.game, this.map);
+            Character_IA character = new Ghost(this.game, this.map);
             character.setPos(this.pos.cpy());
             System.out.println(this.name);
             this.game.addCharacter(character);

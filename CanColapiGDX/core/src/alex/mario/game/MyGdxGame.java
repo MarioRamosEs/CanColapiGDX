@@ -38,9 +38,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private SpriteBatch spriteBatch;
 	private ShapeRenderer shapeRenderer;
 
-	private ArrayList<Character> characters;
+	private ArrayList<Character_IA> characters;
 
-	private Character dog;
 
 	public static final float DISTANCE_USEGROUND_ITEM = 45f;
 
@@ -82,7 +81,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		player = new Player(this, this.mapSystem.getMap(formatToFilePath("MapaTest")));
 		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
-		this.characters = new ArrayList<Character>();
+		this.characters = new ArrayList<Character_IA>();
 
 		this.notificationsSystem = new NotificationsSystem(this);
 		Gdx.input.setInputProcessor(this);
@@ -188,30 +187,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		if(keycode == Input.Keys.R){
 			this.player.getMap().reloadMap();
 		}
-
-		if(this.dog == null){return false;}
-		newDirection = this.dog.getDir();
-		if(keycode == Input.Keys.A)
-			newDirection.add(DIRECTION_LEFT);
-		else if(keycode == Input.Keys.D)
-			newDirection.add(DIRECTION_RIGHT);
-		else if(keycode == Input.Keys.W)
-			newDirection.add(DIRECTION_UP);
-		else if(keycode == Input.Keys.S)
-			newDirection.add(DIRECTION_DOWN);
-		this.dog.setDir(newDirection);
-
-
-		if(keycode == Input.Keys.E){
-			Item closestItem = this.dog.getMap().getClosestItemTo(this.dog.getPos());
-			if(closestItem != null){
-				float distance = closestItem.getPos().dst(this.dog.getPos());
-				if(distance <= DISTANCE_USEGROUND_ITEM){
-					closestItem.useGround(this.dog);
-				}
-			}
-		}
-
 		// Zoom
         if(keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);
         if(keycode == Input.Keys.X) cameraSystem.proportionalZoom(0.5f);
@@ -241,22 +216,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			this.player.isRunning = false;
 		}
 
-		if(this.dog == null){return false;}
-		newDirection = this.dog.getDir();
-		if(keycode == Input.Keys.A)
-			newDirection.sub(DIRECTION_LEFT);
-		else if(keycode == Input.Keys.D)
-			newDirection.sub(DIRECTION_RIGHT);
-		else if(keycode == Input.Keys.W)
-			newDirection.sub(DIRECTION_UP);
-		else if(keycode == Input.Keys.S)
-			newDirection.sub(DIRECTION_DOWN);
-
-		this.dog.setDir(newDirection);
-		/*if(keycode == Input.Keys.NUM_1)
-			tiledMap.getLayers().get(0).setVisible(!tiledMap.getLayers().get(0).isVisible());
-		if(keycode == Input.Keys.NUM_2)
-			tiledMap.getLayers().get(1).setVisible(!tiledMap.getLayers().get(1).isVisible());*/
 		return false;
 	}
 
@@ -268,8 +227,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
-		this.dog = new Dog(this, this.player.getMap());
-		this.characters.add(this.dog);
 		return false;
     }
 
@@ -313,7 +270,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return inventoryFont;
 	}
 
-	public ArrayList<Character> getCharacters() {
+	public ArrayList<Character_IA> getCharacters() {
 		return this.characters;
 	}
 
@@ -337,7 +294,25 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		return this.availableItems;
 	}
 
-	public void addCharacter(Character character) {
+	public void addCharacter(Character_IA character) {
 		this.characters.add(character);
+	}
+
+	public static Vector2 getDirectionFromString(String str){
+		switch(str){
+			case "down":
+				return DIRECTION_DOWN;
+
+			case "right":
+				return DIRECTION_RIGHT;
+
+			case "left":
+				return DIRECTION_LEFT;
+
+			case "up":
+				return DIRECTION_UP;
+			default:
+				return new Vector2();
+		}
 	}
 }
