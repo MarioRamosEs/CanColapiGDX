@@ -60,11 +60,11 @@ public class CharacterSpawner extends Item {
             System.out.println("SPAWNED");
             this.lastSpawn = System.currentTimeMillis();
             Character_IA character = new Ghost(this.game, this.map);
-            character.setPos(this.pos.cpy());
+            character.setPos(this.getCenterPos());
             System.out.println(this.name);
             this.game.addCharacter(character);
             this.quantity_spawned++;
-            if(this.quantity_spawned > this.quantity){
+            if(this.quantity_spawned >= this.quantity){
                 this.active = false;
             }
         }

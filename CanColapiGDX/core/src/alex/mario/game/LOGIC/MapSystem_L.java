@@ -49,7 +49,7 @@ public class MapSystem_L implements iSystem_L {
             return new Vector2(
                     exitObject.getRectangle().getX(),
                     exitObject.getRectangle().getY()
-            );
+            ).add(MyGdxGame.DEFAULT_TILE_SIZE.cpy().scl(0.5f, 0.5f));
         }
     }
     public Vector2 getExitPos(Map map, String entryName) {

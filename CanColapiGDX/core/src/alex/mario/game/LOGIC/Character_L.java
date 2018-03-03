@@ -101,7 +101,7 @@ public class Character_L implements iCharacter_L {
     public void resetPos(){
         position = new Vector2(Gdx.graphics.getWidth()/2 ,Gdx.graphics.getHeight()/2);}
     public void setPos(Vector2 newPos){
-        this.position = newPos;
+        this.position = newPos.cpy().sub(this.size.x / 2, this.size.y / 2);
     }
     public Vector2 getDir(){
         return this.direction;
