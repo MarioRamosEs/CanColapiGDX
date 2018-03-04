@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="107">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="109">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -213,6 +213,7 @@
    <properties>
     <property name="changeMap" value="Planta2"/>
     <property name="linkTo" value="entry_1"/>
+    <property name="stopAllSounds" type="bool" value="false"/>
    </properties>
   </object>
   <object id="52" x="274.083" y="1315.83" width="21.1667" height="58.3333">
@@ -287,6 +288,12 @@
   <object id="106" x="1191.5" y="505.667" width="99" height="78">
    <properties>
     <property name="cameraZoom" value="-5"/>
+   </properties>
+  </object>
+  <object id="108" x="725.667" y="193" width="54" height="54">
+   <properties>
+    <property name="isLooped" type="bool" value="true"/>
+    <property name="playSound" value="Planta1.mp3"/>
    </properties>
   </object>
  </objectgroup>
