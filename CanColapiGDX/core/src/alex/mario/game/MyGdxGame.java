@@ -9,6 +9,7 @@ import alex.mario.game.characters.Player;
 import alex.mario.game.objects.CharacterSpawner;
 import alex.mario.game.objects.Door;
 import alex.mario.game.objects.Key;
+import alex.mario.game.objects.Ouija;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -94,6 +95,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		ret.put("key", Key.class);
 		ret.put("door", Door.class);
+		ret.put("ouija", Ouija.class);
 		ret.put("characterSpawner", CharacterSpawner.class);
 
 		return ret;
@@ -153,22 +155,31 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		Vector2 newDirection = player.getDir();
 
-		if(keycode == Input.Keys.LEFT)
+		if(keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
         	newDirection.add(DIRECTION_LEFT);
-        else if(keycode == Input.Keys.RIGHT)
+        else if(keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
         	newDirection.add(DIRECTION_RIGHT);
-        else if(keycode == Input.Keys.UP)
+        else if(keycode == Input.Keys.UP || keycode == Input.Keys.W)
         	newDirection.add(DIRECTION_UP);
-        else if(keycode == Input.Keys.DOWN)
+        else if(keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
         	newDirection.add(DIRECTION_DOWN);
-		else if(keycode == Input.Keys.I)
+		else if(keycode == Input.Keys.I || keycode == Input.Keys.A)
 			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
+
         this.player.setDir(newDirection);
 
         if(keycode == Input.Keys.T){
             this.notificationsSystem.addNotification("Collide: " + !this.player.getCollideState());
             this.player.setCollideState(!this.player.getCollideState());
         }
+
+        //Use ouija
+		if(keycode == Input.Keys.SPACE){
+			Item item = this.player.hasItemType(Ouija.class);
+			if(item != null){
+				item.use(this.player);
+			}
+		}
 
         //Running
 		if(keycode == Input.Keys.SHIFT_LEFT){
@@ -199,13 +210,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         //player.setDir(new Vector2(0,0));
 		Vector2 newDirection = player.getDir();
 
-		if(keycode == Input.Keys.LEFT)
+		if(keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
 			newDirection.sub(DIRECTION_LEFT);
-		else if(keycode == Input.Keys.RIGHT)
+		else if(keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
 			newDirection.sub(DIRECTION_RIGHT);
-		else if(keycode == Input.Keys.UP)
+		else if(keycode == Input.Keys.UP || keycode == Input.Keys.W)
 			newDirection.sub(DIRECTION_UP);
-		else if(keycode == Input.Keys.DOWN)
+		else if(keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
 			newDirection.sub(DIRECTION_DOWN);
 
 		this.player.setDir(newDirection);

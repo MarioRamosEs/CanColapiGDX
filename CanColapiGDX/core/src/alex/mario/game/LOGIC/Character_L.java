@@ -141,7 +141,21 @@ public class Character_L implements iCharacter_L {
         step = 0;
         return lastDir;
     }
+    public Vector2 getLastDirVector2(){ //TODO hacer cambios temporales
+        switch (this.getLastDir()){
+            case 0:
+                return MyGdxGame.DIRECTION_DOWN;
+            case 1:
+                return MyGdxGame.DIRECTION_LEFT;
+            case 2:
+                return MyGdxGame.DIRECTION_RIGHT;
+            case 3:
+                return MyGdxGame.DIRECTION_UP;
 
+        }
+
+        return new Vector2();
+    }
     public int getStep(){
         if(System.currentTimeMillis() > millis+200 && !direction.epsilonEquals(0,0)){
             millis = System.currentTimeMillis();

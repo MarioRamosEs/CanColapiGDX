@@ -38,4 +38,8 @@ public class Character_IA extends Character implements iCharacter_IA_L {
     public String getId() {
         return this.id;
     }
+
+    public void getDamage(int damageQty) {
+        System.out.println("Char " + this.getClass().getName().toString() + " got " + damageQty + " DAMAGE.");
+    }
 }

@@ -18,6 +18,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 public class ItemsSystem_L implements iSystem_L {
     protected MyGdxGame game;
@@ -74,8 +75,14 @@ public class ItemsSystem_L implements iSystem_L {
         return items;
     }
     public void update(){
-        for(Item item : items){
+        ListIterator<Item> iterator = this.items.listIterator();
+        while(iterator.hasNext()){
+            Item item = iterator.next();
             item.update();
+
+            if(item.mustBeDeleted()){
+                iterator.remove();
+            }
         }
     }
     public ArrayList<Item> getItems(){

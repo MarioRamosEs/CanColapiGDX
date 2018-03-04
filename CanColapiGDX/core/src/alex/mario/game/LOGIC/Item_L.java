@@ -19,6 +19,7 @@ public class Item_L {
     protected MyGdxGame game;
     protected Map map;
     protected HashMap<Character_L, Double> touchedBy;
+    protected boolean mustBeDeleted = false;
 
     public Item_L(MyGdxGame game, Map map, RectangleMapObject rectangleMapObject){
         this.game = game;
@@ -59,5 +60,13 @@ public class Item_L {
     }
     public Vector2 getCenterPos(){
         return this.pos.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
+    }
+
+    public void setPos(Vector2 pos) {
+        this.pos = pos;
+    }
+
+    public boolean mustBeDeleted() {
+        return this.mustBeDeleted;
     }
 }
