@@ -228,6 +228,7 @@
   </object>
   <object id="64" template="items/character spawner.tx" type="characterSpawner" x="129.333" y="129.333" width="31.3333" height="31.3333">
    <properties>
+    <property name="character_IA" value="ghost"/>
     <property name="isPassable" type="bool" value="true"/>
     <property name="spawnEvery" type="int" value="2500"/>
    </properties>

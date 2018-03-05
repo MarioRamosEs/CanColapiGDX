@@ -14,6 +14,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class CharacterSpawner extends Item {
@@ -28,7 +30,7 @@ public class CharacterSpawner extends Item {
         this.name = rectangleMapObject.getProperties().get("name", "CharacterSpawner", String.class);
         this.spawnEvery = rectangleMapObject.getProperties().get("spawnEvery", 5000, int.class);
         this.quantity = rectangleMapObject.getProperties().get("quantity", 2, int.class);
-        this.classCharacter = rectangleMapObject.getProperties().get("classCharacter", "UNDEFINED", String.class);
+        this.classCharacter = rectangleMapObject.getProperties().get("character_IA", "UNDEFINED", String.class);
 
         this.size = MyGdxGame.DEFAULT_TILE_SIZE;
 
@@ -57,13 +59,40 @@ public class CharacterSpawner extends Item {
         if(!active){return;}
 
         if( (lastSpawn + this.spawnEvery) < System.currentTimeMillis()){
-            System.out.println("SPAWNED");
             this.lastSpawn = System.currentTimeMillis();
-            Character_IA character = new Ghost(this.game, this.map);
+
+           //items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
+
+            //REFLECTION:
+            // http://tutorials.jenkov.com/java-reflection/constructors.html
+            //Se llama a la función trigger para cada llave, incluimos todas las propiedades por si hace falta información
+            //extra
+            Character_IA character = null;
+            try {
+                Class cl = game.getAvailableCharacters_IA().get(this.classCharacter);
+                Constructor constructor = cl.getConstructor(new Class[]{MyGdxGame.class, Map.class});
+                character = (Character_IA)constructor.newInstance(this.game, this.map);
+
+
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e){
+            }
+            if(character == null){
+                System.out.println("ERROR SPAWNING");
+                return;
+            }
             character.setPos(this.getCenterPos());
-            System.out.println(this.name);
             this.game.addCharacter(character);
+
             this.quantity_spawned++;
+
             if(this.quantity_spawned >= this.quantity){
                 this.active = false;
             }

@@ -2,6 +2,7 @@
 <template>
  <object width="20" height="20">
   <properties>
+   <property name="character_IA" value=""/>
    <property name="isPassable" type="bool" value="false"/>
    <property name="isVisible" type="bool" value="false"/>
    <property name="quantity" type="int" value="2"/>
