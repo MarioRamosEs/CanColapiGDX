@@ -7,8 +7,8 @@ import alex.mario.game.MyGdxGame;
 public class Ghost extends Character_IA {
     public Ghost(MyGdxGame game, Map map, boolean chasing){
         super(game, map, chasing);
-        collides = false;
-        vel = 0.1f; //todo !!!!!!!!NO FUNCIONA XDDDDD!!!!!!!!!1uno
+        this.collides = false;
+        this.minVel = 2.5f;
         //this.direction = this.game.getRandomDirection();
     }
     @Override

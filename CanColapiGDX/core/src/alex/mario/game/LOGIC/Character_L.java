@@ -20,7 +20,8 @@ public class Character_L implements iCharacter_L {
     protected Map map;
     protected Vector2 position, direction, size;
     protected MyGdxGame game;
-    protected float vel = 4;
+    protected float minVel;
+    protected float vel;
     protected ArrayList<String> triggeredBy;
 
     protected int lastDir = 0;
@@ -46,12 +47,16 @@ public class Character_L implements iCharacter_L {
 
         this.triggeredBy = new ArrayList<String>();
 
+        this.minVel = DEFAULT_VEL;
+        this.vel = this.minVel;
+
         this.position = new Vector2(0,0);
         this.direction = new Vector2(0,0);
         this.size = new Vector2(32,40); //Valor ajustado a mano, no sobreescribir.
     }
     public void update(){
-        if(this.isRunning){this.vel = DEFAULT_VEL * 2;}else{this.vel = DEFAULT_VEL;}
+        if(this.isRunning){this.vel = this.minVel * 2;}else{this.vel = this.minVel;}
+
         if(!this.collides){
             position.add(direction.cpy().scl(vel, vel)); //Movimiento básico
             return;
