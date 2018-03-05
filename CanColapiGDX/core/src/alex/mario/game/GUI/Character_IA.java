@@ -26,6 +26,7 @@ public class Character_IA extends Character implements iCharacter_IA_L {
     public void think() {
 
         if(chasing){        //Follow player
+            if(this.map != this.game.getPlayer().getMap()){return;}
             direction = position.cpy().sub(this.game.getPlayer().getPos()).nor().scl(-1,-1);
         }else {             //Follow path
             MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
