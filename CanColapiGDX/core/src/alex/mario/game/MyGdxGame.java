@@ -5,6 +5,7 @@ import alex.mario.game.GUI.Character;
 import alex.mario.game.Interfaces.iSystem;
 import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.characters.Dog;
+import alex.mario.game.characters.Ghost;
 import alex.mario.game.characters.Player;
 import alex.mario.game.objects.CharacterSpawner;
 import alex.mario.game.objects.Door;
@@ -45,6 +46,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public static final float DISTANCE_USEGROUND_ITEM = 45f;
 
 	protected HashMap<String, Class> availableItems;
+	protected HashMap<String, Class> availableCharacters_IA;
 
 	public static final Vector2 DEFAULT_TILE_SIZE= new Vector2(32, 32);
 
@@ -67,6 +69,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		this.inventoryFont.getData().setScale(0.9f);
 
 		this.availableItems = this.loadAvailableItems();
+		this.availableCharacters_IA = this.loadAvailableCharacters_IA();
 
 		this.shapeRenderer = new ShapeRenderer();
 
@@ -88,6 +91,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		System.out.println("ALL LOADED OK");
+	}
+
+	private HashMap<String,Class> loadAvailableCharacters_IA() {
+		HashMap<String, Class> ret = new HashMap<String, Class>();
+
+		ret.put("ghost", Ghost.class);
+		ret.put("dog", Dog.class);
+		return ret;
 	}
 
 	public static HashMap<String,Class> loadAvailableItems() {
@@ -325,5 +336,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			default:
 				return new Vector2();
 		}
+	}
+
+	public HashMap<String, Class> getAvailableCharacters_IA() {
+		return this.availableCharacters_IA;
 	}
 }
