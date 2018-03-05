@@ -25,12 +25,16 @@ public class CharacterSpawner extends Item {
     private int quantity;
     private Long lastSpawn;
     private int quantity_spawned = 0;
+    private boolean chasing;
+
     public CharacterSpawner(MyGdxGame game, Map map, RectangleMapObject rectangleMapObject){
         super(game, map, rectangleMapObject);
         this.name = rectangleMapObject.getProperties().get("name", "CharacterSpawner", String.class);
         this.spawnEvery = rectangleMapObject.getProperties().get("spawnEvery", 5000, int.class);
         this.quantity = rectangleMapObject.getProperties().get("quantity", 2, int.class);
         this.classCharacter = rectangleMapObject.getProperties().get("character_IA", "UNDEFINED", String.class);
+        chasing = rectangleMapObject.getProperties().get("chasing", false, boolean.class);
+
 
         this.size = MyGdxGame.DEFAULT_TILE_SIZE;
 
@@ -70,8 +74,8 @@ public class CharacterSpawner extends Item {
             Character_IA character = null;
             try {
                 Class cl = game.getAvailableCharacters_IA().get(this.classCharacter);
-                Constructor constructor = cl.getConstructor(new Class[]{MyGdxGame.class, Map.class});
-                character = (Character_IA)constructor.newInstance(this.game, this.map);
+                Constructor constructor = cl.getConstructor(new Class[]{MyGdxGame.class, Map.class, boolean.class});
+                character = (Character_IA)constructor.newInstance(this.game, this.map, chasing);
 
 
             } catch (InstantiationException e) {

@@ -33,7 +33,7 @@ public class Bullet extends Item {
 
         this.direction = new Vector2();
         this.initialPos = this.pos;
-        this.texture = TexturesSystem.getTexture("bullet.png");
+        this.texture = TexturesSystem.getTexture("bulletOrange.png");
     }
     @Override
     public void update(){

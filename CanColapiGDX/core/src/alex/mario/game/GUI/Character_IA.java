@@ -8,28 +8,34 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 import java.util.Iterator;
 import java.util.UUID;
 
 public class Character_IA extends Character implements iCharacter_IA_L {
     protected String id;
+    protected boolean chasing;
 
-    public Character_IA(MyGdxGame game, Map map) {
+    public Character_IA(MyGdxGame game, Map map, boolean chasing) {
         super(game, map);
         this.id = UUID.randomUUID().toString();
+        this.chasing = chasing;
     }
     @Override
     public void think() {
 
-        MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
-        MapObjects paths = PathObjectLayer.getObjects();
-
-        for (RectangleMapObject rectangleObject : paths.getByType(RectangleMapObject.class)) {
-            Rectangle rectangle = rectangleObject.getRectangle();
-            MapProperties mapProperties = rectangleObject.getProperties();
-            if(Intersector.overlaps(rectangle, this.getRect())){
-                this.direction = MyGdxGame.getDirectionFromString(mapProperties.get("direction", "undefined", String.class));
+        if(chasing){        //Follow player
+            direction = position.cpy().sub(this.game.getPlayer().getPos()).nor().scl(-1,-1);
+        }else {             //Follow path
+            MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
+            MapObjects paths = PathObjectLayer.getObjects();
+            for (RectangleMapObject rectangleObject : paths.getByType(RectangleMapObject.class)) {
+                Rectangle rectangle = rectangleObject.getRectangle();
+                MapProperties mapProperties = rectangleObject.getProperties();
+                if (Intersector.overlaps(rectangle, this.getRect())) {
+                    this.direction = MyGdxGame.getDirectionFromString(mapProperties.get("direction", "undefined", String.class));
+                }
             }
         }
     }

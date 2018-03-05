@@ -20,7 +20,7 @@ public class Character_L implements iCharacter_L {
     protected Map map;
     protected Vector2 position, direction, size;
     protected MyGdxGame game;
-    protected int vel = 4;
+    protected float vel = 4;
     protected ArrayList<String> triggeredBy;
 
     protected int lastDir = 0;

@@ -5,9 +5,10 @@ import alex.mario.game.GUI.Map;
 import alex.mario.game.MyGdxGame;
 
 public class Ghost extends Character_IA {
-    public Ghost(MyGdxGame game, Map map){
-        super(game, map);
-
+    public Ghost(MyGdxGame game, Map map, boolean chasing){
+        super(game, map, chasing);
+        collides = false;
+        vel = 0.1f; //todo !!!!!!!!NO FUNCIONA XDDDDD!!!!!!!!!1uno
         //this.direction = this.game.getRandomDirection();
     }
     @Override

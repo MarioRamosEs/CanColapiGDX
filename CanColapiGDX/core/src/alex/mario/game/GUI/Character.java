@@ -11,7 +11,6 @@ import com.badlogic.gdx.math.Vector2;
 public class Character extends Character_L implements iCharacter {
     private SpriteBatch batch;
     private CameraSystem cameraSystem;
-    //private Texture player;
     private TextureRegion[][] playerFrames;
 
     public Character(MyGdxGame game, Map map){
@@ -26,8 +25,6 @@ public class Character extends Character_L implements iCharacter {
     }
 
     public void draw(){
-        //getSentido();
-
         //Pintado
         batch.begin();
         batch.setProjectionMatrix(cameraSystem.getCamera().combined);
