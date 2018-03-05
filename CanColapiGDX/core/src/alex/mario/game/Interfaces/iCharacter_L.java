@@ -22,6 +22,7 @@ public interface iCharacter_L extends iSystem_L {
     Vector2 getPos();
 
     int getLastDir();
+    Vector2 getLastDirVector2();
     int getStep();
 
     Map getMap();

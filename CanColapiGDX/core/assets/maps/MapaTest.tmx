@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="86">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="88">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="castle.tsx"/>
  <layer name="Floor" width="40" height="20">
@@ -78,8 +78,8 @@
   <object id="5" x="419.333" y="450.333" width="25" height="27"/>
   <object id="8" x="-2.66667" y="-1.33333" width="1279.33" height="66.6667"/>
   <object id="13" x="98.6667" y="256" width="54.6667" height="26.6667"/>
-  <object id="14" x="288" y="118.667" width="26.6667" height="68"/>
-  <object id="15" x="450.667" y="121.333" width="25.3333" height="68"/>
+  <object id="14" x="288" y="126" width="26.6667" height="60.6667"/>
+  <object id="15" x="450.667" y="126" width="25.3333" height="63.3333"/>
   <object id="16" x="357.333" y="129.333" width="50.6667" height="57.1667"/>
   <object id="18" x="0" y="66.6667" width="30.6667" height="573.333"/>
   <object id="19" x="32" y="576" width="1246" height="64"/>
@@ -120,7 +120,7 @@
     <property name="direction" value="up"/>
    </properties>
   </object>
-  <object id="74" x="568" y="78" width="9.33337" height="8.00003">
+  <object id="74" x="568" y="74" width="9.33337" height="8.00003">
    <properties>
     <property name="direction" value="left"/>
    </properties>
@@ -226,12 +226,13 @@
     <property name="keyCode" value="Puerta Prueba 1"/>
    </properties>
   </object>
-  <object id="64" template="items/character spawner.tx" name="" type="characterSpawner" x="129.333" y="129.333" width="31.3333" height="31.3333">
+  <object id="64" template="items/character spawner.tx" type="characterSpawner" x="129.333" y="129.333" width="31.3333" height="31.3333">
    <properties>
     <property name="isPassable" type="bool" value="true"/>
     <property name="spawnEvery" type="int" value="2500"/>
    </properties>
   </object>
+  <object id="87" type="ouija" x="771.333" y="289.333" width="40" height="28"/>
  </objectgroup>
  <layer name="SuperiorObjects" width="40" height="20">
   <data encoding="csv">

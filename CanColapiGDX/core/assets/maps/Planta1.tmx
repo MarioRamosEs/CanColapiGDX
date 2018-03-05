@@ -332,6 +332,7 @@
     <property name="isLocked" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="107" type="ouija" x="650" y="212" width="40" height="28"/>
  </objectgroup>
  <layer name="SuperiorObjects" width="45" height="45">
   <data encoding="csv">

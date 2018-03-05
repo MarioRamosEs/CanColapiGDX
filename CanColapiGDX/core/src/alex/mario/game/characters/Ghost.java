@@ -29,4 +29,9 @@ public class Ghost extends Character_IA {
         this.think();
         super.update();
     }
+
+    @Override
+    public void getDamage(int damageQty){
+        this.game.getCharacters().remove(this);
+    }
 }
