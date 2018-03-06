@@ -162,7 +162,7 @@
   <object id="10" x="688" y="289" width="8.33333" height="92"/>
   <object id="11" x="805" y="286" width="11" height="97"/>
   <object id="15" x="804" y="382.542" width="313.417" height="96.125"/>
-  <object id="16" x="1165.33" y="370.667" width="209.333" height="109.333"/>
+  <object id="16" x="1160.33" y="370.667" width="214.333" height="109.333"/>
   <object id="17" x="1090.67" y="126.667" width="26.6667" height="258.167"/>
   <object id="19" x="1121.67" y="129.333" width="285" height="93.3333"/>
   <object id="20" x="1251" y="220.333" width="58.3333" height="65.3333"/>
@@ -326,7 +326,7 @@
     <property name="doorCode" value="Puerta Principal"/>
    </properties>
   </object>
-  <object id="98" template="items/door.tx" type="door" x="1120.33" y="476.667">
+  <object id="98" template="items/door.tx" type="door" x="1120.33" y="433.667" width="32" height="47">
    <properties>
     <property name="doorCode" value="Puerta Dormitorio"/>
     <property name="isLocked" type="bool" value="true"/>
