@@ -16,8 +16,9 @@ public class Ghost extends Character_IA {
     }
     @Override
     public void think(){
+        super.think();
         if(this.map != this.game.getPlayer().getMap()){return;}
-        
+
         if(!this.game.getPlayer().isHiding()) {
             if (this.getCenterPos().dst(this.game.getPlayer().getCenterPos()) <= 100) {
                 if (this.game.getPlayer().trigger("seenByGhost-" + this.id)) {
@@ -27,8 +28,6 @@ public class Ghost extends Character_IA {
                 this.game.getPlayer().unTrigger("seenByGhost-" + this.id, false);
             }
         }
-        super.think();
-
     }
     @Override
     public void update(){
