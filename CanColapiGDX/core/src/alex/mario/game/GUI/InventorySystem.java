@@ -29,8 +29,8 @@ public class InventorySystem extends InventorySystem_L implements iSystem {
                     this.shapeRenderer,
                     this.spriteBatch,
                     this.font,
-                    new Vector2(40 + i * 90, this.game.getCameraSystem().getScreenSize().y - 90),
-                    new Vector2(80, 80));
+                    new Vector2(40 + i * 110, this.game.getCameraSystem().getScreenSize().y - 110),
+                    new Vector2(100, 80));
             i++;
         }
     }
