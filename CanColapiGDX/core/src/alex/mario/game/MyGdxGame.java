@@ -43,7 +43,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private ArrayList<Character_IA> characters;
 
 
-	public static final float DISTANCE_USEGROUND_ITEM = 45f;
+	public static final float DISTANCE_USEGROUND_ITEM = 60f;
 
 	protected HashMap<String, Class> availableItems;
 	protected HashMap<String, Class> availableCharacters_IA;
