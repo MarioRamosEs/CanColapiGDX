@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 
 public class Notification extends Notification_L {
-    public static final int DEFAULT_NOTIFICATION_TIME = 2000;
+    public static final int DEFAULT_NOTIFICATION_TIME = 4000;
     public static final int NOTIFICATION_BORDER_WIDTH = 5;
     public static final int NOTIFICATION_PADDING = 5;
     private GlyphLayout notificationLayout;
@@ -29,7 +29,7 @@ public class Notification extends Notification_L {
 
         //Border
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.setColor(Color.DARK_GRAY);
         shapeRenderer.rect(
                 pos.x, pos.y,
                 size.x, notificationLayout.height  + NOTIFICATION_BORDER_WIDTH * 2 + NOTIFICATION_PADDING * 2
