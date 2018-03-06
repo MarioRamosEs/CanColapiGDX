@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="172">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="196">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -116,8 +116,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1230,1231,1232,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,2302,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2246,2247,2248,0,0,0,0,0,0,0,0,1962,1963,0,0,0,0,0,1960,1961,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2002,2033,2002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,1915,0,0,0,0,0,0,0,0,0,0,0,0,0,2018,2049,2018,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,1915,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1946,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1946,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -152,14 +152,85 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Path"/>
+ <objectgroup color="#0000ff" name="Path">
+  <object id="174" x="1129.33" y="438.333" width="32.6667" height="15">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="175" x="527.333" y="457" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="176" x="515.5" y="747" width="35.6667" height="14">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="177" x="452.833" y="740" width="9.6667" height="10.6667">
+   <properties>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
+  <object id="178" x="464.833" y="404.333" width="23.6667" height="8.66667">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="179" x="1129.5" y="401.333" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="186" x="291" y="751" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="187" x="334" y="750.333" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="188" x="462.333" y="786" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="down"/>
+   </properties>
+  </object>
+  <object id="189" x="512.666" y="786.334" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="190" x="288.833" y="1071.67" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="191" x="525.5" y="1071.67" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
+  <object id="192" x="464.167" y="1038.33" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object id="193" x="336.167" y="1039.67" width="15.6667" height="14">
+   <properties>
+    <property name="direction" value="up"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="Collisions">
   <object id="36" x="1348" y="284.333" width="18.6667" height="791"/>
   <object id="46" x="1072" y="1074" width="290" height="15"/>
   <object id="102" x="1071.67" y="1026.33" width="60.6667" height="46.333"/>
   <object id="103" x="1070.67" y="835.333" width="18.6667" height="190.333"/>
   <object id="104" x="1091.67" y="834.333" width="254.333" height="93.333"/>
-  <object id="120" x="550.333" y="721.667" width="21.6667" height="7"/>
+  <object id="120" x="551.666" y="885.667" width="21.6667" height="7"/>
   <object id="125" x="1248" y="1117.33" width="13.3333" height="292"/>
   <object id="126" x="813.333" y="1120" width="432" height="89.3333"/>
   <object id="127" x="814.667" y="1210.67" width="14.6667" height="193.333"/>
@@ -251,7 +322,7 @@
    </properties>
   </object>
   <object id="117" x="706.667" y="201.333" height="1.33333"/>
-  <object id="119" x="549.5" y="698.5" width="22" height="24">
+  <object id="119" x="550.833" y="863.833" width="22" height="24">
    <properties>
     <property name="hidden" type="bool" value="true"/>
    </properties>
@@ -325,8 +396,32 @@
     <property name="playSound" value="Planta2.mp3"/>
    </properties>
   </object>
+  <object id="195" x="1265" y="626.333" width="28.6667" height="23.3333">
+   <properties>
+    <property name="isLinkedTo" value="start"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#00ff00" name="Items"/>
+ <objectgroup color="#00ff00" name="Items">
+  <object id="172" template="items/character spawner.tx" type="characterSpawner" x="1129.67" y="437.667" width="31.3333" height="15.3333">
+   <properties>
+    <property name="character_IA" value="ghost"/>
+    <property name="chasing" type="bool" value="false"/>
+    <property name="isPassable" type="bool" value="true"/>
+    <property name="quantity" type="int" value="1"/>
+    <property name="spawnEvery" type="int" value="2500"/>
+   </properties>
+  </object>
+  <object id="194" template="items/character spawner.tx" type="characterSpawner" x="282.333" y="752.333" width="31.3333" height="15.3333">
+   <properties>
+    <property name="character_IA" value="ghost"/>
+    <property name="chasing" type="bool" value="false"/>
+    <property name="isPassable" type="bool" value="true"/>
+    <property name="quantity" type="int" value="1"/>
+    <property name="spawnEvery" type="int" value="2500"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="SuperiorObjects" width="45" height="45">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -350,13 +445,13 @@
 0,0,0,0,0,0,0,0,0,0,0,2039,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1918,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2039,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2039,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1918,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1934,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2273,2273,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

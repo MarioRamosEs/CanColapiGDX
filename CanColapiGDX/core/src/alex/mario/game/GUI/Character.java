@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Character extends Character_L implements iCharacter {
     private SpriteBatch batch;
     private CameraSystem cameraSystem;
-    private TextureRegion[][] playerFrames;
+    protected TextureRegion[][] playerFrames;
 
     public Character(MyGdxGame game, Map map){
         super(game, map);

@@ -2,13 +2,16 @@ package alex.mario.game.characters;
 
 import alex.mario.game.GUI.Character_IA;
 import alex.mario.game.GUI.Map;
+import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.MyGdxGame;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Ghost extends Character_IA {
     public Ghost(MyGdxGame game, Map map, boolean chasing){
         super(game, map, chasing);
         this.collides = false;
         this.minVel = 2.5f;
+        this.playerFrames = TextureRegion.split(TexturesSystem.getTexture("ghost.png"),48,64);
         //this.direction = this.game.getRandomDirection();
     }
     @Override
