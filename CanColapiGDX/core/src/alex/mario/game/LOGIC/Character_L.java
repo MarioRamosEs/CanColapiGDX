@@ -31,6 +31,7 @@ public class Character_L implements iCharacter_L {
     protected Boolean collides;
 
     protected InventorySystem inventorySystem;
+    protected Item selectedItem;
 
     protected boolean isPassable = false;
     protected boolean isRunning = false;
@@ -41,8 +42,6 @@ public class Character_L implements iCharacter_L {
         this.map = map;
         this.mapSystem = this.game.getMapSystem();
         this.triggersSystem = this.game.getTriggersSystem();
-        this.inventorySystem = new InventorySystem(this.game);
-
         this.collides = true;
 
         this.triggeredBy = new ArrayList<String>();
@@ -181,6 +180,7 @@ public class Character_L implements iCharacter_L {
     public void addItem(Item item){
         this.game.getNotificationsSystem().addNotification("Se ha añadido '" + item.getName() + "' al inventario");
         this.inventorySystem.add(item);
+        this.selectedItem = item;
     }
     public ArrayList<Item> getItems(){
         return this.inventorySystem.getItems();
@@ -232,5 +232,44 @@ public class Character_L implements iCharacter_L {
 
     public void setIsRunning(boolean running) {
         this.isRunning = running;
+    }
+
+    public void selectNextItem(){
+        if(this.selectedItem == null){
+            if(this.inventorySystem.getItems().size() == 0){
+                return;
+            }else{
+                this.selectedItem = this.inventorySystem.getItems().get(0);
+            }
+        }else{
+            int index = this.inventorySystem.getItems().indexOf(this.selectedItem);
+            if(index >= 0){
+                if(index == this.inventorySystem.getItems().size() - 1){
+                    index = 0;
+                }else{
+                    index = index + 1;
+                }
+                this.selectedItem = this.inventorySystem.getItems().get(index);
+                this.game.getNotificationsSystem().addNotification("Has seleccionado '" + this.selectedItem.getName() + "'");
+            }else{
+                this.selectedItem = null;
+            }
+        }
+    }
+
+    public Item getSelectedItem(){
+        return this.selectedItem;
+    }
+    public void throwSelectedItem(){
+        if(this.selectedItem == null){
+            return;
+        }
+
+        this.selectedItem.setPos(this.getCenterPos().cpy().add(this.direction.cpy().scl(2,2)));
+        this.selectedItem.isPassable = true;//Evitar cosas raras
+        this.map.addItem(this.selectedItem);
+        this.inventorySystem.items.remove(this.selectedItem);
+        this.selectedItem = null;
+        this.selectNextItem();
     }
 }
