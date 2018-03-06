@@ -190,6 +190,9 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 			this.player.setIsRunning(true);
 		}
 
+		if(keycode == Input.Keys.G){
+        	this.player.throwSelectedItem();
+		}
 		if(keycode == Input.Keys.Q){
         	this.player.selectNextItem();
 		}

@@ -260,4 +260,16 @@ public class Character_L implements iCharacter_L {
     public Item getSelectedItem(){
         return this.selectedItem;
     }
+    public void throwSelectedItem(){
+        if(this.selectedItem == null){
+            return;
+        }
+
+        this.selectedItem.setPos(this.getCenterPos().cpy().add(this.direction.cpy().scl(2,2)));
+        this.selectedItem.isPassable = true;//Evitar cosas raras
+        this.map.addItem(this.selectedItem);
+        this.inventorySystem.items.remove(this.selectedItem);
+        this.selectedItem = null;
+        this.selectNextItem();
+    }
 }
