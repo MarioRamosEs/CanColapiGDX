@@ -22,7 +22,7 @@ public class NotificationsSystem extends NotificationsSystem_L implements iSyste
     public void draw(){
         int i = 0;
         float lastNotificationHeight = 0;
-
+        shapeRenderer.setProjectionMatrix(this.game.getSpriteBatch().getProjectionMatrix());
         for(Notification notification : this.notifications){
             notification.draw(
                     this.shapeRenderer,
