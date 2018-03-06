@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <object width="32" height="32">
+ <object width="32" height="47">
   <properties>
    <property name="doorCode" value=""/>
    <property name="isLocked" type="bool" value="true"/>
