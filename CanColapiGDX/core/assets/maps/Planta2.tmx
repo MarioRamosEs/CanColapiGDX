@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="196">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="203">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -183,44 +183,54 @@
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="186" x="291" y="751" width="15.6667" height="14">
+  <object id="186" x="284" y="751" width="8.6667" height="32">
    <properties>
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="187" x="334" y="750.333" width="15.6667" height="14">
+  <object id="187" x="334" y="750.333" width="30.6667" height="4">
    <properties>
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="188" x="462.333" y="786" width="15.6667" height="14">
+  <object id="188" x="462.333" y="786" width="3.6667" height="14">
    <properties>
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="189" x="512.666" y="786.334" width="15.6667" height="14">
+  <object id="189" x="530.666" y="786.334" width="11.6667" height="4">
    <properties>
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="190" x="288.833" y="1071.67" width="15.6667" height="14">
+  <object id="190" x="274.167" y="1096.67" width="40.6667" height="4">
    <properties>
     <property name="direction" value="right"/>
    </properties>
   </object>
-  <object id="191" x="525.5" y="1071.67" width="15.6667" height="14">
+  <object id="191" x="540.5" y="1084.67" width="3.6667" height="14">
    <properties>
     <property name="direction" value="up"/>
    </properties>
   </object>
-  <object id="192" x="464.167" y="1038.33" width="15.6667" height="14">
+  <object id="192" x="462.167" y="1051.33" width="15.6667" height="5">
    <properties>
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="193" x="336.167" y="1039.67" width="15.6667" height="14">
+  <object id="193" x="348.167" y="1039.67" width="3.6667" height="14">
    <properties>
     <property name="direction" value="up"/>
+   </properties>
+  </object>
+  <object id="201" x="308.167" y="225" width="10.3334" height="44.6667">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
+  <object id="202" x="922.833" y="213.5" width="6.33337" height="54.3333">
+   <properties>
+    <property name="direction" value="left"/>
    </properties>
   </object>
  </objectgroup>
@@ -257,7 +267,6 @@
   <object id="151" x="1097.33" y="189.333" width="84" height="81.3333"/>
   <object id="152" x="289.333" y="189.333" width="93.3333" height="25.3333"/>
   <object id="153" x="514.667" y="188" width="26.6667" height="21.3333"/>
-  <object id="154" x="612" y="188" width="26.6667" height="20"/>
   <object id="155" x="705.333" y="188" width="26.6667" height="20"/>
   <object id="156" x="897" y="578" width="27" height="27"/>
   <object id="157" x="1055" y="710" width="28" height="27"/>
@@ -316,7 +325,7 @@
     <property name="sendMessage" value="'Los antiguos habitantes de esta casa habitan estas plantas. Puedes evitarlos con una Güija o... simplemente que no te vean.'"/>
    </properties>
   </object>
-  <object id="116" x="675" y="381" width="59" height="31">
+  <object id="116" x="675" y="381" width="59" height="16">
    <properties>
     <property name="hidden" type="bool" value="true"/>
    </properties>
@@ -401,6 +410,16 @@
     <property name="isLinkedTo" value="start"/>
    </properties>
   </object>
+  <object id="196" x="590.5" y="192.5" width="66" height="13.5">
+   <properties>
+    <property name="hidden" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="197" x="611.5" y="1022" width="59" height="16">
+   <properties>
+    <property name="hidden" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#00ff00" name="Items">
   <object id="172" template="items/character spawner.tx" type="characterSpawner" x="1129.67" y="437.667" width="31.3333" height="15.3333">
@@ -412,7 +431,16 @@
     <property name="spawnEvery" type="int" value="2500"/>
    </properties>
   </object>
-  <object id="194" template="items/character spawner.tx" type="characterSpawner" x="282.333" y="752.333" width="31.3333" height="15.3333">
+  <object id="194" template="items/character spawner.tx" type="characterSpawner" x="284.333" y="766.333" width="8.3333" height="15.3333">
+   <properties>
+    <property name="character_IA" value="ghost"/>
+    <property name="chasing" type="bool" value="false"/>
+    <property name="isPassable" type="bool" value="true"/>
+    <property name="quantity" type="int" value="1"/>
+    <property name="spawnEvery" type="int" value="2500"/>
+   </properties>
+  </object>
+  <object id="200" template="items/character spawner.tx" type="characterSpawner" x="307.833" y="250.333" width="8.3333" height="15.3333">
    <properties>
     <property name="character_IA" value="ghost"/>
     <property name="chasing" type="bool" value="false"/>
@@ -428,9 +456,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2273,2273,2273,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2281,2281,2281,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2289,2289,2289,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1109,1109,1109,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
