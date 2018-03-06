@@ -53,6 +53,19 @@ public class Key extends Item {
 
         spriteBatch.end();
     }
+    @Override
+    public void use(Character character){
+        Item closestItem = character.getMap().getClosestItemTo(character.getCenterPos());
+        if(closestItem != null){
+            float distance = closestItem.getCenterPos().dst(character.getCenterPos());
+            if(distance <= MyGdxGame.DISTANCE_USEGROUND_ITEM){
+                if(closestItem instanceof Door){
+                    Door door = (Door)closestItem;
+                    door.useGround(character);
+                }
+            }
+        }
+    }
     public String getKeyCode(){
         return this.keyCode;
     }

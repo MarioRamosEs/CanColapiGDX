@@ -184,19 +184,18 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
             this.player.setCollideState(!this.player.getCollideState());
         }
 
-        //Use ouija
-		if(keycode == Input.Keys.SPACE){
-			Item item = this.player.hasItemType(Ouija.class);
-			if(item != null){
-				item.use(this.player);
-			}
-		}
 
         //Running
 		if(keycode == Input.Keys.SHIFT_LEFT){
 			this.player.setIsRunning(true);
 		}
 
+		if(keycode == Input.Keys.Q){
+        	this.player.selectNextItem();
+		}
+		if(keycode == Input.Keys.SPACE){
+			this.player.useSelectedItem();
+		}
 		if(keycode == Input.Keys.E){
 			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getCenterPos());
 			if(closestItem != null){

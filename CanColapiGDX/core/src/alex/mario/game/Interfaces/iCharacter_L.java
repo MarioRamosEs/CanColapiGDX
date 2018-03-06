@@ -37,4 +37,6 @@ public interface iCharacter_L extends iSystem_L {
     Boolean getCollideState();
     ArrayList<Item> hasItemsType(Class type);
     Vector2 getCenterPos();
+
+    void selectNextItem();
 }
