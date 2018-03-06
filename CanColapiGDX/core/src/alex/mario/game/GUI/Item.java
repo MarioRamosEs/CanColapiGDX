@@ -18,7 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 
 public class Item extends Item_L {
-    protected GlyphLayout notificationLayout;
+    protected GlyphLayout itemNameLayout;
     protected Texture texture;
     protected boolean isVisible;
 
@@ -26,13 +26,13 @@ public class Item extends Item_L {
         super(game, map, rectangleMapObject);
         this.isVisible = rectangleMapObject.getProperties().get("isVisible", true, Boolean.class);
 
-        this.notificationLayout = new GlyphLayout();
+        this.itemNameLayout = new GlyphLayout();
     }
     public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size)
     {
         shapeRenderer.begin();
         //Calculate text width-height
-        this.notificationLayout.setText(font, this.name, Color.WHITE, size.x - 10, Align.left, true);
+        this.itemNameLayout.setText(font, this.name, Color.WHITE, size.x - 10, Align.left, true);
 
         //Bakcground
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
@@ -45,9 +45,10 @@ public class Item extends Item_L {
         shapeRenderer.end();
 
         spriteBatch.begin();
+        spriteBatch.draw(texture, pos.x + size.x / 2 - this.texture.getWidth() / 2, pos.y + size.y / 2 - this.texture.getHeight() / 2);
         //Message
         font.draw(spriteBatch, this.name,
-                pos.x + 5, pos.y + notificationLayout.height + 5,
+                pos.x + 5, pos.y + this.itemNameLayout.height + 5,
                 size.x - 5, Align.center, true);
 
         spriteBatch.end();
