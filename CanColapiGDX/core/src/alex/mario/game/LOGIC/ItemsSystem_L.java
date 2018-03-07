@@ -4,6 +4,7 @@ import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.Map;
 import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
+import alex.mario.game.objects.Bone;
 import alex.mario.game.objects.Key;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -87,5 +88,14 @@ public class ItemsSystem_L implements iSystem_L {
     }
     public ArrayList<Item> getItems(){
         return this.items;
+    }
+
+    public Bone getBone(){
+        for(Item i : this.items){
+            if(i instanceof Bone){
+                return (Bone) i;
+            }
+        }
+        return null;
     }
 }

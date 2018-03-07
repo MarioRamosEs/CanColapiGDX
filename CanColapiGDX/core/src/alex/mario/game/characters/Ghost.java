@@ -12,17 +12,20 @@ public class Ghost extends Character_IA {
         this.collides = false;
         this.minVel = 2.5f;
         this.playerFrames = TextureRegion.split(TexturesSystem.getTexture("ghost.png"),48,64);
-        //this.direction = this.game.getRandomDirection();
+        this.positionToChase = this.game.getPlayer().getPos();
     }
+
     @Override
     public void think(){
         super.think();
+
         if(this.map != this.game.getPlayer().getMap()){return;}
 
         if(!this.game.getPlayer().isHiding()) {
             if (this.getCenterPos().dst(this.game.getPlayer().getCenterPos()) <= 100) {
                 if (this.game.getPlayer().trigger("seenByGhost-" + this.id)) {
                     this.game.getNotificationsSystem().addNotification("Has sido visto por un fantasma...");
+                    this.chasing = true;
                 }
             } else {
                 this.game.getPlayer().unTrigger("seenByGhost-" + this.id, false);
