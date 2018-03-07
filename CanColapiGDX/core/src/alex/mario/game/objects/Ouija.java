@@ -15,7 +15,7 @@ public class Ouija extends Item {
         super(game, map, rectangleMapObject);
         this.name = "Ouija";
         this.texture = TexturesSystem.getTexture("ouija.png");
-        System.out.println();
+        //System.out.println();
     }
 
     @Override
