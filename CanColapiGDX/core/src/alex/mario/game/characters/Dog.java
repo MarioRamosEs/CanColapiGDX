@@ -31,13 +31,15 @@ public class Dog extends Character_IA {
             this.chasing = false;
         }
 
-        if (this.getCenterPos().dst(this.game.getPlayer().getCenterPos()) <= 70) {
-            if (this.game.getPlayer().trigger("seenByGhost-" + this.id)) {
+        if (this.distWithPlayer <= 50) {
+            if (this.game.getPlayer().trigger("touchedByDog-" + this.id)) {
                 this.game.getNotificationsSystem().addNotification("Has sido atacado por un perro...");
+                this.game.gameOver();
             }
         } else {
-            this.game.getPlayer().unTrigger("seenByGhost-" + this.id, false);
+            this.game.getPlayer().unTrigger("touchedByDog-" + this.id, false);
         }
+
     }
     @Override
     public void update(){

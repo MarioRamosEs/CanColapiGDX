@@ -24,10 +24,8 @@ public class Ghost extends Character_IA {
             return;
         }
 
-        float distWithPlayer = this.getCenterPos().dst(this.game.getPlayer().getCenterPos());
-
         if (!this.game.getPlayer().isHiding()) {
-            if (distWithPlayer < 100 && distWithPlayer > 35) {
+            if (this.distWithPlayer < 120 && this.distWithPlayer > 50) {
                 if (this.game.getPlayer().trigger("seenByGhost-" + this.id) && !chasing) {
                     this.game.getNotificationsSystem().addNotification("Has sido visto por un fantasma... ¡corre!");
                     this.chasing = true;
@@ -37,7 +35,7 @@ public class Ghost extends Character_IA {
             }
         }
 
-        if (chasing && this.getCenterPos().dst(this.game.getPlayer().getCenterPos()) < 35) {
+        if (chasing && this.distWithPlayer < 50) {
             if (this.game.getPlayer().trigger("touchedByGhost-" + this.id)) {
                 this.game.getNotificationsSystem().addNotification("Has sido tocado por un fantasma.");
                 this.game.gameOver();

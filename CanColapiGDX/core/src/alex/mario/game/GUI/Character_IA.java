@@ -17,6 +17,7 @@ public class Character_IA extends Character implements iCharacter_IA_L {
     protected String id;
     protected boolean chasing;
     protected Vector2 positionToChase;
+    protected float distWithPlayer;
 
     public Character_IA(MyGdxGame game, Map map, boolean chasing) {
         super(game, map);
@@ -25,6 +26,7 @@ public class Character_IA extends Character implements iCharacter_IA_L {
     }
     @Override
     public void think() {
+        distWithPlayer = this.getCenterPos().dst(this.game.getPlayer().getCenterPos());
 
         if(chasing){        //Follow positionToChase
             if(this.map != this.game.getPlayer().getMap()){return;}
