@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="203">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="208">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -126,7 +126,7 @@
 0,0,0,0,0,0,0,0,2053,0,0,0,0,0,0,0,0,0,0,0,0,0,2055,0,0,0,2404,0,2314,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,2055,0,0,0,0,0,1930,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,2053,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2340,0,0,0,0,2360,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2340,1915,0,0,0,2360,0,0,0,0,0,1931,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2055,0,0,0,0,1915,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1931,0,0,0,0,0,0,
@@ -228,7 +228,7 @@
     <property name="direction" value="right"/>
    </properties>
   </object>
-  <object id="202" x="922.833" y="213.5" width="6.33337" height="54.3333">
+  <object id="202" x="782.833" y="213.5" width="6.33337" height="54.3333">
    <properties>
     <property name="direction" value="left"/>
    </properties>
@@ -266,7 +266,6 @@
   <object id="150" x="254.667" y="96" width="922.667" height="94.6667"/>
   <object id="151" x="1097.33" y="189.333" width="84" height="81.3333"/>
   <object id="152" x="289.333" y="189.333" width="93.3333" height="25.3333"/>
-  <object id="153" x="514.667" y="188" width="26.6667" height="21.3333"/>
   <object id="155" x="705.333" y="188" width="26.6667" height="20"/>
   <object id="156" x="897" y="578" width="27" height="27"/>
   <object id="157" x="1055" y="710" width="28" height="27"/>
@@ -320,9 +319,9 @@
     <property name="sendMessage" value="¿Que ha pasado? ¿Me he teletransportado?"/>
    </properties>
   </object>
-  <object id="113" x="1294.83" y="495.5" width="49.6667" height="51">
+  <object id="113" x="1288.16" y="495.5" width="56.3334" height="51">
    <properties>
-    <property name="sendMessage" value="'Los antiguos habitantes de esta casa habitan estas plantas. Puedes evitarlos con una Güija o... simplemente que no te vean.'"/>
+    <property name="sendMessage" value="'No todos en esta casa son tan majos como nosotros... si te tocan estos fantasmas estas DOOMED'. Pero siempre puedes esconderte."/>
    </properties>
   </object>
   <object id="116" x="675" y="381" width="59" height="16">
@@ -336,9 +335,9 @@
     <property name="hidden" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="124" x="533.167" y="591.5" width="43.6667" height="50">
+  <object id="124" x="499.834" y="591.5" width="77" height="50">
    <properties>
-    <property name="sendMessage" value="'¡Este cofre está abierto!'"/>
+    <property name="sendMessage" value="'¡Este cofre está abierto! podrás entrar supongo'"/>
    </properties>
   </object>
   <object id="161" x="1072.43" y="220.96" width="20.4752" height="51.4126">
@@ -410,7 +409,7 @@
     <property name="isLinkedTo" value="start"/>
    </properties>
   </object>
-  <object id="196" x="590.5" y="192.5" width="66" height="13.5">
+  <object id="196" x="431.833" y="192.5" width="224.667" height="13.5">
    <properties>
     <property name="hidden" type="bool" value="true"/>
    </properties>
@@ -418,6 +417,17 @@
   <object id="197" x="611.5" y="1022" width="59" height="16">
    <properties>
     <property name="hidden" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="206" x="1021.33" y="667" width="33.3333" height="32">
+   <properties>
+    <property name="changeMap" value="Planta1"/>
+    <property name="linkTo" value="teleport_1"/>
+   </properties>
+  </object>
+  <object id="207" x="713.333" y="672.667" width="23.3334" height="22.6666">
+   <properties>
+    <property name="isLinkedTo" value="teleport_5"/>
    </properties>
   </object>
  </objectgroup>
@@ -449,6 +459,12 @@
     <property name="spawnEvery" type="int" value="2500"/>
    </properties>
   </object>
+  <object id="203" type="bone" x="872.333" y="662" width="19.3333" height="22"/>
+  <object id="205" template="items/key.tx" type="key" x="879" y="1053">
+   <properties>
+    <property name="keyCode" value="Puerta Dormitorio"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="SuperiorObjects" width="45" height="45">
   <data encoding="csv">
@@ -456,9 +472,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2273,2273,2273,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2281,2281,2281,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2289,2289,2289,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,2273,2273,2273,2273,2273,2273,2273,2273,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,2281,2281,2281,2281,2281,2281,2281,2281,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,2289,2289,2289,2289,2289,2289,2289,2289,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1109,1109,1109,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

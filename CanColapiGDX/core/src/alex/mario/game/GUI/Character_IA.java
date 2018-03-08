@@ -36,8 +36,6 @@ public class Character_IA extends Character implements iCharacter_IA_L {
             }else{
                 this.direction = new Vector2(0,0);
             }
-
-
         }else {             //Follow path
             MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
             MapObjects paths = PathObjectLayer.getObjects();
