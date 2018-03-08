@@ -37,6 +37,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private SpriteBatch spriteBatch;
 	private ShapeRenderer shapeRenderer;
 
+	private boolean gameOver = false;
+
 	private ArrayList<Character_IA> characters;
 
 
@@ -115,7 +117,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Bucle principal
 
 		//Update todas las variables, movimiento, etc
-		this.update();
+		if(!gameOver) this.update();
 
 		//Dibujamos
 		this.draw();
@@ -159,6 +161,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Hacemos que la cámara se actualice
 		cameraSystem.draw();
 	}
+
+	public void gameOver(){
+        System.out.println("GAME OVER");
+        this.getSoundsSystem().stopAll();
+        this.getSoundsSystem().play("youdied.mp3");
+        gameOver = true;
+    }
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -341,4 +350,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public HashMap<String, Class> getAvailableCharacters_IA() {
 		return this.availableCharacters_IA;
 	}
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
 }

@@ -105,7 +105,7 @@ public class TriggersSystem_L implements iSystem_L {
                     character.setPos(this.game.getMapSystem().getEntryPos(character.getMap(), linkTo));
                 }
                 break;
-            case "cameraZoom":
+            /*case "cameraZoom":
                 //Si no es el jugador
                 if(character != this.game.getPlayer()){return;}
 
@@ -118,7 +118,7 @@ public class TriggersSystem_L implements iSystem_L {
                         this.game.getCameraSystem().proportionalZoom(-Float.parseFloat(triggerValue));
                     }
                 }
-                break;
+                break;*/
             case "hidden":
                 if(triggered){
                     if(character.trigger(mapProperties)) {
