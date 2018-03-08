@@ -7,10 +7,7 @@ import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Ghost;
 import alex.mario.game.characters.Player;
-import alex.mario.game.objects.CharacterSpawner;
-import alex.mario.game.objects.Door;
-import alex.mario.game.objects.Key;
-import alex.mario.game.objects.Ouija;
+import alex.mario.game.objects.*;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -39,6 +36,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	private BitmapFont inventoryFont;
 	private SpriteBatch spriteBatch;
 	private ShapeRenderer shapeRenderer;
+
+	private boolean gameOver = false;
 
 	private ArrayList<Character_IA> characters;
 
@@ -108,6 +107,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		ret.put("door", Door.class);
 		ret.put("ouija", Ouija.class);
 		ret.put("characterSpawner", CharacterSpawner.class);
+		ret.put("bone", Bone.class);
 
 		return ret;
 	}
@@ -117,7 +117,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Bucle principal
 
 		//Update todas las variables, movimiento, etc
-		this.update();
+		if(!gameOver) this.update();
 
 		//Dibujamos
 		this.draw();
@@ -161,6 +161,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		//Hacemos que la cámara se actualice
 		cameraSystem.draw();
 	}
+
+	public void gameOver(){
+        System.out.println("GAME OVER");
+        this.getSoundsSystem().stopAll();
+        this.getSoundsSystem().play("youdied.mp3");
+        gameOver = true;
+    }
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -343,4 +350,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	public HashMap<String, Class> getAvailableCharacters_IA() {
 		return this.availableCharacters_IA;
 	}
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
 }
