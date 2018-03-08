@@ -28,11 +28,17 @@ public class CameraSystem extends CameraSystem_L implements iSystem {
         //Se actualiza la cámara Orthographic
         this.camera.update();
 
-        //GAMEOVER
+        //GAME OVER
         if(this.game.isGameOver()){
             batch.begin();
-            //batch.setProjectionMatrix(game.getCameraSystem().getCamera().combined);
             batch.draw(TexturesSystem.getTexture("youDied.png"), 0, 0);
+            batch.end();
+        }
+
+        //YOU WIN
+        if(this.game.isYouWin()){
+            batch.begin();
+            batch.draw(TexturesSystem.getTexture("youWin.png"), 0, 0);
             batch.end();
         }
 

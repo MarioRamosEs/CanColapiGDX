@@ -24,334 +24,361 @@ import java.util.Random;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
-	private MapSystem mapSystem;
-	private Player player;
-	private CameraSystem cameraSystem;
-	private TriggersSystem triggersSystem;
-	private NotificationsSystem notificationsSystem;
-	private TexturesSystem texturesSystem;
-	private SoundsSystem soundsSystem;
+    private MapSystem mapSystem;
+    private Player player;
+    private CameraSystem cameraSystem;
+    private TriggersSystem triggersSystem;
+    private NotificationsSystem notificationsSystem;
+    private TexturesSystem texturesSystem;
+    private SoundsSystem soundsSystem;
 
-	private BitmapFont notificationsFont;
-	private BitmapFont inventoryFont;
-	private SpriteBatch spriteBatch;
-	private ShapeRenderer shapeRenderer;
+    private BitmapFont notificationsFont;
+    private BitmapFont inventoryFont;
+    private SpriteBatch spriteBatch;
+    private ShapeRenderer shapeRenderer;
 
-	private boolean gameOver = false;
+    private boolean gameOver = false;
+    private boolean youWin = false;
 
-	private ArrayList<Character_IA> characters;
+    private ArrayList<Character_IA> characters;
 
 
-	public static final float DISTANCE_USEGROUND_ITEM = 60f;
+    public static final float DISTANCE_USEGROUND_ITEM = 60f;
 
-	protected HashMap<String, Class> availableItems;
-	protected HashMap<String, Class> availableCharacters_IA;
+    protected HashMap<String, Class> availableItems;
+    protected HashMap<String, Class> availableCharacters_IA;
 
-	public static final Vector2 DEFAULT_TILE_SIZE= new Vector2(32, 32);
+    public static final Vector2 DEFAULT_TILE_SIZE = new Vector2(32, 32);
 
-	//Directions
-	public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
-	public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
-	public static final Vector2 DIRECTION_RIGHT = new Vector2(1, 0);
-	public static final Vector2 DIRECTION_DOWN = new Vector2(0, -1);
-	private Vector2[] directions = new Vector2[]{DIRECTION_LEFT, DIRECTION_DOWN, DIRECTION_RIGHT, DIRECTION_UP};
+    //Directions
+    public static final Vector2 DIRECTION_UP = new Vector2(0, 1);
+    public static final Vector2 DIRECTION_LEFT = new Vector2(-1, 0);
+    public static final Vector2 DIRECTION_RIGHT = new Vector2(1, 0);
+    public static final Vector2 DIRECTION_DOWN = new Vector2(0, -1);
+    private Vector2[] directions = new Vector2[]{DIRECTION_LEFT, DIRECTION_DOWN, DIRECTION_RIGHT, DIRECTION_UP};
 
-	@Override
-	public void create () {
-		this.spriteBatch = new SpriteBatch();
-		this.texturesSystem = new TexturesSystem();
-		this.soundsSystem = new SoundsSystem();
+    @Override
+    public void create() {
+        this.spriteBatch = new SpriteBatch();
+        this.texturesSystem = new TexturesSystem();
+        this.soundsSystem = new SoundsSystem();
 
-		this.notificationsFont = new BitmapFont();
+        this.notificationsFont = new BitmapFont();
 
-		this.inventoryFont = new BitmapFont();
-		this.inventoryFont.getData().setScale(0.9f);
+        this.inventoryFont = new BitmapFont();
+        this.inventoryFont.getData().setScale(0.9f);
 
-		this.availableItems = this.loadAvailableItems();
-		this.availableCharacters_IA = this.loadAvailableCharacters_IA();
+        this.availableItems = this.loadAvailableItems();
+        this.availableCharacters_IA = this.loadAvailableCharacters_IA();
 
-		this.shapeRenderer = new ShapeRenderer();
+        this.shapeRenderer = new ShapeRenderer();
 
-		//Creamos toda la pesca
-	    this.cameraSystem = new CameraSystem(this);
+        //Creamos toda la pesca
+        this.cameraSystem = new CameraSystem(this);
         this.mapSystem = new MapSystem(this);
-		this.triggersSystem = new TriggersSystem(this);
+        this.triggersSystem = new TriggersSystem(this);
 
-		//Cargamos el mapa
-		this.mapSystem.loadMap(formatToFilePath("Planta1"));
-		//this.loadMap("Planta1");
+        //Cargamos el mapa
+        this.mapSystem.loadMap(formatToFilePath("Planta1"));
+        //this.loadMap("Planta1");
 
-		player = new Player(this, this.mapSystem.getMap(formatToFilePath("Planta1")));
-		player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
+        player = new Player(this, this.mapSystem.getMap(formatToFilePath("Planta1")));
+        player.setPos(this.mapSystem.getEntryPos(player.getMap(), "start"));
 
-		this.characters = new ArrayList<Character_IA>();
+        this.characters = new ArrayList<Character_IA>();
 
-		this.notificationsSystem = new NotificationsSystem(this);
-		Gdx.input.setInputProcessor(this);
+        this.notificationsSystem = new NotificationsSystem(this);
+        Gdx.input.setInputProcessor(this);
 
-		System.out.println("ALL LOADED OK");
-	}
+        System.out.println("ALL LOADED OK");
+    }
 
-	private HashMap<String,Class> loadAvailableCharacters_IA() {
-		HashMap<String, Class> ret = new HashMap<String, Class>();
+    private HashMap<String, Class> loadAvailableCharacters_IA() {
+        HashMap<String, Class> ret = new HashMap<String, Class>();
 
-		ret.put("ghost", Ghost.class);
-		ret.put("dog", Dog.class);
-		return ret;
-	}
+        ret.put("ghost", Ghost.class);
+        ret.put("dog", Dog.class);
+        return ret;
+    }
 
-	public static HashMap<String,Class> loadAvailableItems() {
-		HashMap<String, Class> ret = new HashMap<String, Class>();
+    public static HashMap<String, Class> loadAvailableItems() {
+        HashMap<String, Class> ret = new HashMap<String, Class>();
 
-		ret.put("key", Key.class);
-		ret.put("door", Door.class);
-		ret.put("ouija", Ouija.class);
-		ret.put("characterSpawner", CharacterSpawner.class);
-		ret.put("bone", Bone.class);
+        ret.put("key", Key.class);
+        ret.put("door", Door.class);
+        ret.put("ouija", Ouija.class);
+        ret.put("characterSpawner", CharacterSpawner.class);
+        ret.put("bone", Bone.class);
 
-		return ret;
-	}
+        return ret;
+    }
 
-	@Override
-	public void render () {
-		//Bucle principal
+    @Override
+    public void render() {
+        //Bucle principal
 
-		//Update todas las variables, movimiento, etc
-		if(!gameOver) this.update();
+        //Update todas las variables, movimiento, etc
+        if (!gameOver && !youWin) this.update();
 
-		//Dibujamos
-		this.draw();
-	}
-	private void update(){
-		//Actualizamos al jugador
-		player.update();
+        //Dibujamos
+        this.draw();
+    }
 
-		this.mapSystem.update();
+    private void update() {
+        //Actualizamos al jugador
+        player.update();
 
-		this.notificationsSystem.update();
+        this.mapSystem.update();
 
-		//Actualizamos la cámara
-		this.cameraSystem.update();
+        this.notificationsSystem.update();
 
-		for(Character character : this.characters){
-			character.update();
-		}
-	}
-	private void draw(){
-		//Dibujamos el fondo del mapa
-		this.player.getMap().DrawBackground(this.cameraSystem);
+        //Actualizamos la cámara
+        this.cameraSystem.update();
 
-		//Dibujamos al jugador
-		player.draw();
+        for (Character character : this.characters) {
+            character.update();
+        }
+    }
 
-		for(Character character : this.characters){
-			if(character.getMap() == this.player.getMap()){
-				character.draw();
-			}
-		}
+    private void draw() {
+        //Dibujamos el fondo del mapa
+        this.player.getMap().DrawBackground(this.cameraSystem);
 
-		//Dibujamos la parte "superior"
-		this.player.getMap().DrawForeground();
+        //Dibujamos al jugador
+        player.draw();
 
-		//Sistema de notificaciones
-		this.notificationsSystem.draw();
+        for (Character character : this.characters) {
+            if (character.getMap() == this.player.getMap()) {
+                character.draw();
+            }
+        }
 
-		this.player.getInventorySystem().draw();
+        //Dibujamos la parte "superior"
+        this.player.getMap().DrawForeground();
 
-		//Hacemos que la cámara se actualice
-		cameraSystem.draw();
-	}
+        //Sistema de notificaciones
+        this.notificationsSystem.draw();
 
-	public void gameOver(){
+        this.player.getInventorySystem().draw();
+
+        //Hacemos que la cámara se actualice
+        cameraSystem.draw();
+    }
+
+    public void gameOver() {
         System.out.println("GAME OVER");
         this.getSoundsSystem().stopAll();
         this.getSoundsSystem().play("youdied.mp3");
         gameOver = true;
     }
 
-	@Override
-	public boolean keyDown(int keycode) {
-		Vector2 newDirection = player.getDir();
+    public void youWin() {
+        System.out.println("YOU WIN");
+        this.getSoundsSystem().stopAll();
+        this.getSoundsSystem().play("youwin.mp3");
+        youWin = true;
+    }
 
-		if(keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
-        	newDirection.add(DIRECTION_LEFT);
-        else if(keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
-        	newDirection.add(DIRECTION_RIGHT);
-        else if(keycode == Input.Keys.UP || keycode == Input.Keys.W)
-        	newDirection.add(DIRECTION_UP);
-        else if(keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
-        	newDirection.add(DIRECTION_DOWN);
-		else if(keycode == Input.Keys.I || keycode == Input.Keys.A)
-			this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
+    @Override
+    public boolean keyDown(int keycode) {
+        Vector2 newDirection = player.getDir();
+
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
+            newDirection.add(DIRECTION_LEFT);
+        else if (keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
+            newDirection.add(DIRECTION_RIGHT);
+        else if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
+            newDirection.add(DIRECTION_UP);
+        else if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
+            newDirection.add(DIRECTION_DOWN);
+        else if (keycode == Input.Keys.I || keycode == Input.Keys.A)
+            this.player.getInventorySystem().isVisible = !this.player.getInventorySystem().getIsVisible();
 
         this.player.setDir(newDirection);
 
-        if(keycode == Input.Keys.T){
+        if (keycode == Input.Keys.T) {
             this.notificationsSystem.addNotification("Collide: " + !this.player.getCollideState());
             this.player.setCollideState(!this.player.getCollideState());
         }
 
 
         //Running
-		if(keycode == Input.Keys.SHIFT_LEFT){
-			this.player.setIsRunning(true);
-		}
+        if (keycode == Input.Keys.SHIFT_LEFT) {
+            this.player.setIsRunning(true);
+        }
 
-		if(keycode == Input.Keys.G){
-        	this.player.throwSelectedItem();
-		}
-		if(keycode == Input.Keys.Q){
-        	this.player.selectNextItem();
-		}
-		if(keycode == Input.Keys.SPACE){
-			this.player.useSelectedItem();
-		}
-		if(keycode == Input.Keys.E){
-			Item closestItem = this.player.getMap().getClosestItemTo(this.player.getCenterPos());
-			if(closestItem != null){
-				float distance = closestItem.getCenterPos().dst(this.player.getCenterPos());
-				if(distance <= DISTANCE_USEGROUND_ITEM){
-					closestItem.useGround(this.player);
-				}
-			}
-		}
-		if(keycode == Input.Keys.R){
-			this.player.getMap().reloadMap();
-		}
-		// Zoom
-        if(keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);
-        if(keycode == Input.Keys.X) cameraSystem.proportionalZoom(0.5f);
+        if (keycode == Input.Keys.G) {
+            this.player.throwSelectedItem();
+        }
+        if (keycode == Input.Keys.Q) {
+            this.player.selectNextItem();
+        }
+        if (keycode == Input.Keys.SPACE) {
+            this.player.useSelectedItem();
+        }
+        if (keycode == Input.Keys.E) {
+            Item closestItem = this.player.getMap().getClosestItemTo(this.player.getCenterPos());
+            if (closestItem != null) {
+                float distance = closestItem.getCenterPos().dst(this.player.getCenterPos());
+                if (distance <= DISTANCE_USEGROUND_ITEM) {
+                    closestItem.useGround(this.player);
+                }
+            }
+        }
+        if (keycode == Input.Keys.R) {
+            this.player.getMap().reloadMap();
+        }
+        // Zoom
+        if (keycode == Input.Keys.Z) cameraSystem.proportionalZoom(-0.5f);
+        if (keycode == Input.Keys.X) cameraSystem.proportionalZoom(0.5f);
 
-		return false;
-	}
-
-	@Override
-	public boolean keyUp(int keycode) {
-        //player.setDir(new Vector2(0,0));
-		Vector2 newDirection = player.getDir();
-
-		if(keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
-			newDirection.sub(DIRECTION_LEFT);
-		else if(keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
-			newDirection.sub(DIRECTION_RIGHT);
-		else if(keycode == Input.Keys.UP || keycode == Input.Keys.W)
-			newDirection.sub(DIRECTION_UP);
-		else if(keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
-			newDirection.sub(DIRECTION_DOWN);
-
-		this.player.setDir(newDirection);
-
-
-		//Running
-		if(keycode == Input.Keys.SHIFT_LEFT){
-			this.player.setIsRunning(false);
-		}
-
-		return false;
-	}
-
-	@Override
-	public boolean keyTyped(char character) {
-		return false;
-	}
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
-		return false;
+        return false;
     }
 
     @Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		return false;
-	}
+    public boolean keyUp(int keycode) {
+        //player.setDir(new Vector2(0,0));
+        Vector2 newDirection = player.getDir();
 
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		return false;
-	}
+        if (keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
+            newDirection.sub(DIRECTION_LEFT);
+        else if (keycode == Input.Keys.RIGHT || keycode == Input.Keys.D)
+            newDirection.sub(DIRECTION_RIGHT);
+        else if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
+            newDirection.sub(DIRECTION_UP);
+        else if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
+            newDirection.sub(DIRECTION_DOWN);
 
-	@Override
-	public boolean mouseMoved(int screenX, int screenY) {
-		return false;
-	}
+        this.player.setDir(newDirection);
 
-	@Override
-	public boolean scrolled(int amount) {
-		return false;
-	}
 
-	//GETTERS
-	public Player getPlayer(){ return player; }
-	public MapSystem getMapSystem() {return mapSystem;}
-	public CameraSystem getCameraSystem() {return cameraSystem;}
-	public TriggersSystem getTriggersSystem() {return triggersSystem;}
-	public NotificationsSystem getNotificationsSystem() {
-		return notificationsSystem;
-	}
-	public SoundsSystem getSoundsSystem() {
-		return this.soundsSystem;
-	}
+        //Running
+        if (keycode == Input.Keys.SHIFT_LEFT) {
+            this.player.setIsRunning(false);
+        }
 
-    public Vector2 getRandomDirection(){
-		return this.directions[new Random().nextInt(this.directions.length)];
-	}
+        return false;
+    }
 
-	public BitmapFont getInventoryFont() {
-		return inventoryFont;
-	}
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
 
-	public ArrayList<Character_IA> getCharacters() {
-		return this.characters;
-	}
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        this.notificationsSystem.addNotification("xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd xd ");
+        return false;
+    }
 
-	public static String formatToFilePath(String mapName){
-		return "maps" + File.separator + mapName + ".tmx";
-	}
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
 
-	public BitmapFont getNotificationsFont() {
-		return notificationsFont;
-	}
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
 
-	public SpriteBatch getSpriteBatch() {
-		return spriteBatch;
-	}
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
 
-	public ShapeRenderer getShapeRenderer() {
-		return shapeRenderer;
-	}
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
 
-	public HashMap<String, Class> getAvailableItems() {
-		return this.availableItems;
-	}
+    //GETTERS
+    public Player getPlayer() {
+        return player;
+    }
 
-	public void addCharacter(Character_IA character) {
-		this.characters.add(character);
-	}
+    public MapSystem getMapSystem() {
+        return mapSystem;
+    }
 
-	public static Vector2 getDirectionFromString(String str){
-		switch(str){
-			case "down":
-				return DIRECTION_DOWN;
+    public CameraSystem getCameraSystem() {
+        return cameraSystem;
+    }
 
-			case "right":
-				return DIRECTION_RIGHT;
+    public TriggersSystem getTriggersSystem() {
+        return triggersSystem;
+    }
 
-			case "left":
-				return DIRECTION_LEFT;
+    public NotificationsSystem getNotificationsSystem() {
+        return notificationsSystem;
+    }
 
-			case "up":
-				return DIRECTION_UP;
-			default:
-				return new Vector2();
-		}
-	}
+    public SoundsSystem getSoundsSystem() {
+        return this.soundsSystem;
+    }
 
-	public HashMap<String, Class> getAvailableCharacters_IA() {
-		return this.availableCharacters_IA;
-	}
+    public Vector2 getRandomDirection() {
+        return this.directions[new Random().nextInt(this.directions.length)];
+    }
+
+    public BitmapFont getInventoryFont() {
+        return inventoryFont;
+    }
+
+    public ArrayList<Character_IA> getCharacters() {
+        return this.characters;
+    }
+
+    public static String formatToFilePath(String mapName) {
+        return "maps" + File.separator + mapName + ".tmx";
+    }
+
+    public BitmapFont getNotificationsFont() {
+        return notificationsFont;
+    }
+
+    public SpriteBatch getSpriteBatch() {
+        return spriteBatch;
+    }
+
+    public ShapeRenderer getShapeRenderer() {
+        return shapeRenderer;
+    }
+
+    public HashMap<String, Class> getAvailableItems() {
+        return this.availableItems;
+    }
+
+    public void addCharacter(Character_IA character) {
+        this.characters.add(character);
+    }
+
+    public static Vector2 getDirectionFromString(String str) {
+        switch (str) {
+            case "down":
+                return DIRECTION_DOWN;
+
+            case "right":
+                return DIRECTION_RIGHT;
+
+            case "left":
+                return DIRECTION_LEFT;
+
+            case "up":
+                return DIRECTION_UP;
+            default:
+                return new Vector2();
+        }
+    }
+
+    public HashMap<String, Class> getAvailableCharacters_IA() {
+        return this.availableCharacters_IA;
+    }
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public boolean isYouWin() {
+        return youWin;
     }
 }

@@ -109,7 +109,7 @@ public class TriggersSystem_L implements iSystem_L {
                 //Si no es el jugador
                 if(character != this.game.getPlayer()){return;}
 
-                if(triggered){ //Zoom
+                //Zoom
                     if(character.trigger(mapProperties)) {
                         this.game.getCameraSystem().proportionalZoom(Float.parseFloat(triggerValue));
                     }
@@ -119,6 +119,18 @@ public class TriggersSystem_L implements iSystem_L {
                     }
                 }
                 break;*/
+            case "youWin":
+                if(character != this.game.getPlayer()){return;} //Si no es el jugador
+                if(triggered){
+                    if(character.trigger(mapProperties)){
+                        this.game.youWin();
+                    }
+                }else{
+                    if(character.unTrigger(mapProperties)){
+
+                    }
+                }
+                break;
             case "hidden":
                 if(triggered){
                     if(character.trigger(mapProperties)) {
