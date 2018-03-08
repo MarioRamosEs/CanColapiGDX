@@ -19,19 +19,19 @@ public class SoundsSystem{
 
     public SoundsSystem(){
         textureFormats.add("mp3");
-        loadTextures();
+        loadSounds();
     }
 
     public static Music getMusic(String soundName){
         return sounds.get(soundName);
     }
-    public static void loadTextures(){
-        loadTexturesFolder(folder);
+    public static void loadSounds(){
+        loadSoundsFolder(folder);
     }
-    private static void loadTexturesFolder(File path){
+    private static void loadSoundsFolder(File path){
         for (final File file : path.listFiles()) {
             if (file.isDirectory()) {
-                loadTexturesFolder(file);//Recursividad cargar archivos de la carpeta encontrada
+                loadSoundsFolder(file);//Recursividad cargar archivos de la carpeta encontrada
             } else {
                 if(textureFormats.contains(getExtension(file.getName()))){
                     //Format available
