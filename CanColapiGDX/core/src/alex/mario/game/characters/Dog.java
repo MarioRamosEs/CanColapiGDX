@@ -14,6 +14,7 @@ public class Dog extends Character_IA {
         super(game, map, chasing);
         this.direction = new Vector2(0, 0);
         this.playerFrames = TextureRegion.split(TexturesSystem.getTexture("dog.png"),48,64);
+        this.collides = false;
     }
 
     @Override

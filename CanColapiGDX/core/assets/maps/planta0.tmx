@@ -187,7 +187,7 @@
    <properties>
     <property name="character_IA" value="dog"/>
     <property name="chasing" type="bool" value="false"/>
-    <property name="isPassable" type="bool" value="false"/>
+    <property name="isPassable" type="bool" value="true"/>
     <property name="quantity" type="int" value="1"/>
     <property name="spawnEvery" type="int" value="1000"/>
    </properties>

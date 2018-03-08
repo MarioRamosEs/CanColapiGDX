@@ -28,8 +28,14 @@ public class Character_IA extends Character implements iCharacter_IA_L {
 
         if(chasing){        //Follow positionToChase
             if(this.map != this.game.getPlayer().getMap()){return;}
-            direction = position.cpy().sub(positionToChase).nor().scl(-1,-1);
-            System.out.println(direction);
+
+            if (this.getCenterPos().dst(this.positionToChase) > 30){ //Si la distancia es grande, ve hacia el objetivo. Si no no.
+                this.direction = this.position.cpy().sub(this.positionToChase).nor().scl(-1,-1);
+            }else{
+                this.direction = new Vector2(0,0);
+            }
+
+
         }else {             //Follow path
             MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
             MapObjects paths = PathObjectLayer.getObjects();
