@@ -316,12 +316,12 @@
   <object id="111" x="1202" y="706.333" width="62" height="31.3333">
    <properties>
     <property name="justOnce" type="bool" value="true"/>
-    <property name="sendMessage" value="¿Que ha pasado? ¿Me he teletransportado?"/>
+    <property name="sendMessage" value="¿Qué ha pasado? ¿Me he teletransportado?"/>
    </properties>
   </object>
   <object id="113" x="1288.16" y="495.5" width="56.3334" height="51">
    <properties>
-    <property name="sendMessage" value="'No todos en esta casa son tan majos como nosotros... si te tocan estos fantasmas estas DOOMED'. Pero siempre puedes esconderte."/>
+    <property name="sendMessage" value="'No todos en esta casa son tan majos como nosotros... si te tocan estos fantasmas estas DOOMED. Pero siempre puedes esconderte.'"/>
    </properties>
   </object>
   <object id="116" x="675" y="381" width="59" height="16">

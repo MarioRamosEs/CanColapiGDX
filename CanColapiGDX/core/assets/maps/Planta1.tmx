@@ -252,7 +252,7 @@
   <object id="100" x="718.33" y="490.666" width="60" height="78">
    <properties>
     <property name="justOnce" type="bool" value="true"/>
-    <property name="sendMessage" value="'Hey tu, si tu, si quieres salir de aquí (más te vale por la cuenta que te trae), necesitarás varios objetos. Mis amigos de la derecha te irán dando algunas pistas."/>
+    <property name="sendMessage" value="'Hey tú, sí tú, si quieres salir de aquí (más te vale por la cuenta que te trae), necesitarás varios objetos. Mis amigos de la derecha te irán dando algunas pistas."/>
    </properties>
   </object>
   <object id="101" x="473.5" y="1326.5" width="39" height="63">
@@ -294,7 +294,7 @@
   <object id="113" x="880" y="492" width="60" height="78">
    <properties>
     <property name="justOnce" type="bool" value="false"/>
-    <property name="sendMessage" value="'Encontrarás la llave para salir en la Planta 0, pero no vayas a lo loco, neceistarás algo para defenderte de los fantasmas y distraer al perro'"/>
+    <property name="sendMessage" value="'Encontrarás la llave para salir en la Planta 0, pero no vayas a lo loco, necesitarás algo para defenderte de los fantasmas y distraer al perro'"/>
    </properties>
   </object>
   <object id="114" x="1037.67" y="495" width="60" height="78">
