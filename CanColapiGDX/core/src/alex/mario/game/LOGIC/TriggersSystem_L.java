@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Map;
 import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.MyGdxGame;
 import com.badlogic.gdx.maps.MapLayer;
@@ -96,8 +97,17 @@ public class TriggersSystem_L implements iSystem_L {
             case "changeMap":
 
                 if(triggered){
+                    Map oldMap = character.getMap();
+
+                    //Load the map
                     this.game.getMapSystem().loadMap(MyGdxGame.formatToFilePath(triggerValue));
-                    character.setMap(this.game.getMapSystem().getMap(MyGdxGame.formatToFilePath(triggerValue)));
+                    Map newMap = this.game.getMapSystem().getMap(MyGdxGame.formatToFilePath(triggerValue));
+
+                    if(oldMap != newMap){
+                        oldMap.resetCharacters();
+                    }
+
+                    character.setMap(newMap);
                     //character.resetPos();
 
                     //Get value of key "linkTo":

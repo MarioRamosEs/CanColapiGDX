@@ -38,5 +38,7 @@ public interface iCharacter_L extends iSystem_L {
     ArrayList<Item> hasItemsType(Class type);
     Vector2 getCenterPos();
 
+    void reset();
+
     void selectNextItem();
 }

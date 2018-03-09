@@ -46,6 +46,12 @@ public class Ghost extends Character_IA {
     }
 
     @Override
+    public void reset(){
+        this.chasing = false;
+        super.reset();
+    }
+
+    @Override
     public void update() {
         this.think();
         super.update();
