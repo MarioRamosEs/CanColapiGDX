@@ -18,7 +18,7 @@ public class Character_L implements iCharacter_L {
     protected MapSystem mapSystem;
     protected TriggersSystem triggersSystem;
     protected Map map;
-    protected Vector2 position, direction, size;
+    protected Vector2 originalPosition, position, direction, size;
     protected MyGdxGame game;
     protected float minVel;
     protected float vel;
@@ -50,6 +50,7 @@ public class Character_L implements iCharacter_L {
         this.vel = this.minVel;
 
         this.position = new Vector2(0,0);
+        this.originalPosition = new Vector2(0, 0);
         this.direction = new Vector2(0,0);
         this.size = new Vector2(32,40); //Valor ajustado a mano, no sobreescribir.
     }
@@ -116,6 +117,7 @@ public class Character_L implements iCharacter_L {
         position = new Vector2(Gdx.graphics.getWidth()/2 ,Gdx.graphics.getHeight()/2);}
     public void setPos(Vector2 newPos){
         this.position = newPos.cpy().sub(this.size.x / 2, this.size.y / 2);
+        this.originalPosition = this.position.cpy();
     }
     public Vector2 getDir(){
         return this.direction;
@@ -219,6 +221,13 @@ public class Character_L implements iCharacter_L {
     public Vector2 getCenterPos(){
         return this.position.cpy().add(this.size.cpy().scl(0.5f, 0.5f));
     }
+
+    @Override
+    public void reset() {
+        this.position = this.originalPosition.cpy();
+        this.direction = Vector2.Zero;
+    }
+
     public boolean isHiding() {
         return this.isHiding;
     }

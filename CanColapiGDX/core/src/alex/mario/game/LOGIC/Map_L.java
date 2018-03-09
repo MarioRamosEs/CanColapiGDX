@@ -1,5 +1,6 @@
 package alex.mario.game.LOGIC;
 
+import alex.mario.game.GUI.Character_IA;
 import alex.mario.game.GUI.Item;
 import alex.mario.game.GUI.ItemsSystem;
 import alex.mario.game.MyGdxGame;
@@ -59,5 +60,13 @@ public class Map_L {
 
     public void update() {
         this.itemsSystem.update();
+    }
+
+    public void resetCharacters() {
+        for(Character_IA character : this.game.getCharacters()){
+            if(character.getMap() == this){
+                character.reset();
+            }
+        }
     }
 }
