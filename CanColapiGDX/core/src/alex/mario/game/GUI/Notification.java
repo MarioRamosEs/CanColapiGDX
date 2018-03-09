@@ -14,15 +14,17 @@ public class Notification extends Notification_L {
     public static final int NOTIFICATION_BORDER_WIDTH = 5;
     public static final int NOTIFICATION_PADDING = 5;
     private GlyphLayout notificationLayout;
-    public Notification(String message){
+
+    public Notification(String message) {
         super(message);
         this.notificationLayout = new GlyphLayout();
     }
-    public float getNotificationHeight(){
+
+    public float getNotificationHeight() {
         return this.notificationLayout.height + NOTIFICATION_PADDING * 2 + NOTIFICATION_BORDER_WIDTH * 2;
     }
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size)
-    {
+
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, BitmapFont font, Vector2 pos, Vector2 size) {
         shapeRenderer.begin();
         //Calculate text width-height
         this.notificationLayout.setText(font, this.message, Color.WHITE, size.x - 10 - NOTIFICATION_BORDER_WIDTH * 2, Align.left, true);
@@ -32,7 +34,7 @@ public class Notification extends Notification_L {
         shapeRenderer.setColor(Color.DARK_GRAY);
         shapeRenderer.rect(
                 pos.x, pos.y,
-                size.x, notificationLayout.height  + NOTIFICATION_BORDER_WIDTH * 2 + NOTIFICATION_PADDING * 2
+                size.x, notificationLayout.height + NOTIFICATION_BORDER_WIDTH * 2 + NOTIFICATION_PADDING * 2
         );
 
         //Bakcground
@@ -40,7 +42,7 @@ public class Notification extends Notification_L {
         shapeRenderer.setColor(Color.GRAY);
         shapeRenderer.rect(
                 pos.x + NOTIFICATION_BORDER_WIDTH, pos.y + NOTIFICATION_BORDER_WIDTH,
-                size.x -  NOTIFICATION_BORDER_WIDTH * 2, notificationLayout.height + NOTIFICATION_PADDING * 2
+                size.x - NOTIFICATION_BORDER_WIDTH * 2, notificationLayout.height + NOTIFICATION_PADDING * 2
         );
         shapeRenderer.end();
 

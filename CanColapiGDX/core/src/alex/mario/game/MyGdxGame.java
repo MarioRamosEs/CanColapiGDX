@@ -2,8 +2,6 @@ package alex.mario.game;
 
 import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
-import alex.mario.game.Interfaces.iSystem;
-import alex.mario.game.Interfaces.iSystem_L;
 import alex.mario.game.characters.Dog;
 import alex.mario.game.characters.Ghost;
 import alex.mario.game.characters.Player;
@@ -42,9 +40,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
     private ArrayList<Character_IA> characters;
 
-
-    public static final float DISTANCE_USEGROUND_ITEM = 60f;
-
     protected HashMap<String, Class> availableItems;
     protected HashMap<String, Class> availableCharacters_IA;
 
@@ -56,6 +51,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     public static final Vector2 DIRECTION_RIGHT = new Vector2(1, 0);
     public static final Vector2 DIRECTION_DOWN = new Vector2(0, -1);
     private Vector2[] directions = new Vector2[]{DIRECTION_LEFT, DIRECTION_DOWN, DIRECTION_RIGHT, DIRECTION_UP};
+
+    public static final float DISTANCE_USEGROUND_ITEM = 60f;
 
     @Override
     public void create() {
@@ -237,7 +234,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        //player.setDir(new Vector2(0,0));
         Vector2 newDirection = player.getDir();
 
         if (keycode == Input.Keys.LEFT || keycode == Input.Keys.A)
@@ -250,7 +246,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
             newDirection.sub(DIRECTION_DOWN);
 
         this.player.setDir(newDirection);
-
 
         //Running
         if (keycode == Input.Keys.SHIFT_LEFT) {

@@ -8,41 +8,37 @@ public class Notification_L {
     protected long startTime = 0;
     protected long endTime = 0;
 
-    public Notification_L(String message, long startTime, long endTime)
-    {
+    public Notification_L(String message, long startTime, long endTime) {
         this.startTime = startTime;
         this.message = message;
-       this.endTime = endTime;
-
+        this.endTime = endTime;
     }
-    public Notification_L(String message)
-    {
+
+    public Notification_L(String message) {
         this.message = message;
         this.startTime = System.currentTimeMillis();
         this.endTime = System.currentTimeMillis() + Notification.DEFAULT_NOTIFICATION_TIME;
         //this.startTime = (int)game.gameTime.TotalGameTime.Seconds;
     }
-    public String getMessage()
-    {
+
+    public String getMessage() {
         return this.message;
     }
 
-    public void setEndTime(int time)
-    {
+    public void setEndTime(int time) {
         this.endTime = time;
     }
-    public long getEndTime()
-    {
+
+    public long getEndTime() {
         return this.endTime;
     }
-    public long getStartTime()
-    {
+
+    public long getStartTime() {
         return this.startTime;
     }
-    public boolean shouldDelete(){
 
+    public boolean shouldDelete() {
         return endTime < System.currentTimeMillis();
-
     }
 
 }

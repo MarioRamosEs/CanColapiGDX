@@ -26,29 +26,25 @@ public class ItemsSystem_L implements iSystem_L {
     protected Map map;
     protected TiledMap tiledMap;
     protected ArrayList<Item> items;
-    public ItemsSystem_L(MyGdxGame game, TiledMap tiledMap, Map map){
+
+    public ItemsSystem_L(MyGdxGame game, TiledMap tiledMap, Map map) {
         this.game = game;
         this.tiledMap = tiledMap;
         this.map = map;
 
         this.items = loadItems(this.game, this.tiledMap, this.map);
     }
-    public static ArrayList<Item> loadItems(MyGdxGame game, TiledMap tiledMap, Map map){
+
+    public static ArrayList<Item> loadItems(MyGdxGame game, TiledMap tiledMap, Map map) {
         ArrayList<Item> items = new ArrayList<Item>();
-        /*for(MapObject object : tiledMap.getLayers().get("Items").getObjects()){
-            MapProperties properties = object.getProperties();
-            String isPicked = properties.get("isPicked").toString();
-            items.add(new Key(isPicked.equals("true") ? true : false, new Vector2(properties.)));
-        }
-*/
+
         for (RectangleMapObject rectangleObject : tiledMap.getLayers().get("Items").getObjects().getByType(RectangleMapObject.class)) {
 
             Rectangle rectangle = rectangleObject.getRectangle();
-            
+
             MapProperties properties = rectangleObject.getProperties();
 
             String type = properties.get("type", "error", String.class);
-            //items.add(new Key(isPicked, new Vector2(rectangle.getX(), rectangle.getY())));
 
             //REFLECTION:
             // http://tutorials.jenkov.com/java-reflection/constructors.html
@@ -56,11 +52,9 @@ public class ItemsSystem_L implements iSystem_L {
             //extra
 
             try {
-
                 Class cl = game.getAvailableItems().get(type);
                 Constructor constructor = cl.getConstructor(new Class[]{MyGdxGame.class, Map.class, RectangleMapObject.class});
-                items.add((Item)constructor.newInstance(game, map, rectangleObject));
-
+                items.add((Item) constructor.newInstance(game, map, rectangleObject));
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -69,24 +63,26 @@ public class ItemsSystem_L implements iSystem_L {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 System.out.println(properties.get("type", "UNDEFINED", String.class));
             }
         }
         return items;
     }
-    public void update(){
+
+    public void update() {
         ListIterator<Item> iterator = this.items.listIterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Item item = iterator.next();
             item.update();
 
-            if(item.mustBeDeleted()){
+            if (item.mustBeDeleted()) {
                 iterator.remove();
             }
         }
     }
-    public ArrayList<Item> getItems(){
+
+    public ArrayList<Item> getItems() {
         return this.items;
     }
 

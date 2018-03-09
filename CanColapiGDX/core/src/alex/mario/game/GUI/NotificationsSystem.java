@@ -12,12 +12,9 @@ public class NotificationsSystem extends NotificationsSystem_L implements iSyste
     public NotificationsSystem(MyGdxGame game){
         super(game);
         this.font = this.game.getNotificationsFont();
-        font.setColor(Color.WHITE);
-
         this.shapeRenderer.setAutoShapeType(true);
-
+        font.setColor(Color.WHITE);
     }
-
 
     public void draw(){
         int i = 0;
@@ -34,5 +31,4 @@ public class NotificationsSystem extends NotificationsSystem_L implements iSyste
             i++;
         }
     }
-
 }

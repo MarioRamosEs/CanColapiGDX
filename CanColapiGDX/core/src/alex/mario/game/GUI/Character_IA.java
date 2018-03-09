@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-import java.util.Iterator;
 import java.util.UUID;
 
 public class Character_IA extends Character implements iCharacter_IA_L {
@@ -24,19 +23,22 @@ public class Character_IA extends Character implements iCharacter_IA_L {
         this.id = UUID.randomUUID().toString();
         this.chasing = chasing;
     }
+
     @Override
     public void think() {
         distWithPlayer = this.getCenterPos().dst(this.game.getPlayer().getCenterPos());
 
-        if(chasing){        //Follow positionToChase
-            if(this.map != this.game.getPlayer().getMap()){return;}
-
-            if (this.getCenterPos().dst(this.positionToChase) > 30){ //Si la distancia es grande, ve hacia el objetivo. Si no no.
-                this.direction = this.position.cpy().sub(this.positionToChase).nor().scl(-1,-1);
-            }else{
-                this.direction = new Vector2(0,0);
+        if (chasing) {        //Follow positionToChase
+            if (this.map != this.game.getPlayer().getMap()) {
+                return;
             }
-        }else {             //Follow path
+
+            if (this.getCenterPos().dst(this.positionToChase) > 30) { //Si la distancia es grande, ve hacia el objetivo. Si no no.
+                this.direction = this.position.cpy().sub(this.positionToChase).nor().scl(-1, -1);
+            } else {
+                this.direction = new Vector2(0, 0);
+            }
+        } else {             //Follow path
             MapLayer PathObjectLayer = this.map.getTiledMap().getLayers().get("Path");
             MapObjects paths = PathObjectLayer.getObjects();
             for (RectangleMapObject rectangleObject : paths.getByType(RectangleMapObject.class)) {

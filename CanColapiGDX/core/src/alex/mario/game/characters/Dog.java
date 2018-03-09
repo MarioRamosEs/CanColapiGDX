@@ -8,24 +8,26 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class Dog extends Character_IA {
-    public Dog(MyGdxGame game, Map map, boolean chasing){
+    public Dog(MyGdxGame game, Map map, boolean chasing) {
         super(game, map, chasing);
         this.direction = new Vector2(0, 0);
-        this.playerFrames = TextureRegion.split(TexturesSystem.getTexture("dog.png"),48,64);
+        this.playerFrames = TextureRegion.split(TexturesSystem.getTexture("dog.png"), 48, 64);
         this.collides = false;
     }
 
     @Override
-    public void think(){
+    public void think() {
         super.think();
 
-        if(this.map != this.game.getPlayer().getMap()){return;}
+        if (this.map != this.game.getPlayer().getMap()) {
+            return;
+        }
 
         Bone bone = this.searchBone();
-        if(bone != null){ //If exists any bone in the map
+        if (bone != null) { //If exists any bone in the map
             this.positionToChase = bone.getPos();
             this.chasing = true;
-        }else{
+        } else {
             this.chasing = false;
         }
 
@@ -39,16 +41,18 @@ public class Dog extends Character_IA {
         }
 
     }
-    public Bone searchBone(){
-        for(Item item : this.map.getMapItems()){
-            if(item instanceof Bone){
+
+    public Bone searchBone() {
+        for (Item item : this.map.getMapItems()) {
+            if (item instanceof Bone) {
                 return (Bone) item;
             }
         }
         return null;
     }
+
     @Override
-    public void update(){
+    public void update() {
         this.think();
         super.update();
     }

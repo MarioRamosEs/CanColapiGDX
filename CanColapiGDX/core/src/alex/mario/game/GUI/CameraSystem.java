@@ -16,7 +16,7 @@ public class CameraSystem extends CameraSystem_L implements iSystem {
     private BitmapFont font;
     private SpriteBatch batch;
 
-    public CameraSystem(MyGdxGame game){
+    public CameraSystem(MyGdxGame game) {
         super(game);
         this.spriteBatch = this.game.getSpriteBatch();
         this.shapeRenderer = this.game.getShapeRenderer();
@@ -24,19 +24,19 @@ public class CameraSystem extends CameraSystem_L implements iSystem {
         this.batch = new SpriteBatch();
     }
 
-    public void draw(){
+    public void draw() {
         //Se actualiza la cámara Orthographic
         this.camera.update();
 
         //GAME OVER
-        if(this.game.isGameOver()){
+        if (this.game.isGameOver()) {
             batch.begin();
             batch.draw(TexturesSystem.getTexture("youDied.png"), 0, 0);
             batch.end();
         }
 
         //YOU WIN
-        if(this.game.isYouWin()){
+        if (this.game.isYouWin()) {
             batch.begin();
             batch.draw(TexturesSystem.getTexture("youWin.png"), 0, 0);
             batch.end();
@@ -44,7 +44,7 @@ public class CameraSystem extends CameraSystem_L implements iSystem {
 
         //FPS COUNTER
         shapeRenderer.begin();
-            //Background
+        //Background
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Gdx.graphics.getFramesPerSecond() > 50 ? Color.GREEN : (Gdx.graphics.getFramesPerSecond() > 30 ? Color.YELLOW : Color.RED));
         shapeRenderer.rect(

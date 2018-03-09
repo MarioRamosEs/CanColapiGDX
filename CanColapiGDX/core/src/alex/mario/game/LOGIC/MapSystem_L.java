@@ -27,15 +27,16 @@ public class MapSystem_L implements iSystem_L {
     protected MyGdxGame game;
     protected HashMap<String, Map> maps;
 
-    public MapSystem_L(MyGdxGame game){
+    public MapSystem_L(MyGdxGame game) {
         this.game = game;
         this.maps = new HashMap<String, Map>();
     }
-    public void loadMap(String filePath){
+
+    public void loadMap(String filePath) {
         //Load map
 
         System.out.println(filePath);
-        if(!this.maps.containsKey(filePath)){
+        if (!this.maps.containsKey(filePath)) {
             this.maps.put(filePath, new Map(this.game, filePath));
         }
         System.out.println("CARGADO!");
@@ -43,27 +44,29 @@ public class MapSystem_L implements iSystem_L {
 
     public Vector2 getEntryPos(Map map, String entryName) {
         RectangleMapObject exitObject = this.genericMapObjectSearch(map, "isLinkedTo", entryName);
-        if(exitObject == null){
+        if (exitObject == null) {
             return null;
-        }else{
+        } else {
             return new Vector2(
                     exitObject.getRectangle().getX(),
                     exitObject.getRectangle().getY()
             ).add(MyGdxGame.DEFAULT_TILE_SIZE.cpy().scl(0.5f, 0.5f));
         }
     }
+
     public Vector2 getExitPos(Map map, String entryName) {
         RectangleMapObject exitObject = this.genericMapObjectSearch(map, "linkTo", entryName);
-        if(exitObject == null){
+        if (exitObject == null) {
             return null;
-        }else{
+        } else {
             return new Vector2(
                     exitObject.getRectangle().getX(),
                     exitObject.getRectangle().getY()
             );
         }
     }
-    public RectangleMapObject genericMapObjectSearch(Map map, String key, String value){
+
+    public RectangleMapObject genericMapObjectSearch(Map map, String key, String value) {
         //Obtenemos capa triggers
         MapLayer TriggerObjectLayer = map.getTiledMap().getLayers().get("Triggers");
         MapObjects triggers = TriggerObjectLayer.getObjects();
@@ -74,7 +77,7 @@ public class MapSystem_L implements iSystem_L {
             MapProperties mapProperties = rectangleObject.getProperties();
             //Preguntamos si contiene la llave key y preguntamos
             // si su valor es igual al que nos introducen por parámetro value
-            if(mapProperties.containsKey(key) && mapProperties.get(key).toString().equals(value)){
+            if (mapProperties.containsKey(key) && mapProperties.get(key).toString().equals(value)) {
                 //Devolvemos el objeto entero
                 return rectangleObject;
             }
@@ -82,17 +85,18 @@ public class MapSystem_L implements iSystem_L {
         //Si no encuentra nada devolverá un null y petará xD
         return null;
     }
-    public Map getMap(String mapName){
-        if(this.maps.containsKey(mapName)){
+
+    public Map getMap(String mapName) {
+        if (this.maps.containsKey(mapName)) {
             return this.maps.get(mapName);
-        }else{
+        } else {
             return null;
         }
     }
 
     @Override
     public void update() {
-        for(Map map : maps.values()){
+        for (Map map : maps.values()) {
             map.update();
         }
     }

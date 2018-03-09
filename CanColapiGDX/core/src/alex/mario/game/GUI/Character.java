@@ -15,14 +15,13 @@ public class Character extends Character_L implements iCharacter {
 
     public Character(MyGdxGame game, Map map){
         super(game, map);
+
         this.inventorySystem = new InventorySystem(this.game, this);
-
         this.position = new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2 - 20);
-
         this.cameraSystem = game.getCameraSystem();
 
         batch = new SpriteBatch();
-        playerFrames = TextureRegion.split(TexturesSystem.getTexture("fk002-brendan.png"),32,50);
+        playerFrames = TextureRegion.split(TexturesSystem.getTexture("fk002-brendan.png"), 32, 50);
     }
 
     public void draw(){
