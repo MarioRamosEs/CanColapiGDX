@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="125">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" infinite="0" nextobjectid="135">
  <tileset firstgid="1" source="Multi-Inside.tsx"/>
  <tileset firstgid="1905" source="interior.tsx"/>
  <tileset firstgid="2161" source="castle.tsx"/>
@@ -104,7 +104,7 @@
  </layer>
  <layer name="Objects" width="45" height="45">
   <data encoding="csv">
-2678,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -152,7 +152,17 @@
 </data>
  </layer>
  <objectgroup name="Path"/>
- <objectgroup name="Collisions"/>
+ <objectgroup name="Collisions">
+  <object id="125" x="845.333" y="118.667" width="529.333" height="41.3333"/>
+  <object id="126" x="1277.33" y="157.333" width="36" height="834.667"/>
+  <object id="127" x="772" y="978.667" width="504" height="30.6667"/>
+  <object id="129" x="769.333" y="1008" width="17.3333" height="236"/>
+  <object id="130" x="656" y="1246.67" width="121.333" height="25.3333"/>
+  <object id="131" x="654.667" y="1012" width="17.3333" height="229.333"/>
+  <object id="132" x="136" y="989.333" width="529.333" height="28"/>
+  <object id="133" x="128" y="134.667" width="29.3333" height="852"/>
+  <object id="134" x="162.667" y="120" width="616" height="37.3333"/>
+ </objectgroup>
  <objectgroup color="#ff0000" name="Triggers">
   <object id="107" x="800.667" y="207.333" width="28.6667" height="23.3333">
    <properties>
