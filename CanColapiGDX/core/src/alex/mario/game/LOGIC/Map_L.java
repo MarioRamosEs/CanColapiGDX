@@ -53,11 +53,6 @@ public class Map_L {
         }
         return closestItem;
     }
-
-    public Bone getBone(){
-        return this.itemsSystem.getBone();
-    }
-
     public void update() {
         this.itemsSystem.update();
     }

@@ -1,9 +1,7 @@
 package alex.mario.game.characters;
 
+import alex.mario.game.GUI.*;
 import alex.mario.game.GUI.Character;
-import alex.mario.game.GUI.Character_IA;
-import alex.mario.game.GUI.Map;
-import alex.mario.game.GUI.TexturesSystem;
 import alex.mario.game.MyGdxGame;
 import alex.mario.game.objects.Bone;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -23,7 +21,7 @@ public class Dog extends Character_IA {
 
         if(this.map != this.game.getPlayer().getMap()){return;}
 
-        Bone bone = this.map.getBone();
+        Bone bone = this.searchBone();
         if(bone != null){ //If exists any bone in the map
             this.positionToChase = bone.getPos();
             this.chasing = true;
@@ -40,6 +38,14 @@ public class Dog extends Character_IA {
             this.game.getPlayer().unTrigger("touchedByDog-" + this.id, false);
         }
 
+    }
+    public Bone searchBone(){
+        for(Item item : this.map.getMapItems()){
+            if(item instanceof Bone){
+                return (Bone) item;
+            }
+        }
+        return null;
     }
     @Override
     public void update(){

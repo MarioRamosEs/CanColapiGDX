@@ -90,12 +90,4 @@ public class ItemsSystem_L implements iSystem_L {
         return this.items;
     }
 
-    public Bone getBone(){
-        for(Item i : this.items){
-            if(i instanceof Bone){
-                return (Bone) i;
-            }
-        }
-        return null;
-    }
 }
